@@ -183,6 +183,22 @@ img{max-width:100%}
 .btn-outline{padding:11px 18px;background:white;color:var(--gy);border:1.5px solid #e5e7eb;border-radius:6px;font-weight:600;font-size:0.88rem;cursor:pointer}
 .btn-outline:hover{background:#f9fafb}
 
+/* ===== PRODUITS ===== */
+.produits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:16px}
+.produit-card{background:white;border-radius:8px;overflow:hidden;box-shadow:var(--shadow);border:1px solid #f0f0f0;transition:all 0.2s}
+.produit-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.produit-img{width:100%;height:130px;object-fit:cover;background:linear-gradient(135deg,#e8f0fe,#dde8fd);display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.produit-img img{width:100%;height:130px;object-fit:cover}
+.produit-body{padding:10px}
+.produit-nom{font-weight:700;font-size:0.82rem;color:#222;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.produit-desc{font-size:0.72rem;color:var(--gy);margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.produit-prix{font-family:'Playfair Display',serif;font-weight:900;font-size:0.9rem;color:var(--or)}
+.photo-preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.photo-preview img{width:60px;height:60px;object-fit:cover;border-radius:6px;border:1px solid #e5e7eb}
+.photo-add{width:60px;height:60px;border:2px dashed #e5e7eb;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--gy);cursor:pointer}
+.photo-add:hover{border-color:var(--or);color:var(--or)}
+.section-title-sm{font-weight:700;font-size:0.9rem;color:var(--bl);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+
 /* ===== TOAST ===== */
 .toast{position:fixed;bottom:24px;right:24px;padding:12px 20px;border-radius:8px;font-size:0.82rem;font-weight:600;z-index:999;transform:translateY(100px);opacity:0;transition:all 0.3s;max-width:300px}
 .toast.show{transform:translateY(0);opacity:1}
@@ -386,8 +402,19 @@ img{max-width:100%}
     <div class="cta-inner">
       <h2>🌸 Votre entreprise mérite d'être vue</h2>
       <p>Rejoignez LOTUS BLANC INTERNATIONAL et touchez des milliers de clients à Abengourou et partout en Côte d'Ivoire.</p>
-      <div class="cta-price-box"><span class="amount">3 000</span><span class="period">FCFA / mois</span></div>
-      <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:10px 20px;margin-bottom:16px;font-size:0.82rem;color:rgba(255,255,255,0.9)">🎁 1 mois d'essai gratuit • Pas d'engagement • Résiliable à tout moment</div>
+      <div style="display:flex;gap:16px;justify-content:center;margin-bottom:20px;flex-wrap:wrap">
+        <div class="cta-price-box" style="flex-direction:column;align-items:center;padding:16px 24px">
+          <span style="font-size:0.7rem;color:rgba(255,255,255,0.7);margin-bottom:4px">MENSUEL</span>
+          <div style="display:flex;align-items:baseline;gap:4px"><span class="amount">3 000</span><span class="period">FCFA/mois</span></div>
+          <span style="font-size:0.7rem;color:rgba(255,255,255,0.6);margin-top:4px">= 36 000 FCFA/an</span>
+        </div>
+        <div class="cta-price-box" style="flex-direction:column;align-items:center;padding:16px 24px;background:rgba(201,168,76,0.3);border:1px solid rgba(201,168,76,0.5)">
+          <span style="font-size:0.7rem;color:#fbbf24;margin-bottom:4px">ANNUEL — MEILLEURE OFFRE</span>
+          <div style="display:flex;align-items:baseline;gap:4px"><span class="amount">30 000</span><span class="period">FCFA/an</span></div>
+          <span style="font-size:0.7rem;color:rgba(255,255,255,0.8);margin-top:4px">Economisez 6 000 FCFA !</span>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:10px 20px;margin-bottom:16px;font-size:0.82rem;color:rgba(255,255,255,0.9)">5 photos par produit. 1 mois essai gratuit. Resiliable a tout moment.</div>
       <div class="cta-btns">
         <button class="btn-cta-white" onclick="openModal('modalInscription')">📝 Inscrire mon entreprise</button>
         <button class="btn-cta-outline" onclick="window.open('https://wa.me/2250799630206?text=Bonjour, je veux inscrire mon entreprise sur L.B.I')">💬 WhatsApp</button>
@@ -510,6 +537,13 @@ img{max-width:100%}
         <div class="form-group"><label>Téléphone / WhatsApp *</label><input type="tel" id="ins-tel" placeholder="+225 07 XX XX XX XX"></div>
         <div class="form-group"><label>Email</label><input type="email" id="ins-email" placeholder="contact@entreprise.com"></div>
         <div class="form-group"><label>Responsable *</label><input type="text" id="ins-resp" placeholder="Votre nom complet"></div>
+        <div class="form-group form-full"><label>Type d'abonnement</label>
+          <select id="ins-abonnement">
+            <option value="essai">Essai gratuit 1 mois</option>
+            <option value="mensuel">Mensuel — 3 000 FCFA/mois</option>
+            <option value="annuel">Annuel — 30 000 FCFA/an (Economisez 6 000 FCFA)</option>
+          </select>
+        </div>
         <div class="form-group form-full"><label>Description *</label><textarea id="ins-desc" placeholder="Décrivez votre entreprise, vos produits ou services..."></textarea></div>
       </div>
       <div id="ins-msg" style="font-size:0.78rem;margin-bottom:8px"></div>
@@ -586,6 +620,37 @@ img{max-width:100%}
       <div class="form-actions">
         <button class="btn-primary" onclick="saveEntreprise()">✔ Enregistrer</button>
         <button class="btn-outline" onclick="closeModal('modalAjout')">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PRODUIT -->
+<div class="overlay" id="modalProduit">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>🛍️ Ajouter un produit</h3>
+      <button class="modal-close" onclick="closeModal('modalProduit');tempPhotos=[];renderPhotoPreview()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label>Nom du produit *</label><input type="text" id="prod-nom" placeholder="Ex: Robe en wax, Chambre double..."></div>
+      <div class="form-group"><label>Description</label><textarea id="prod-desc" placeholder="Décrivez le produit..." style="min-height:60px"></textarea></div>
+      <div class="form-group"><label>Prix (FCFA)</label><input type="text" id="prod-prix" placeholder="Ex: 5000"></div>
+      <div class="form-group">
+        <label>Photos du produit</label>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <label style="padding:8px 16px;background:#f3f4f6;border-radius:6px;cursor:pointer;font-size:0.78rem;font-weight:600;color:var(--bl)">
+            📷 Ajouter photos
+            <input type="file" accept="image/*" multiple style="display:none" onchange="addPhotosProduit(this)">
+          </label>
+          <span style="font-size:0.72rem;color:var(--gy)">Max 5 photos</span>
+        </div>
+        <div id="photo-preview" class="photo-preview"></div>
+      </div>
+      <div id="prod-msg" style="font-size:0.78rem;margin-bottom:8px"></div>
+      <div class="form-actions">
+        <button class="btn-primary" onclick="saveProduit()">✔ Enregistrer</button>
+        <button class="btn-outline" onclick="closeModal('modalProduit');tempPhotos=[];renderPhotoPreview()">Annuler</button>
       </div>
     </div>
   </div>
@@ -789,6 +854,8 @@ function voirDetail(id){
     +'<a href="tel:'+tel+'" style="flex:1;padding:14px;background:var(--bl);color:white;border-radius:8px;font-weight:700;text-align:center;font-size:0.9rem">📞 Appeler</a>'
     +'</div>'
     +'</div>';
+  // Charger les produits
+  loadProduits(e.id);
   goPage('detail');
 }
 
@@ -803,8 +870,9 @@ async function saveInscription(){
   var msg=document.getElementById('ins-msg');
   if(!nom||!cat||!quartier||!tel||!desc||!resp){msg.style.color='#ef4444';msg.textContent='❌ Veuillez remplir tous les champs obligatoires';return;}
   msg.style.color='#6b7280';msg.textContent='⏳ Envoi en cours...';
+  var abonnement = document.getElementById('ins-abonnement') ? document.getElementById('ins-abonnement').value : 'essai';
   try{
-    await supaPost('entreprises',{nom,categorie:cat,quartier,telephone:tel,email:document.getElementById('ins-email').value.trim(),description:desc,responsable:resp,statut:'pending',featured:'non'});
+    await supaPost('entreprises',{nom:nom,categorie:cat,quartier:quartier,telephone:tel,email:document.getElementById('ins-email').value.trim(),description:desc,responsable:resp,statut:'pending',featured:'non',abonnement:abonnement});
     await loadData();
     msg.style.color='#065f46';msg.textContent='✅ Demande envoyée ! Nous vous contacterons sous 24h.';
     toast('✅ Demande envoyée!','ok');
@@ -857,7 +925,9 @@ function updateAdminStats(){
   var actives=DB.entreprises.filter(function(e){return e.statut==='actif';}).length;
   var essai=DB.entreprises.filter(function(e){return e.statut==='essai';}).length;
   var pending=DB.entreprises.filter(function(e){return e.statut==='pending';}).length;
-  var revenus=actives*3000;
+  var mensuel=DB.entreprises.filter(function(e){return e.statut==='actif'&&e.abonnement!=='annuel';}).length;
+  var annuel=DB.entreprises.filter(function(e){return e.statut==='actif'&&e.abonnement==='annuel';}).length;
+  var revenus=(mensuel*3000)+(annuel*2500);
   var set=function(id,v){var el=document.getElementById(id);if(el)el.textContent=v;};
   set('a-total',total);set('a-actives',actives);set('a-essai',essai);set('a-pending',pending);
   set('a-revenus',revenus.toLocaleString()+' FCFA');
@@ -956,6 +1026,108 @@ function switchTab(id,btn){
 // ===== MODAL =====
 function openModal(id){var el=document.getElementById(id);if(el)el.classList.add('show');}
 function closeModal(id){var el=document.getElementById(id);if(el)el.classList.remove('show');}
+
+// ===== PRODUITS =====
+var currentEntrepriseId = null;
+
+async function loadProduits(entrepriseId){
+  currentEntrepriseId = entrepriseId;
+  try {
+    var res = await fetch(SURL+'/rest/v1/produits?entreprise_id=eq.'+entrepriseId+'&statut=eq.actif&order=created_at.desc',{
+      headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
+    });
+    var produits = await res.json();
+    renderProduits(produits);
+  } catch(e){
+    var grid = document.getElementById('produits-grid');
+    if(grid) grid.innerHTML = '<p style="color:var(--gy);font-size:0.82rem">Aucun produit disponible</p>';
+  }
+}
+
+function renderProduits(produits){
+  var grid = document.getElementById('produits-grid');
+  if(!grid) return;
+  if(!produits || !produits.length){
+    grid.innerHTML = '<p style="color:var(--gy);font-size:0.82rem;padding:16px;background:#f8f9ff;border-radius:8px">Aucun produit ajouté pour l\'instant.</p>';
+    return;
+  }
+  grid.className = 'produits-grid';
+  grid.innerHTML = produits.map(function(p){
+    var img = (p.photos && p.photos.length)
+      ? '<img src="'+p.photos[0]+'" alt="'+p.nom+'" style="width:100%;height:130px;object-fit:cover">'
+      : '<div class="produit-img">🛍️</div>';
+    return '<div class="produit-card">'
+      +img
+      +'<div class="produit-body">'
+      +'<div class="produit-nom">'+p.nom+'</div>'
+      +(p.description?'<div class="produit-desc">'+p.description+'</div>':'')
+      +(p.prix?'<div class="produit-prix">'+p.prix+' FCFA</div>':'')
+      +'</div>'
+      +'</div>';
+  }).join('');
+}
+
+// Gestion photos produits (admin)
+var tempPhotos = [];
+
+function addPhotosProduit(input){
+  var files = Array.from(input.files);
+  files.forEach(function(f){
+    var img = new Image();
+    var url = URL.createObjectURL(f);
+    img.onload = function(){
+      var canvas = document.createElement('canvas');
+      var w = img.width, h = img.height, maxW = 600;
+      if(w > maxW){h = Math.round(h*maxW/w);w = maxW;}
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img,0,0,w,h);
+      var dataUrl = canvas.toDataURL('image/jpeg', 0.75);
+      tempPhotos.push(dataUrl);
+      renderPhotoPreview();
+      URL.revokeObjectURL(url);
+    };
+    img.src = url;
+  });
+  input.value = '';
+}
+
+function renderPhotoPreview(){
+  var prev = document.getElementById('photo-preview');
+  if(!prev) return;
+  prev.innerHTML = tempPhotos.map(function(p, i){
+    return '<div style="position:relative;display:inline-block">'
+      +'<img src="'+p+'" style="width:60px;height:60px;object-fit:cover;border-radius:6px;border:1px solid #e5e7eb">'
+      +'<button onclick="removePhoto('+i+')" style="position:absolute;top:-4px;right:-4px;width:16px;height:16px;background:#ef4444;color:white;border:none;border-radius:50%;font-size:0.6rem;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button>'
+      +'</div>';
+  }).join('');
+}
+
+function removePhoto(i){
+  tempPhotos.splice(i,1);
+  renderPhotoPreview();
+}
+
+async function saveProduit(){
+  var nom = document.getElementById('prod-nom').value.trim();
+  var desc = document.getElementById('prod-desc').value.trim();
+  var prix = document.getElementById('prod-prix').value.trim();
+  var msg = document.getElementById('prod-msg');
+  if(!nom){msg.style.color='#ef4444';msg.textContent='❌ Le nom est obligatoire';return;}
+  if(!currentEntrepriseId){msg.style.color='#ef4444';msg.textContent='❌ Aucune entreprise sélectionnée';return;}
+  msg.style.color='#6b7280';msg.textContent='⏳ Enregistrement...';
+  try {
+    await supaPost('produits',{entreprise_id:currentEntrepriseId,nom,description:desc,prix:prix||null,photos:tempPhotos,statut:'actif'});
+    msg.style.color='#065f46';msg.textContent='✅ Produit ajouté!';
+    tempPhotos = [];
+    renderPhotoPreview();
+    ['prod-nom','prod-desc','prod-prix'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+    await loadProduits(currentEntrepriseId);
+    setTimeout(function(){closeModal('modalProduit');},1000);
+    toast('✅ Produit ajouté!','ok');
+  } catch(e){
+    msg.style.color='#ef4444';msg.textContent='❌ Erreur lors de l\'enregistrement';
+  }
+}
 
 // ===== TOAST =====
 function toast(msg,type){
