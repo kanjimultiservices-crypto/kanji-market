@@ -3,411 +3,469 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOTUS BLANC INTERNATIONAL – Vitrine des entreprises à Abengourou</title>
-<meta name="description" content="LOTUS BLANC INTERNATIONAL - Trouvez les meilleures entreprises, boutiques et services à Abengourou, Côte d'Ivoire. La marketplace des entreprises africaines.">
-<meta name="keywords" content="entreprises Abengourou, boutiques Côte d'Ivoire, marketplace Afrique, LOTUS BLANC INTERNATIONAL, services Abengourou">
-<link rel="manifest" href="manifest-market.json">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>LOTUS BLANC INTERNATIONAL – Les meilleures entreprises, au même endroit</title>
+<meta name="description" content="L.B.I - Trouvez les meilleures entreprises, boutiques et services à Abengourou, Côte d'Ivoire.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bl:#0a1f5e;--or:#F7941D;--gy:#6b7280;--wh:#ffffff;--bg:#f8f9ff;
-  --gr:#10b981;--rd:#ef4444;--pu:#7c3aed;
-  --shadow:0 2px 12px rgba(10,31,94,0.08);
-  --shadow-lg:0 8px 32px rgba(10,31,94,0.12);
-  --radius:12px;
+  --bl:#0a1f5e;--or:#F7941D;--gy:#6b7280;--wh:#fff;--bg:#f5f5f5;
+  --gr:#10b981;--rd:#ef4444;--gold:#C9A84C;
+  --shadow:0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg:0 8px 32px rgba(0,0,0,0.15);
+  --radius:8px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:#1f2937;min-height:100vh}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:#222;min-height:100vh}
 a{text-decoration:none;color:inherit}
 button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
+img{max-width:100%}
 
-/* HEADER */
-.header{background:linear-gradient(135deg,var(--bl) 0%,#1A3FA0 100%);padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(10,31,94,0.3)}
-.header-inner{max-width:1200px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:10px}
-.logo-icon{width:36px;height:36px;background:var(--or);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:14px;color:white}
-.logo-text{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:white}
-.logo-sub{font-size:0.65rem;color:rgba(255,255,255,0.6);font-weight:400;letter-spacing:0.5px;text-transform:uppercase}
-.header-nav{display:flex;align-items:center;gap:8px}
-.btn-header{padding:8px 16px;border-radius:8px;font-size:0.82rem;font-weight:600;cursor:pointer}
-.btn-login{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2)}
-.btn-login:hover{background:rgba(255,255,255,0.2)}
+/* ===== TOP BAR ===== */
+.top-bar{background:#222;padding:6px 0;font-size:0.72rem;color:rgba(255,255,255,0.7)}
+.top-bar-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+.top-bar a{color:rgba(255,255,255,0.7);margin-left:16px}
+.top-bar a:hover{color:var(--or)}
+
+/* ===== HEADER ===== */
+.header{background:var(--bl);padding:12px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--gold),#e8c96a);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:13px;color:var(--bl)}
+.logo-text{color:white}
+.logo-name{font-family:'Playfair Display',serif;font-weight:900;font-size:1rem;line-height:1.2}
+.logo-sub{font-size:0.62rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.5px}
+
+/* SEARCH BAR HEADER */
+.header-search{flex:1;display:flex;height:44px;border-radius:6px;overflow:hidden;box-shadow:0 0 0 2px var(--or)}
+.header-search select{padding:0 12px;border:none;border-right:1px solid #e5e7eb;font-size:0.78rem;color:#374151;background:white;min-width:140px;cursor:pointer;outline:none}
+.header-search input{flex:1;padding:0 16px;border:none;font-size:0.88rem;outline:none;color:#222}
+.header-search button{padding:0 20px;background:var(--or);color:white;font-weight:700;font-size:0.88rem;white-space:nowrap}
+.header-search button:hover{background:#e07f0a}
+
+.header-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.btn-header{padding:8px 16px;border-radius:6px;font-size:0.78rem;font-weight:600}
 .btn-inscrire{background:var(--or);color:white}
 .btn-inscrire:hover{background:#e07f0a}
+.btn-admin{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2)}
+.btn-admin:hover{background:rgba(255,255,255,0.2)}
 
-/* HERO */
-.hero{background:linear-gradient(135deg,var(--bl) 0%,#1A3FA0 60%,#2451c5 100%);padding:64px 24px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(247,148,29,0.08);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.04);pointer-events:none}
-.hero-inner{max-width:800px;margin:0 auto;position:relative;z-index:1}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(247,148,29,0.2);border:1px solid rgba(247,148,29,0.4);color:#fbbf24;padding:6px 14px;border-radius:20px;font-size:0.75rem;font-weight:600;margin-bottom:20px;text-transform:uppercase;letter-spacing:0.5px}
-.hero h1{font-family:'Playfair Display',serif;font-weight:900;font-size:2.8rem;color:white;line-height:1.2;margin-bottom:16px}
-.hero h1 span{color:var(--or)}
-.hero p{font-size:1rem;color:rgba(255,255,255,0.75);margin-bottom:32px;line-height:1.6}
-.hero-search{display:flex;max-width:560px;margin:0 auto 32px;gap:0;background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.2)}
-.hero-search input{flex:1;padding:14px 20px;border:none;font-family:'Inter',sans-serif;font-size:0.95rem;outline:none;color:#1f2937}
-.hero-search select{padding:14px 12px;border:none;border-left:1px solid #e5e7eb;font-family:'Inter',sans-serif;font-size:0.85rem;outline:none;color:#6b7280;background:white}
-.hero-search button{padding:14px 24px;background:var(--or);color:white;font-weight:700;font-size:0.9rem}
-.hero-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
-.hero-stat{text-align:center}
-.hero-stat .num{font-family:'Playfair Display',serif;font-weight:900;font-size:1.8rem;color:white}
-.hero-stat .lab{font-size:0.75rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.5px}
+/* ===== NAV CATEGORIES ===== */
+.nav-cats{background:white;border-bottom:1px solid #e5e7eb;padding:0 20px}
+.nav-cats-inner{max-width:1280px;margin:0 auto;display:flex;gap:0;overflow-x:auto}
+.nav-cat{padding:10px 16px;font-size:0.78rem;font-weight:500;color:#374151;white-space:nowrap;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav-cat:hover,.nav-cat.active{color:var(--or);border-bottom-color:var(--or)}
 
-/* CATEGORIES */
-.section{padding:48px 24px;max-width:1200px;margin:0 auto}
-.section-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.4rem;color:var(--bl);margin-bottom:6px}
-.section-sub{font-size:0.85rem;color:var(--gy);margin-bottom:24px}
-.categories{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
-.cat-card{background:white;border-radius:12px;padding:20px 14px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all 0.2s;box-shadow:var(--shadow)}
-.cat-card:hover,.cat-card.active{border-color:var(--or);background:#fff8f0}
-.cat-icon{font-size:2rem;margin-bottom:8px}
-.cat-name{font-size:0.78rem;font-weight:600;color:var(--bl)}
-.cat-count{font-size:0.7rem;color:var(--gy);margin-top:2px}
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,var(--bl) 0%,#1e3a8a 50%,#1d4ed8 100%);padding:48px 20px;position:relative;overflow:hidden}
+.hero::before{content:'🌸';position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:8rem;opacity:0.06;pointer-events:none}
+.hero-inner{max-width:1280px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:#e8c96a;padding:5px 14px;border-radius:20px;font-size:0.72rem;font-weight:600;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.5px}
+.hero h1{font-family:'Playfair Display',serif;font-weight:900;font-size:2.2rem;color:white;margin-bottom:10px;line-height:1.3}
+.hero h1 span{color:#fbbf24}
+.hero p{font-size:0.9rem;color:rgba(255,255,255,0.7);margin-bottom:28px}
+.hero-search-big{display:flex;max-width:700px;height:54px;border-radius:8px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.3)}
+.hero-search-big select{padding:0 16px;border:none;border-right:1px solid #e5e7eb;font-size:0.85rem;color:#374151;background:white;min-width:160px;cursor:pointer;outline:none}
+.hero-search-big input{flex:1;padding:0 20px;border:none;font-size:0.95rem;outline:none;color:#222}
+.hero-search-big button{padding:0 28px;background:var(--or);color:white;font-weight:700;font-size:0.95rem}
+.hero-search-big button:hover{background:#e07f0a}
+.hero-stats{display:flex;gap:32px;margin-top:24px;flex-wrap:wrap}
+.hero-stat .num{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:white}
+.hero-stat .lab{font-size:0.72rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.5px}
 
-/* ENTREPRISES GRID */
-.entreprises-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
-.ent-card{background:white;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:all 0.2s;cursor:pointer}
-.ent-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-.ent-banner{height:140px;background:linear-gradient(135deg,#e8f0fe,#dde8fd);position:relative;overflow:hidden}
-.ent-banner img{width:100%;height:100%;object-fit:cover}
-.ent-badge{position:absolute;top:10px;right:10px;padding:4px 10px;border-radius:20px;font-size:0.68rem;font-weight:700;text-transform:uppercase}
-.badge-premium{background:var(--or);color:white}
+/* ===== LAYOUT ===== */
+.main-layout{max-width:1280px;margin:0 auto;padding:24px 20px;display:grid;grid-template-columns:200px 1fr;gap:20px}
+.sidebar{flex-shrink:0}
+.sidebar-card{background:white;border-radius:var(--radius);padding:0;margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden}
+.sidebar-title{padding:12px 16px;font-size:0.82rem;font-weight:700;color:var(--bl);border-bottom:1px solid #f3f4f6;background:#f8f9ff}
+.sidebar-item{padding:10px 16px;font-size:0.8rem;color:#374151;cursor:pointer;display:flex;align-items:center;gap:8px;border-bottom:1px solid #f9fafb;transition:background 0.2s}
+.sidebar-item:hover,.sidebar-item.active{background:#fff8f0;color:var(--or)}
+.sidebar-item:last-child{border-bottom:none}
+.sidebar-count{margin-left:auto;font-size:0.68rem;color:var(--gy);background:#f3f4f6;padding:2px 8px;border-radius:10px}
+
+/* ===== CONTENT ===== */
+.content{}
+.content-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.content-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--bl)}
+.filter-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.filter-select{padding:7px 12px;border:1.5px solid #e5e7eb;border-radius:6px;font-size:0.78rem;background:white;color:#374151;outline:none;cursor:pointer}
+.filter-select:focus{border-color:var(--or)}
+.search-inline{padding:7px 12px;border:1.5px solid #e5e7eb;border-radius:6px;font-size:0.78rem;outline:none;min-width:200px}
+.search-inline:focus{border-color:var(--or)}
+.results-count{font-size:0.78rem;color:var(--gy)}
+
+/* ===== ENTREPRISES GRID ===== */
+.ent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.ent-card{background:white;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:all 0.2s;cursor:pointer;border:1px solid #f0f0f0;position:relative}
+.ent-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--or)}
+.ent-img{width:100%;height:140px;object-fit:cover;background:linear-gradient(135deg,#e8f0fe,#dde8fd);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--bl);position:relative}
+.ent-initials{width:100%;height:140px;background:linear-gradient(135deg,var(--bl),#1e3a8a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:2.5rem;color:rgba(255,255,255,0.9)}
+.ent-badge{position:absolute;top:8px;left:8px;padding:3px 10px;border-radius:4px;font-size:0.65rem;font-weight:700;text-transform:uppercase;z-index:1}
+.badge-premium{background:var(--gold);color:white}
 .badge-new{background:var(--gr);color:white}
 .badge-verified{background:var(--bl);color:white}
-.ent-logo{width:52px;height:52px;border-radius:10px;background:white;border:2px solid #e5e7eb;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:1.2rem;color:var(--bl);position:absolute;bottom:-20px;left:16px}
-.ent-body{padding:28px 16px 16px}
-.ent-cat{font-size:0.68rem;font-weight:700;color:var(--or);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
-.ent-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:var(--bl);margin-bottom:4px}
-.ent-desc{font-size:0.78rem;color:var(--gy);line-height:1.5;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.ent-loc{font-size:0.75rem;color:var(--gy);display:flex;align-items:center;gap:4px;margin-bottom:12px}
-.ent-footer{display:flex;gap:8px;padding-top:12px;border-top:1px solid #f3f4f6}
-.btn-wa{flex:1;padding:8px;background:#25D366;color:white;border-radius:8px;font-size:0.78rem;font-weight:600;text-align:center}
+.ent-body{padding:12px}
+.ent-cat{font-size:0.65rem;font-weight:700;color:var(--or);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.ent-name{font-weight:700;font-size:0.9rem;color:#222;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ent-desc{font-size:0.75rem;color:var(--gy);line-height:1.5;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ent-loc{font-size:0.72rem;color:var(--gy);display:flex;align-items:center;gap:4px;margin-bottom:10px}
+.ent-footer{display:flex;gap:6px;padding-top:10px;border-top:1px solid #f3f4f6}
+.btn-wa{flex:1;padding:7px;background:#25D366;color:white;border-radius:5px;font-size:0.72rem;font-weight:600;text-align:center;display:block}
 .btn-wa:hover{background:#1ebe5d}
-.btn-voir{flex:1;padding:8px;background:#f3f4f6;color:var(--bl);border-radius:8px;font-size:0.78rem;font-weight:600;text-align:center}
+.btn-voir{flex:1;padding:7px;background:#f3f4f6;color:var(--bl);border-radius:5px;font-size:0.72rem;font-weight:600;text-align:center;cursor:pointer}
 .btn-voir:hover{background:#e5e7eb}
 
-/* FILTER BAR */
-.filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
-.filter-select{padding:8px 14px;border:1.5px solid #e5e7eb;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.82rem;background:white;color:#374151;outline:none;cursor:pointer}
-.filter-select:focus{border-color:var(--or)}
-.search-bar{flex:1;min-width:200px;padding:8px 14px;border:1.5px solid #e5e7eb;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.82rem;outline:none}
-.search-bar:focus{border-color:var(--or)}
-.results-count{font-size:0.82rem;color:var(--gy);margin-left:auto}
-
-/* CTA INSCRIPTION */
-.cta-section{background:linear-gradient(135deg,var(--or),#e07f0a);padding:64px 24px;text-align:center}
+/* ===== CTA SECTION ===== */
+.cta-section{background:linear-gradient(135deg,var(--or),#e07f0a);padding:48px 20px;text-align:center;margin-top:40px}
 .cta-inner{max-width:600px;margin:0 auto}
-.cta-section h2{font-family:'Playfair Display',serif;font-weight:900;font-size:2rem;color:white;margin-bottom:12px}
-.cta-section p{color:rgba(255,255,255,0.9);font-size:0.95rem;margin-bottom:28px;line-height:1.6}
-.cta-price{display:inline-flex;align-items:baseline;gap:6px;background:rgba(255,255,255,0.2);border-radius:12px;padding:12px 24px;margin-bottom:24px}
-.cta-price .amount{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:white}
-.cta-price .period{font-size:0.85rem;color:rgba(255,255,255,0.8)}
+.cta-section h2{font-family:'Playfair Display',serif;font-weight:900;font-size:1.8rem;color:white;margin-bottom:10px}
+.cta-section p{color:rgba(255,255,255,0.9);font-size:0.88rem;margin-bottom:20px;line-height:1.6}
+.cta-price-box{display:inline-flex;align-items:baseline;gap:6px;background:rgba(255,255,255,0.2);border-radius:10px;padding:10px 24px;margin-bottom:20px}
+.cta-price-box .amount{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:white}
+.cta-price-box .period{font-size:0.82rem;color:rgba(255,255,255,0.8)}
 .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-cta-main{padding:14px 32px;background:white;color:var(--or);border-radius:10px;font-weight:700;font-size:0.95rem;border:none;cursor:pointer}
-.btn-cta-wa{padding:14px 32px;background:rgba(255,255,255,0.2);color:white;border-radius:10px;font-weight:700;font-size:0.95rem;border:1px solid rgba(255,255,255,0.4);cursor:pointer}
+.btn-cta-white{padding:12px 28px;background:white;color:var(--or);border-radius:7px;font-weight:700;font-size:0.88rem;cursor:pointer;border:none}
+.btn-cta-white:hover{background:#f9fafb}
+.btn-cta-outline{padding:12px 28px;background:rgba(255,255,255,0.15);color:white;border-radius:7px;font-weight:700;font-size:0.88rem;cursor:pointer;border:1px solid rgba(255,255,255,0.4)}
 
-/* MODAL */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;display:none;align-items:center;justify-content:center;padding:16px}
-.overlay.show{display:flex}
-.modal{background:white;border-radius:16px;padding:0;width:100%;max-width:560px;max-height:90vh;overflow-y:auto}
-.modal-head{padding:20px 24px;border-bottom:1px solid #f3f4f6;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:white;border-radius:16px 16px 0 0;z-index:1}
-.modal-head h3{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--bl)}
-.modal-close{width:32px;height:32px;border-radius:8px;background:#f3f4f6;border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
-.modal-body{padding:24px}
-.form-group{margin-bottom:16px}
-.form-group label{display:block;font-size:0.82rem;font-weight:600;color:#374151;margin-bottom:6px}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 14px;border:1.5px solid #e5e7eb;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--or)}
-.form-group textarea{resize:vertical;min-height:80px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-full{grid-column:1/-1}
-.form-actions{display:flex;gap:10px;margin-top:20px}
-.btn-primary{flex:1;padding:12px;background:var(--or);color:white;border-radius:8px;font-weight:700;font-size:0.9rem;border:none;cursor:pointer}
-.btn-primary:hover{background:#e07f0a}
-.btn-outline{padding:12px 20px;background:white;color:var(--gy);border:1.5px solid #e5e7eb;border-radius:8px;font-weight:600;font-size:0.9rem;cursor:pointer}
+/* ===== NO RESULTS ===== */
+.no-results{text-align:center;padding:60px;background:white;border-radius:var(--radius);box-shadow:var(--shadow)}
+.no-results .nr-icon{font-size:3rem;margin-bottom:12px}
+.no-results .nr-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--bl);margin-bottom:8px}
 
-/* ENTREPRISE DETAIL */
-.ent-detail-banner{height:200px;background:linear-gradient(135deg,#e8f0fe,#dde8fd);border-radius:12px;overflow:hidden;margin-bottom:16px;position:relative}
-.ent-detail-banner img{width:100%;height:100%;object-fit:cover}
-.ent-detail-logo{width:64px;height:64px;border-radius:12px;background:white;border:2px solid #e5e7eb;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:1.5rem;color:var(--bl);margin-bottom:12px}
-.produit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:16px}
-.produit-card{background:#f8f9ff;border-radius:8px;padding:12px;text-align:center}
-.produit-card img{width:100%;height:80px;object-fit:cover;border-radius:6px;margin-bottom:6px}
-.produit-card .p-name{font-size:0.78rem;font-weight:600;color:var(--bl);margin-bottom:2px}
-.produit-card .p-prix{font-size:0.75rem;color:var(--or);font-weight:700}
-.info-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f3f4f6;font-size:0.85rem}
+/* ===== DETAIL ===== */
+.detail-wrap{background:white;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.detail-banner{height:220px;background:linear-gradient(135deg,var(--bl),#1e3a8a);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:4rem;color:rgba(255,255,255,0.8);margin-bottom:20px}
+.info-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f3f4f6;font-size:0.85rem}
 .info-row:last-child{border-bottom:none}
-.info-label{color:var(--gy);min-width:100px;font-size:0.78rem}
-.info-val{color:#1f2937;font-weight:500}
+.info-label{color:var(--gy);min-width:110px;font-size:0.78rem;font-weight:500}
+.info-val{color:#222;font-weight:500}
 
-/* ADMIN */
-.admin-panel{background:white;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow)}
-.admin-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:24px}
-.admin-stat{background:var(--bg);border-radius:10px;padding:16px;text-align:center}
-.admin-stat .val{font-family:'Playfair Display',serif;font-weight:900;font-size:1.8rem;color:var(--bl)}
-.admin-stat .lab{font-size:0.72rem;color:var(--gy);text-transform:uppercase;letter-spacing:0.5px}
-.admin-table{width:100%;border-collapse:collapse;font-size:0.82rem}
-.admin-table th{text-align:left;padding:10px 12px;background:#f8f9ff;color:var(--gy);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:600}
+/* ===== ADMIN ===== */
+.admin-wrap{background:white;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);margin-bottom:20px}
+.admin-stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:24px}
+.admin-stat-card{background:#f8f9ff;border-radius:8px;padding:16px;text-align:center;border:1px solid #e8f0fe}
+.admin-stat-card .val{font-family:'Playfair Display',serif;font-weight:900;font-size:1.8rem;color:var(--bl)}
+.admin-stat-card .lab{font-size:0.7rem;color:var(--gy);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
+.admin-table{width:100%;border-collapse:collapse;font-size:0.8rem}
+.admin-table th{text-align:left;padding:10px 12px;background:#f8f9ff;color:var(--gy);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:2px solid #e8f0fe}
 .admin-table td{padding:12px;border-bottom:1px solid #f3f4f6;color:#374151;vertical-align:middle}
-.admin-table tr:hover td{background:#f8f9ff}
-.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:0.68rem;font-weight:700;text-transform:uppercase}
+.admin-table tr:hover td{background:#fafafa}
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:0.65rem;font-weight:700;text-transform:uppercase}
 .badge-active{background:#d1fae5;color:#065f46}
 .badge-trial{background:#fef3c7;color:#92400e}
 .badge-expired{background:#fee2e2;color:#991b1b}
 .badge-pending{background:#ede9fe;color:#4c1d95}
 
-/* TOAST */
-.toast{position:fixed;bottom:24px;right:24px;padding:12px 20px;border-radius:10px;font-size:0.85rem;font-weight:600;z-index:999;transform:translateY(100px);opacity:0;transition:all 0.3s;max-width:300px}
+/* ===== TABS ===== */
+.tabs{display:flex;gap:0;border-bottom:2px solid #e5e7eb;margin-bottom:20px}
+.tab{padding:10px 20px;font-size:0.82rem;font-weight:600;color:var(--gy);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s}
+.tab.active{color:var(--or);border-bottom-color:var(--or)}
+.tab:hover{color:var(--bl)}
+
+/* ===== MODAL ===== */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;display:none;align-items:center;justify-content:center;padding:16px}
+.overlay.show{display:flex}
+.modal{background:white;border-radius:12px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto}
+.modal-head{padding:18px 24px;border-bottom:1px solid #f3f4f6;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:white;z-index:1;border-radius:12px 12px 0 0}
+.modal-head h3{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:var(--bl)}
+.modal-close{width:30px;height:30px;border-radius:6px;background:#f3f4f6;border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.modal-body{padding:20px 24px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:0.78rem;font-weight:600;color:#374151;margin-bottom:5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:9px 12px;border:1.5px solid #e5e7eb;border-radius:6px;font-family:'Inter',sans-serif;font-size:0.85rem;outline:none;transition:border-color 0.2s;color:#222}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--or)}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-full{grid-column:1/-1}
+.form-actions{display:flex;gap:10px;margin-top:16px}
+.btn-primary{flex:1;padding:11px;background:var(--or);color:white;border-radius:6px;font-weight:700;font-size:0.88rem;border:none;cursor:pointer}
+.btn-primary:hover{background:#e07f0a}
+.btn-outline{padding:11px 18px;background:white;color:var(--gy);border:1.5px solid #e5e7eb;border-radius:6px;font-weight:600;font-size:0.88rem;cursor:pointer}
+.btn-outline:hover{background:#f9fafb}
+
+/* ===== TOAST ===== */
+.toast{position:fixed;bottom:24px;right:24px;padding:12px 20px;border-radius:8px;font-size:0.82rem;font-weight:600;z-index:999;transform:translateY(100px);opacity:0;transition:all 0.3s;max-width:300px}
 .toast.show{transform:translateY(0);opacity:1}
 .toast.ok{background:var(--bl);color:white}
 .toast.err{background:var(--rd);color:white}
 
-/* TABS */
-.tabs{display:flex;gap:0;background:#f3f4f6;border-radius:10px;padding:4px;margin-bottom:24px}
-.tab{flex:1;padding:8px;border-radius:8px;font-size:0.82rem;font-weight:600;text-align:center;cursor:pointer;color:var(--gy);transition:all 0.2s}
-.tab.active{background:white;color:var(--bl);box-shadow:0 1px 4px rgba(0,0,0,0.1)}
-
-/* NO RESULTS */
-.no-results{text-align:center;padding:60px 24px}
-.no-results .nr-icon{font-size:3rem;margin-bottom:12px}
-.no-results .nr-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--bl);margin-bottom:8px}
-
-/* FOOTER */
-.footer{background:var(--bl);padding:40px 24px;text-align:center}
-.footer-logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.2rem;color:white;margin-bottom:8px}
-.footer-sub{font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:20px}
-.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px}
-.footer-links a{font-size:0.78rem;color:rgba(255,255,255,0.6)}
-.footer-links a:hover{color:var(--or)}
-.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.3)}
-
-/* MOBILE NAV */
+/* ===== MOBILE NAV ===== */
 .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--bl);z-index:200;border-top:2px solid rgba(247,148,29,0.4);padding:8px 0 12px}
 .mn-items{display:flex;justify-content:space-around}
-.mn-item{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:rgba(255,255,255,0.5);font-size:0.6rem;font-weight:600;padding:4px 8px;cursor:pointer;transition:color 0.2s}
+.mn-item{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:rgba(255,255,255,0.5);font-size:0.58rem;font-weight:600;padding:4px 8px;cursor:pointer}
 .mn-item.active,.mn-item:hover{color:var(--or)}
-.mn-ico{font-size:1.3rem}
+.mn-ico{font-size:1.2rem}
 
-/* PAGE SYSTEM */
+/* ===== PAGE ===== */
 .page{display:none}
 .page.active{display:block}
 
-/* RESPONSIVE */
-@media(max-width:768px){
-  .hero h1{font-size:1.8rem}
-  .hero-search{flex-direction:column;border-radius:12px}
-  .hero-search input,.hero-search select,.hero-search button{border-radius:0;border:none;border-bottom:1px solid #e5e7eb}
-  .hero-search button{border-bottom:none}
-  .hero-stats{gap:20px}
+/* ===== FOOTER ===== */
+.footer{background:var(--bl);padding:40px 20px 20px;margin-top:40px}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
+.footer-brand .brand-name{font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:white;margin-bottom:8px}
+.footer-brand p{font-size:0.78rem;color:rgba(255,255,255,0.5);line-height:1.6}
+.footer-col h4{font-size:0.82rem;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.5px}
+.footer-col a{display:block;font-size:0.78rem;color:rgba(255,255,255,0.5);margin-bottom:8px;cursor:pointer}
+.footer-col a:hover{color:var(--or)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.3)}
+.footer-socials{display:flex;gap:12px}
+.footer-socials a{font-size:1.1rem;color:rgba(255,255,255,0.5)}
+.footer-socials a:hover{color:var(--or)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .main-layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .header-search select{display:none}
+}
+@media(max-width:640px){
+  .hero h1{font-size:1.5rem}
+  .hero-search-big{flex-direction:column;height:auto;border-radius:10px}
+  .hero-search-big select,.hero-search-big input,.hero-search-big button{border-radius:0;height:44px;border-bottom:1px solid #e5e7eb}
   .mobile-nav{display:block}
-  .section{padding:32px 16px 90px}
-  .header-nav .btn-login{display:none}
-  .form-grid{grid-template-columns:1fr}
-  .entreprises-grid{grid-template-columns:1fr}
+  .main-layout{padding-bottom:80px}
+  .top-bar{display:none}
+  .header-actions .btn-admin{display:none}
+  .footer-top{grid-template-columns:1fr}
+  .ent-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:400px){
+  .ent-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span>🌍 Abengourou, Côte d'Ivoire • La marketplace des entreprises africaines</span>
+    <div>
+      <a href="https://wa.me/2250799630206" target="_blank">💬 WhatsApp</a>
+      <a href="tel:+2250799630206">📞 Appeler</a>
+    </div>
+  </div>
+</div>
 
 <!-- HEADER -->
 <header class="header">
   <div class="header-inner">
     <div class="logo">
       <div class="logo-icon">LBI</div>
-      <div>
-        <div class="logo-text">LOTUS BLANC INTERNATIONAL</div>
-        <div class="logo-sub">Les meilleures entreprises, au même endroit</div>
+      <div class="logo-text">
+        <div class="logo-name">LOTUS BLANC INT'L</div>
+        <div class="logo-sub">Les meilleures entreprises</div>
       </div>
     </div>
-    <div class="header-nav">
-      <button class="btn-header btn-login" onclick="goPage('accueil')">🏠 Accueil</button>
-      <button class="btn-header btn-login" onclick="goPage('entreprises')">🏢 Entreprises</button>
-      <button class="btn-header btn-login" onclick="openAdminLogin()">🔐 Admin</button>
+    <div class="header-search">
+      <select id="h-cat">
+        <option value="">Toutes catégories</option>
+        <option>Commerce & Boutique</option>
+        <option>Restaurant & Alimentation</option>
+        <option>Hôtels & Résidences</option>
+        <option>Services & Artisanat</option>
+        <option>Santé & Beauté</option>
+        <option>Pharmacie & Santé</option>
+        <option>Immobilier & BTP</option>
+        <option>Transport & Logistique</option>
+        <option>Éducation & Formation</option>
+        <option>Technologie</option>
+      </select>
+      <input type="text" id="h-q" placeholder="Rechercher une entreprise, un service...">
+      <button onclick="doSearch()">🔍 Rechercher</button>
+    </div>
+    <div class="header-actions">
+      <button class="btn-header btn-admin" onclick="openAdminLogin()">🔐 Admin</button>
       <button class="btn-header btn-inscrire" onclick="openModal('modalInscription')">+ Inscrire mon entreprise</button>
     </div>
   </div>
 </header>
 
+<!-- NAV CATS -->
+<nav class="nav-cats">
+  <div class="nav-cats-inner">
+    <div class="nav-cat active" onclick="setNavCat('',this)">🏠 Tous</div>
+    <div class="nav-cat" onclick="setNavCat('Commerce & Boutique',this)">🛒 Commerce</div>
+    <div class="nav-cat" onclick="setNavCat('Restaurant & Alimentation',this)">🍽️ Restaurant</div>
+    <div class="nav-cat" onclick="setNavCat('Hôtels & Résidences',this)">🏨 Hôtels</div>
+    <div class="nav-cat" onclick="setNavCat('Services & Artisanat',this)">🔧 Services</div>
+    <div class="nav-cat" onclick="setNavCat('Santé & Beauté',this)">💊 Santé & Beauté</div>
+    <div class="nav-cat" onclick="setNavCat('Pharmacie & Santé',this)">💉 Pharmacie</div>
+    <div class="nav-cat" onclick="setNavCat('Immobilier & BTP',this)">🏗️ Immobilier</div>
+    <div class="nav-cat" onclick="setNavCat('Transport & Logistique',this)">🚛 Transport</div>
+    <div class="nav-cat" onclick="setNavCat('Éducation & Formation',this)">📚 Éducation</div>
+    <div class="nav-cat" onclick="setNavCat('Technologie',this)">💻 Tech</div>
+  </div>
+</nav>
+
 <!-- PAGE ACCUEIL -->
 <div class="page active" id="page-accueil">
+  <!-- HERO -->
   <div class="hero">
     <div class="hero-inner">
       <div class="hero-badge">🌸 LOTUS BLANC INTERNATIONAL</div>
-      <h1>Trouvez les meilleures<br><span>entreprises près de chez vous</span></h1>
-      <p>Des centaines d'entreprises, boutiques et services à portée de main.<br>Contactez directement via WhatsApp.</p>
-      <div class="hero-search">
-        <input type="text" id="hero-search-input" placeholder="Rechercher une entreprise, un produit...">
-        <select id="hero-search-cat">
+      <h1>Les meilleures entreprises,<br><span>au même endroit</span></h1>
+      <p>Trouvez et contactez directement les entreprises à Abengourou, Côte d'Ivoire</p>
+      <div class="hero-search-big">
+        <select id="hero-cat">
           <option value="">Toutes catégories</option>
           <option>Commerce & Boutique</option>
           <option>Restaurant & Alimentation</option>
           <option>Hôtels & Résidences</option>
           <option>Services & Artisanat</option>
           <option>Santé & Beauté</option>
+          <option>Pharmacie & Santé</option>
           <option>Immobilier & BTP</option>
           <option>Transport & Logistique</option>
           <option>Éducation & Formation</option>
           <option>Technologie</option>
         </select>
-        <button onclick="searchEntreprises()">Rechercher</button>
+        <input type="text" id="hero-q" placeholder="Rechercher une entreprise, un produit, un service...">
+        <button onclick="doHeroSearch()">Rechercher</button>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="num" id="stat-total">0</div><div class="lab">Entreprises</div></div>
-        <div class="hero-stat"><div class="num" id="stat-cat">8</div><div class="lab">Catégories</div></div>
+        <div class="hero-stat"><div class="num">10</div><div class="lab">Catégories</div></div>
         <div class="hero-stat"><div class="num">🇨🇮</div><div class="lab">Côte d'Ivoire</div></div>
       </div>
     </div>
   </div>
 
-  <div class="section">
-    <div class="section-title">Parcourir par catégorie</div>
-    <div class="section-sub">Trouvez rapidement ce que vous cherchez</div>
-    <div class="categories" id="cats-home">
-      <div class="cat-card" onclick="filterByCat('Commerce & Boutique')"><div class="cat-icon">🛒</div><div class="cat-name">Commerce</div><div class="cat-count">--</div></div>
-      <div class="cat-card" onclick="filterByCat('Restaurant & Alimentation')"><div class="cat-icon">🍽️</div><div class="cat-name">Restaurant</div><div class="cat-count">--</div></div>
-      <div class="cat-card" onclick="filterByCat('Services & Artisanat')"><div class="cat-icon">🔧</div><div class="cat-name">Services</div><div class="cat-count">--</div></div>
-      <div class="cat-card" onclick="filterByCat('Santé & Beauté')"><div class="cat-icon">💊</div><div class="cat-name">Santé & Beauté</div><div class="cat-count">--</div></div>
-      <div class="cat-card" onclick="filterByCat('Immobilier & BTP')"><div class="cat-icon">🏗️</div><div class="cat-name">Immobilier</div><div class="cat-count">--</div></div>
-      <div class="cat-card" onclick="filterByCat('Transport & Logistique')"><div class="cat-icon">🚛</div><div class="cat-name">Transport</div><div class="cat-count">--</div></div>
-      <div class="cat-card" onclick="filterByCat('Éducation & Formation')"><div class="cat-icon">📚</div><div class="cat-name">Éducation</div><div class="cat-count">--</div></div>
-      <div class="cat-card" onclick="filterByCat('Hôtels & Résidences')"><div class="cat-icon">🏨</div><div class="cat-name">Hôtels</div><div class="cat-count">--</div></div>
-      <div class="cat-card" onclick="filterByCat('Technologie')"><div class="cat-icon">💻</div><div class="cat-name">Technologie</div><div class="cat-count">--</div></div>
+  <!-- MAIN -->
+  <div class="main-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-title">📂 Catégories</div>
+        <div class="sidebar-item active" onclick="setSidebarCat('',this)">🏠 Toutes les entreprises</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Commerce & Boutique',this)">🛒 Commerce & Boutique</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Restaurant & Alimentation',this)">🍽️ Restaurant</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Hôtels & Résidences',this)">🏨 Hôtels</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Services & Artisanat',this)">🔧 Services</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Santé & Beauté',this)">💊 Santé & Beauté</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Pharmacie & Santé',this)">💉 Pharmacie</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Immobilier & BTP',this)">🏗️ Immobilier</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Transport & Logistique',this)">🚛 Transport</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Éducation & Formation',this)">📚 Éducation</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Technologie',this)">💻 Technologie</div>
+      </div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">📍 Zones</div>
+        <div class="sidebar-item" onclick="setSidebarZone('',this)">Toutes les zones</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Centre-ville',this)">Centre-ville</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Cocobé',this)">Cocobé</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Assaoussou',this)">Assaoussou</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Commerce',this)">Quartier Commerce</div>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <div class="content-header">
+        <div class="content-title">Entreprises disponibles</div>
+        <div class="filter-row">
+          <input class="search-inline" id="main-search" placeholder="🔍 Rechercher..." oninput="renderMain()">
+          <select class="filter-select" id="main-sort" onchange="renderMain()">
+            <option value="">Trier par</option>
+            <option value="nom">Nom A-Z</option>
+            <option value="recent">Plus récents</option>
+          </select>
+          <span class="results-count" id="main-count"></span>
+        </div>
+      </div>
+      <div class="ent-grid" id="main-grid"></div>
     </div>
   </div>
 
-  <div class="section" style="padding-top:0">
-    <div class="section-title">Entreprises à la une</div>
-    <div class="section-sub">Les entreprises mises en avant cette semaine</div>
-    <div class="entreprises-grid" id="grid-home"></div>
-  </div>
-
+  <!-- CTA -->
   <div class="cta-section">
     <div class="cta-inner">
-      <h2>Votre entreprise mérite d'être vue</h2>
+      <h2>🌸 Votre entreprise mérite d'être vue</h2>
       <p>Rejoignez LOTUS BLANC INTERNATIONAL et touchez des milliers de clients à Abengourou et partout en Côte d'Ivoire.</p>
-      <div class="cta-price">
-        <span class="amount">3 000</span>
-        <span class="period">FCFA / mois</span>
-      </div>
-      <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:12px 20px;margin-bottom:20px;font-size:0.85rem;color:rgba(255,255,255,0.9)">
-        🎁 1 mois d'essai gratuit • Pas d'engagement • Résiliable à tout moment
-      </div>
+      <div class="cta-price-box"><span class="amount">3 000</span><span class="period">FCFA / mois</span></div>
+      <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:10px 20px;margin-bottom:16px;font-size:0.82rem;color:rgba(255,255,255,0.9)">🎁 1 mois d'essai gratuit • Pas d'engagement • Résiliable à tout moment</div>
       <div class="cta-btns">
-        <button class="btn-cta-main" onclick="openModal('modalInscription')">📝 Inscrire mon entreprise</button>
-        <button class="btn-cta-wa" onclick="window.open('https://wa.me/2250799630206?text=Bonjour, je veux inscrire mon entreprise sur LOTUS BLANC INTERNATIONAL')">💬 Contacter via WhatsApp</button>
+        <button class="btn-cta-white" onclick="openModal('modalInscription')">📝 Inscrire mon entreprise</button>
+        <button class="btn-cta-outline" onclick="window.open('https://wa.me/2250799630206?text=Bonjour, je veux inscrire mon entreprise sur L.B.I')">💬 WhatsApp</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PAGE ENTREPRISES -->
-<div class="page" id="page-entreprises">
-  <div class="section">
-    <div class="section-title">Toutes les entreprises</div>
-    <div class="section-sub">Trouvez et contactez les entreprises à Abengourou</div>
-    <div class="filter-bar">
-      <input class="search-bar" id="search-input" placeholder="🔍 Rechercher..." oninput="filterEntreprises()">
-      <select class="filter-select" id="filter-cat" onchange="filterEntreprises()">
-        <option value="">Toutes catégories</option>
-        <option>Commerce & Boutique</option>
-        <option>Restaurant & Alimentation</option>
-        <option>Services & Artisanat</option>
-        <option>Santé & Beauté</option>
-        <option>Immobilier & BTP</option>
-        <option>Transport & Logistique</option>
-        <option>Éducation & Formation</option>
-        <option>Technologie</option>
-      </select>
-      <select class="filter-select" id="filter-ville" onchange="filterEntreprises()">
-        <option value="">Toute la ville</option>
-        <option>Centre-ville</option>
-        <option>Quartier Commerce</option>
-        <option>Cocobé</option>
-        <option>Assaoussou</option>
-        <option>Autres</option>
-      </select>
-      <span class="results-count" id="results-count"></span>
-    </div>
-    <div class="entreprises-grid" id="grid-entreprises"></div>
-  </div>
-</div>
-
-<!-- PAGE DETAIL ENTREPRISE -->
+<!-- PAGE DETAIL -->
 <div class="page" id="page-detail">
-  <div class="section">
-    <button onclick="goPage('entreprises')" style="background:none;border:none;color:var(--gy);font-size:0.85rem;margin-bottom:16px;cursor:pointer;display:flex;align-items:center;gap:6px">← Retour aux entreprises</button>
+  <div style="max-width:1280px;margin:0 auto;padding:20px">
+    <button onclick="goPage('accueil')" style="background:none;border:none;color:var(--gy);font-size:0.82rem;margin-bottom:16px;cursor:pointer;display:flex;align-items:center;gap:6px">← Retour</button>
     <div id="detail-content"></div>
   </div>
 </div>
 
 <!-- PAGE ADMIN -->
 <div class="page" id="page-admin">
-  <div class="section">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+  <div style="max-width:1280px;margin:0 auto;padding:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
       <div>
-        <div class="section-title">🔐 Panneau Administrateur</div>
-        <div class="section-sub">Gérez les entreprises et abonnements</div>
+        <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:1.2rem;color:var(--bl)">🔐 Panneau Administrateur</div>
+        <div style="font-size:0.82rem;color:var(--gy)">LOTUS BLANC INTERNATIONAL — Gestion des entreprises</div>
       </div>
-      <button onclick="lockAdmin()" style="padding:8px 16px;background:#fee2e2;color:#991b1b;border-radius:8px;border:none;font-weight:600;font-size:0.82rem;cursor:pointer">🔒 Verrouiller</button>
+      <button onclick="lockAdmin()" style="padding:8px 16px;background:#fee2e2;color:#991b1b;border-radius:6px;border:none;font-weight:600;font-size:0.78rem;cursor:pointer">🔒 Verrouiller</button>
     </div>
-
     <div class="tabs">
-      <div class="tab active" onclick="switchTab('tab-dashboard',this)">📊 Tableau de bord</div>
-      <div class="tab" onclick="switchTab('tab-entreprises',this)">🏢 Entreprises</div>
-      <div class="tab" onclick="switchTab('tab-abonnements',this)">💰 Abonnements</div>
-      <div class="tab" onclick="switchTab('tab-parametres',this)">⚙️ Paramètres</div>
+      <div class="tab active" onclick="switchTab('tab-db',this)">📊 Tableau de bord</div>
+      <div class="tab" onclick="switchTab('tab-ent',this)">🏢 Entreprises</div>
+      <div class="tab" onclick="switchTab('tab-rev',this)">💰 Revenus</div>
+      <div class="tab" onclick="switchTab('tab-cfg',this)">⚙️ Paramètres</div>
     </div>
-
-    <div id="tab-dashboard">
-      <div class="admin-stats">
-        <div class="admin-stat"><div class="val" id="a-total">0</div><div class="lab">Entreprises</div></div>
-        <div class="admin-stat"><div class="val" id="a-actives">0</div><div class="lab">Actives</div></div>
-        <div class="admin-stat"><div class="val" id="a-essai">0</div><div class="lab">En essai</div></div>
-        <div class="admin-stat"><div class="val" id="a-revenus" style="filter:blur(6px)">••••</div><div class="lab">FCFA/mois</div></div>
+    <div id="tab-db">
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card"><div class="val" id="a-total">0</div><div class="lab">Total entreprises</div></div>
+        <div class="admin-stat-card"><div class="val" id="a-actives">0</div><div class="lab">Actives</div></div>
+        <div class="admin-stat-card"><div class="val" id="a-essai">0</div><div class="lab">En essai</div></div>
+        <div class="admin-stat-card"><div class="val" id="a-pending">0</div><div class="lab">En attente</div></div>
+        <div class="admin-stat-card"><div class="val" id="a-revenus" style="font-size:1.1rem;filter:blur(5px)">••••</div><div class="lab">FCFA/mois</div></div>
       </div>
-      <div class="admin-panel">
-        <div style="font-size:0.9rem;font-weight:600;color:var(--bl);margin-bottom:16px">Dernières inscriptions</div>
+      <div class="admin-wrap">
+        <div style="font-weight:600;color:var(--bl);margin-bottom:14px;font-size:0.9rem">📋 Dernières inscriptions</div>
         <div id="recent-list"></div>
       </div>
     </div>
-
-    <div id="tab-entreprises" style="display:none">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-        <span style="font-size:0.85rem;color:var(--gy)" id="admin-count"></span>
-        <button onclick="openModal('modalAjoutAdmin')" class="btn-primary" style="padding:8px 16px;font-size:0.82rem">+ Ajouter entreprise</button>
+    <div id="tab-ent" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <span style="font-size:0.82rem;color:var(--gy)" id="admin-count-label"></span>
+        <button onclick="openModal('modalAjout')" class="btn-primary" style="width:auto;padding:8px 16px;font-size:0.78rem">+ Ajouter entreprise</button>
       </div>
-      <div class="admin-panel" style="padding:0;overflow:auto">
+      <div class="admin-wrap" style="padding:0;overflow:auto">
         <table class="admin-table">
-          <thead><tr><th>#</th><th>Entreprise</th><th>Catégorie</th><th>Téléphone</th><th>Statut</th><th>Abonnement</th><th>Actions</th></tr></thead>
-          <tbody id="admin-table-body"></tbody>
+          <thead><tr><th>#</th><th>Entreprise</th><th>Catégorie</th><th>Téléphone</th><th>Statut</th><th>Abonnement</th><th>Action</th></tr></thead>
+          <tbody id="admin-tbody"></tbody>
         </table>
       </div>
     </div>
-
-    <div id="tab-abonnements" style="display:none">
-      <div class="admin-panel">
-        <div style="font-size:0.9rem;font-weight:600;color:var(--bl);margin-bottom:16px">💰 Revenus mensuels</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px">
-          <div class="admin-stat"><div class="val" id="rev-actif">0</div><div class="lab">Abonnés actifs</div></div>
-          <div class="admin-stat"><div class="val" id="rev-mensuel" style="font-size:1.2rem">0 FCFA</div><div class="lab">Revenu mensuel</div></div>
-          <div class="admin-stat"><div class="val" id="rev-annuel" style="font-size:1rem">0 FCFA</div><div class="lab">Revenu annuel estimé</div></div>
+    <div id="tab-rev" style="display:none">
+      <div class="admin-wrap">
+        <div style="font-weight:600;color:var(--bl);margin-bottom:16px">💰 Revenus mensuels</div>
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card"><div class="val" id="rev-nb">0</div><div class="lab">Abonnés actifs</div></div>
+          <div class="admin-stat-card"><div class="val" id="rev-m" style="font-size:1rem">0 FCFA</div><div class="lab">Revenu mensuel</div></div>
+          <div class="admin-stat-card"><div class="val" id="rev-a" style="font-size:0.9rem">0 FCFA</div><div class="lab">Revenu annuel estimé</div></div>
         </div>
       </div>
     </div>
-
-    <div id="tab-parametres" style="display:none">
-      <div class="admin-panel">
-        <div style="font-size:0.9rem;font-weight:600;color:var(--bl);margin-bottom:16px">⚙️ Paramètres</div>
-        <div class="form-group"><label>Changer le mot de passe Admin</label><input type="password" id="new-admin-pwd" placeholder="Nouveau mot de passe"></div>
-        <div class="form-group"><label>Confirmer</label><input type="password" id="confirm-admin-pwd" placeholder="Confirmer le mot de passe"></div>
-        <button onclick="changeAdminPwd()" class="btn-primary" style="width:auto;padding:10px 20px">🔒 Mettre à jour</button>
+    <div id="tab-cfg" style="display:none">
+      <div class="admin-wrap">
+        <div style="font-weight:600;color:var(--bl);margin-bottom:14px">⚙️ Changer le mot de passe Admin</div>
+        <div class="form-group"><label>Nouveau mot de passe</label><input type="password" id="new-pwd" placeholder="Nouveau mot de passe"></div>
+        <div class="form-group"><label>Confirmer</label><input type="password" id="confirm-pwd" placeholder="Confirmer"></div>
+        <button onclick="changePwd()" class="btn-primary" style="width:auto;padding:10px 20px">🔒 Mettre à jour</button>
         <div id="pwd-msg" style="margin-top:10px;font-size:0.82rem"></div>
       </div>
-      <div class="admin-panel" style="margin-top:16px">
-        <div style="font-size:0.9rem;font-weight:600;color:#991b1b;margin-bottom:16px">⚠️ Zone dangereuse</div>
-        <button onclick="resetAll()" style="padding:10px 20px;background:#fee2e2;color:#991b1b;border-radius:8px;border:none;font-weight:600;font-size:0.85rem;cursor:pointer">🗑️ Effacer toutes les entreprises</button>
+      <div class="admin-wrap" style="margin-top:16px">
+        <div style="font-weight:600;color:#991b1b;margin-bottom:14px">⚠️ Zone dangereuse</div>
+        <button onclick="resetAll()" style="padding:10px 20px;background:#fee2e2;color:#991b1b;border-radius:6px;border:none;font-weight:600;font-size:0.82rem;cursor:pointer">🗑️ Effacer toutes les entreprises</button>
       </div>
     </div>
   </div>
@@ -417,13 +475,12 @@ button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
 <nav class="mobile-nav">
   <div class="mn-items">
     <button class="mn-item active" onclick="goPage('accueil',this)"><span class="mn-ico">🏠</span>Accueil</button>
-    <button class="mn-item" onclick="goPage('entreprises',this)"><span class="mn-ico">🏢</span>Chercher</button>
     <button class="mn-item" onclick="openModal('modalInscription')"><span class="mn-ico">➕</span>Inscrire</button>
     <button class="mn-item" onclick="openAdminLogin()"><span class="mn-ico">🔐</span>Admin</button>
   </div>
 </nav>
 
-<!-- MODAL INSCRIPTION ENTREPRISE -->
+<!-- MODAL INSCRIPTION -->
 <div class="overlay" id="modalInscription">
   <div class="modal">
     <div class="modal-head">
@@ -431,18 +488,18 @@ button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
       <button class="modal-close" onclick="closeModal('modalInscription')">✕</button>
     </div>
     <div class="modal-body">
-      <div style="background:#f0fdf4;border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:0.82rem;color:#065f46">
-        🎁 <strong>1 mois gratuit</strong> — Ensuite seulement <strong>3 000 FCFA/mois</strong>
-      </div>
+      <div style="background:#f0fdf4;border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:0.78rem;color:#065f46">🎁 <strong>1 mois gratuit</strong> — Ensuite <strong>3 000 FCFA/mois</strong> seulement</div>
       <div class="form-grid">
-        <div class="form-group form-full"><label>Nom de l'entreprise *</label><input type="text" id="ins-nom" placeholder="Ex: Boutique Excellence"></div>
+        <div class="form-group form-full"><label>Nom de l'entreprise *</label><input type="text" id="ins-nom" placeholder="Nom de votre entreprise"></div>
         <div class="form-group"><label>Catégorie *</label>
           <select id="ins-cat">
             <option value="">Choisir...</option>
             <option>Commerce & Boutique</option>
             <option>Restaurant & Alimentation</option>
+            <option>Hôtels & Résidences</option>
             <option>Services & Artisanat</option>
             <option>Santé & Beauté</option>
+            <option>Pharmacie & Santé</option>
             <option>Immobilier & BTP</option>
             <option>Transport & Logistique</option>
             <option>Éducation & Formation</option>
@@ -452,10 +509,10 @@ button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
         <div class="form-group"><label>Quartier / Zone *</label><input type="text" id="ins-quartier" placeholder="Ex: Centre-ville"></div>
         <div class="form-group"><label>Téléphone / WhatsApp *</label><input type="tel" id="ins-tel" placeholder="+225 07 XX XX XX XX"></div>
         <div class="form-group"><label>Email</label><input type="email" id="ins-email" placeholder="contact@entreprise.com"></div>
-        <div class="form-group form-full"><label>Description de l'entreprise *</label><textarea id="ins-desc" placeholder="Décrivez votre entreprise, vos produits ou services..."></textarea></div>
-        <div class="form-group form-full"><label>Nom du responsable *</label><input type="text" id="ins-responsable" placeholder="Votre nom complet"></div>
+        <div class="form-group"><label>Responsable *</label><input type="text" id="ins-resp" placeholder="Votre nom complet"></div>
+        <div class="form-group form-full"><label>Description *</label><textarea id="ins-desc" placeholder="Décrivez votre entreprise, vos produits ou services..."></textarea></div>
       </div>
-      <div id="ins-msg" style="margin-top:10px;font-size:0.82rem"></div>
+      <div id="ins-msg" style="font-size:0.78rem;margin-bottom:8px"></div>
       <div class="form-actions">
         <button class="btn-primary" onclick="saveInscription()">✔ Envoyer ma demande</button>
         <button class="btn-outline" onclick="closeModal('modalInscription')">Annuler</button>
@@ -466,38 +523,38 @@ button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
 
 <!-- MODAL ADMIN LOGIN -->
 <div class="overlay" id="modalAdminLogin">
-  <div class="modal" style="max-width:380px">
+  <div class="modal" style="max-width:360px">
     <div class="modal-head">
       <h3>🔐 Accès Administrateur</h3>
       <button class="modal-close" onclick="closeModal('modalAdminLogin')">✕</button>
     </div>
     <div class="modal-body">
       <div class="form-group"><label>Mot de passe</label><input type="password" id="admin-pwd-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')submitAdmin()"></div>
-      <div id="admin-err" style="color:#ef4444;font-size:0.82rem;margin-bottom:10px;display:none">❌ Mot de passe incorrect</div>
-      <div class="form-actions">
-        <button class="btn-primary" onclick="submitAdmin()">🔓 Accéder</button>
-      </div>
+      <div id="admin-err" style="color:#ef4444;font-size:0.78rem;margin-bottom:10px;display:none">❌ Mot de passe incorrect</div>
+      <div class="form-actions"><button class="btn-primary" onclick="submitAdmin()">🔓 Accéder</button></div>
     </div>
   </div>
 </div>
 
-<!-- MODAL AJOUTER ENTREPRISE (ADMIN) -->
-<div class="overlay" id="modalAjoutAdmin">
+<!-- MODAL AJOUT ADMIN -->
+<div class="overlay" id="modalAjout">
   <div class="modal">
     <div class="modal-head">
       <h3>➕ Ajouter une entreprise</h3>
-      <button class="modal-close" onclick="closeModal('modalAjoutAdmin')">✕</button>
+      <button class="modal-close" onclick="closeModal('modalAjout')">✕</button>
     </div>
     <div class="modal-body">
       <div class="form-grid">
-        <div class="form-group form-full"><label>Nom de l'entreprise *</label><input type="text" id="adm-nom" placeholder="Nom de l'entreprise"></div>
+        <div class="form-group form-full"><label>Nom *</label><input type="text" id="adm-nom" placeholder="Nom de l'entreprise"></div>
         <div class="form-group"><label>Catégorie *</label>
           <select id="adm-cat">
             <option value="">Choisir...</option>
             <option>Commerce & Boutique</option>
             <option>Restaurant & Alimentation</option>
+            <option>Hôtels & Résidences</option>
             <option>Services & Artisanat</option>
             <option>Santé & Beauté</option>
+            <option>Pharmacie & Santé</option>
             <option>Immobilier & BTP</option>
             <option>Transport & Logistique</option>
             <option>Éducation & Formation</option>
@@ -507,28 +564,28 @@ button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
         <div class="form-group"><label>Quartier *</label><input type="text" id="adm-quartier" placeholder="Quartier"></div>
         <div class="form-group"><label>Téléphone *</label><input type="tel" id="adm-tel" placeholder="+225 XX XX XX XX XX"></div>
         <div class="form-group"><label>Email</label><input type="email" id="adm-email" placeholder="email@entreprise.com"></div>
-        <div class="form-group"><label>Responsable</label><input type="text" id="adm-responsable" placeholder="Nom responsable"></div>
-        <div class="form-group form-full"><label>Description</label><textarea id="adm-desc" placeholder="Description de l'entreprise..."></textarea></div>
-        <div class="form-group"><label>Statut abonnement</label>
+        <div class="form-group"><label>Responsable</label><input type="text" id="adm-resp" placeholder="Nom responsable"></div>
+        <div class="form-group form-full"><label>Description</label><textarea id="adm-desc" placeholder="Description..."></textarea></div>
+        <div class="form-group"><label>Statut</label>
           <select id="adm-statut">
             <option value="essai">Essai gratuit</option>
             <option value="actif">Actif (payant)</option>
-            <option value="expire">Expiré</option>
             <option value="pending">En attente</option>
+            <option value="expire">Expiré</option>
           </select>
         </div>
         <div class="form-group"><label>Mise en avant</label>
           <select id="adm-featured">
             <option value="non">Non</option>
-            <option value="premium">Premium</option>
-            <option value="new">Nouveau</option>
-            <option value="verified">Vérifié</option>
+            <option value="premium">Premium ⭐</option>
+            <option value="new">Nouveau 🆕</option>
+            <option value="verified">Vérifié ✅</option>
           </select>
         </div>
       </div>
       <div class="form-actions">
         <button class="btn-primary" onclick="saveEntreprise()">✔ Enregistrer</button>
-        <button class="btn-outline" onclick="closeModal('modalAjoutAdmin')">Annuler</button>
+        <button class="btn-outline" onclick="closeModal('modalAjout')">Annuler</button>
       </div>
     </div>
   </div>
@@ -538,401 +595,373 @@ button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-logo">LOTUS BLANC INTERNATIONAL</div>
-  <div class="footer-sub">La marketplace des entreprises africaines • Les meilleures entreprises, au même endroit !</div>
-  <div class="footer-links">
-    <a href="#" onclick="goPage('accueil')">Accueil</a>
-    <a href="#" onclick="goPage('entreprises')">Entreprises</a>
-    <a href="#" onclick="openModal('modalInscription')">Inscrire mon entreprise</a>
-    <a href="https://wa.me/2250799630206" target="_blank">Contact</a>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand-name">🌸 LOTUS BLANC INTERNATIONAL</div>
+        <p>La marketplace des entreprises africaines. Connecter les entreprises d'Abengourou et de toute la Côte d'Ivoire avec leurs clients.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a onclick="goPage('accueil')">Accueil</a>
+        <a onclick="openModal('modalInscription')">Inscrire mon entreprise</a>
+        <a href="https://wa.me/2250799630206" target="_blank">Nous contacter</a>
+      </div>
+      <div class="footer-col">
+        <h4>Catégories</h4>
+        <a onclick="setSidebarCat('Commerce & Boutique')">Commerce</a>
+        <a onclick="setSidebarCat('Restaurant & Alimentation')">Restaurant</a>
+        <a onclick="setSidebarCat('Hôtels & Résidences')">Hôtels</a>
+        <a onclick="setSidebarCat('Services & Artisanat')">Services</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="https://wa.me/2250799630206" target="_blank">💬 WhatsApp</a>
+        <a href="tel:+2250799630206">📞 +225 07 99 63 02 06</a>
+        <a>📍 Abengourou, CI</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 LOTUS BLANC INTERNATIONAL (L.B.I) — Abengourou, Côte d'Ivoire</div>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com" target="_blank">📘</a>
+        <a href="https://www.instagram.com" target="_blank">📸</a>
+        <a href="https://wa.me/2250799630206" target="_blank">💬</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-copy">© 2026 LOTUS BLANC INTERNATIONAL — Abengourou, Côte d'Ivoire</div>
 </footer>
 
 <script>
-// ===== CONFIG SUPABASE =====
+// ===== CONFIG =====
 var SURL = 'https://zvqilnjmikagomiquqon.supabase.co';
 var SKEY = 'sb_publishable_1FtLDIJyP8JFsCKIY-Wl0A_XD6JAhrY';
-
-// ===== STATE =====
 var isAdmin = false;
-var adminPwd = localStorage.getItem('km_admin_pwd') || 'kanji2026';
+var adminPwd = localStorage.getItem('lbi_admin_pwd') || 'kanji2026';
 var DB = {entreprises: []};
-var currentFilter = '';
+var currentCat = '';
+var currentZone = '';
 
 // ===== INIT =====
-window.addEventListener('load', function(){
-  loadEntreprises();
-});
+window.addEventListener('load', loadData);
 
 // ===== SUPABASE =====
-async function supaGet(table, params){
-  var url = SURL+'/rest/v1/'+table+'?order=created_at.desc'+(params||'');
-  var res = await fetch(url, {headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json'}});
+async function supaGet(table){
+  var res = await fetch(SURL+'/rest/v1/'+table+'?order=created_at.desc',{headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}});
   return res.json();
 }
-
-async function supaPost(table, data){
-  var res = await fetch(SURL+'/rest/v1/'+table, {
-    method:'POST',
-    headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json','Prefer':'return=representation'},
-    body:JSON.stringify(data)
-  });
+async function supaPost(table,data){
+  var res = await fetch(SURL+'/rest/v1/'+table,{method:'POST',headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json','Prefer':'return=representation'},body:JSON.stringify(data)});
   return res.json();
 }
-
-async function supaDelete(table, id){
-  await fetch(SURL+'/rest/v1/'+table+'?id=eq.'+id, {
-    method:'DELETE',
-    headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
-  });
+async function supaPatch(table,id,data){
+  await fetch(SURL+'/rest/v1/'+table+'?id=eq.'+id,{method:'PATCH',headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json'},body:JSON.stringify(data)});
 }
-
-async function supaPatch(table, id, data){
-  await fetch(SURL+'/rest/v1/'+table+'?id=eq.'+id, {
-    method:'PATCH',
-    headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json'},
-    body:JSON.stringify(data)
-  });
+async function supaDelete(table,id){
+  await fetch(SURL+'/rest/v1/'+table+'?id=eq.'+id,{method:'DELETE',headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}});
 }
 
 // ===== LOAD =====
-async function loadEntreprises(){
-  try {
-    DB.entreprises = await supaGet('km_entreprises');
-    if(!Array.isArray(DB.entreprises)) DB.entreprises = [];
-    renderHome();
-    renderEntreprises();
+async function loadData(){
+  try{
+    var data = await supaGet('entreprises');
+    DB.entreprises = Array.isArray(data) ? data : [];
+    updateTotal();
+    renderMain();
     updateAdminStats();
-  } catch(e){
-    DB.entreprises = [];
-  }
+  }catch(e){DB.entreprises=[];}
+}
+
+function updateTotal(){
+  var el = document.getElementById('stat-total');
+  if(el) el.textContent = DB.entreprises.filter(function(e){return e.statut!=='expire';}).length;
 }
 
 // ===== PAGES =====
-function goPage(id, btn){
+function goPage(id){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
   var el = document.getElementById('page-'+id);
   if(el) el.classList.add('active');
-  document.querySelectorAll('.mn-item').forEach(function(b){b.classList.remove('active');});
-  if(btn) btn.classList.add('active');
   window.scrollTo(0,0);
-  if(id==='entreprises') renderEntreprises();
   if(id==='admin') updateAdminStats();
 }
 
-// ===== RENDER HOME =====
-function renderHome(){
-  var total = DB.entreprises.filter(function(e){return e.statut !== 'expire';}).length;
-  document.getElementById('stat-total').textContent = total;
-  var featured = DB.entreprises.filter(function(e){return e.statut !== 'expire';}).slice(0,6);
-  var grid = document.getElementById('grid-home');
-  if(!grid) return;
-  if(!featured.length){
-    grid.innerHTML = '<div class="no-results"><div class="nr-icon">🏢</div><div class="nr-title">Aucune entreprise pour l\'instant</div><p style="color:var(--gy);font-size:0.85rem">Soyez la première entreprise à rejoindre LOTUS BLANC INTERNATIONAL !</p></div>';
-    return;
-  }
-  grid.innerHTML = featured.map(function(e){return renderCard(e);}).join('');
+// ===== FILTERS =====
+function setNavCat(cat, btn){
+  currentCat = cat;
+  document.querySelectorAll('.nav-cat').forEach(function(b){b.classList.remove('active');});
+  if(btn) btn.classList.add('active');
+  renderMain();
+}
+function setSidebarCat(cat, btn){
+  currentCat = cat;
+  document.querySelectorAll('.sidebar-item').forEach(function(b){b.classList.remove('active');});
+  if(btn) btn.classList.add('active');
+  renderMain();
+}
+function setSidebarZone(zone, btn){
+  currentZone = zone;
+  renderMain();
+}
+function doSearch(){
+  var q = document.getElementById('h-q').value;
+  var cat = document.getElementById('h-cat').value;
+  currentCat = cat;
+  document.getElementById('main-search').value = q;
+  renderMain();
+}
+function doHeroSearch(){
+  var q = document.getElementById('hero-q').value;
+  var cat = document.getElementById('hero-cat').value;
+  currentCat = cat;
+  document.getElementById('main-search').value = q;
+  renderMain();
+  window.scrollTo(0, document.querySelector('.main-layout').offsetTop - 80);
 }
 
-// ===== RENDER ENTREPRISES =====
-function renderEntreprises(){
-  var q = (document.getElementById('search-input') ? document.getElementById('search-input').value : '').toLowerCase();
-  var cat = document.getElementById('filter-cat') ? document.getElementById('filter-cat').value : '';
-  var ville = document.getElementById('filter-ville') ? document.getElementById('filter-ville').value : '';
+// ===== RENDER MAIN =====
+function renderMain(){
+  var q = (document.getElementById('main-search')?document.getElementById('main-search').value:'').toLowerCase();
+  var sort = document.getElementById('main-sort')?document.getElementById('main-sort').value:'';
   var list = DB.entreprises.filter(function(e){
-    if(e.statut === 'expire') return false;
-    if(cat && e.categorie !== cat) return false;
-    if(ville && !(e.quartier||'').includes(ville)) return false;
+    if(e.statut==='expire') return false;
+    if(currentCat && e.categorie!==currentCat) return false;
+    if(currentZone && !(e.quartier||'').toLowerCase().includes(currentZone.toLowerCase())) return false;
     if(q && !(e.nom+e.description+e.categorie+e.quartier).toLowerCase().includes(q)) return false;
     return true;
   });
-  var grid = document.getElementById('grid-entreprises');
-  var count = document.getElementById('results-count');
-  if(count) count.textContent = list.length + ' entreprise(s)';
+  if(sort==='nom') list.sort(function(a,b){return (a.nom||'').localeCompare(b.nom||'');});
+  var count = document.getElementById('main-count');
+  if(count) count.textContent = list.length+' entreprise(s)';
+  var grid = document.getElementById('main-grid');
   if(!grid) return;
   if(!list.length){
-    grid.innerHTML = '<div class="no-results"><div class="nr-icon">🔍</div><div class="nr-title">Aucune entreprise trouvée</div><p style="color:var(--gy);font-size:0.85rem">Essayez avec d\'autres mots ou une autre catégorie</p></div>';
+    grid.innerHTML = '<div class="no-results" style="grid-column:1/-1"><div class="nr-icon">🔍</div><div class="nr-title">Aucune entreprise trouvée</div><p style="color:var(--gy);font-size:0.82rem">Essayez avec d\'autres mots ou une autre catégorie</p></div>';
     return;
   }
   grid.innerHTML = list.map(function(e){return renderCard(e);}).join('');
-}
-
-function filterEntreprises(){
-  renderEntreprises();
-}
-
-function filterByCat(cat){
-  goPage('entreprises');
-  setTimeout(function(){
-    var sel = document.getElementById('filter-cat');
-    if(sel) sel.value = cat;
-    filterEntreprises();
-  }, 100);
-}
-
-function searchEntreprises(){
-  var q = document.getElementById('hero-search-input').value;
-  var cat = document.getElementById('hero-search-cat').value;
-  goPage('entreprises');
-  setTimeout(function(){
-    var si = document.getElementById('search-input');
-    if(si) si.value = q;
-    var sc = document.getElementById('filter-cat');
-    if(sc) sc.value = cat;
-    filterEntreprises();
-  }, 100);
 }
 
 // ===== RENDER CARD =====
 function renderCard(e){
   var initials = (e.nom||'?').substring(0,2).toUpperCase();
   var badge = '';
-  if(e.featured === 'premium') badge = '<span class="ent-badge badge-premium">⭐ Premium</span>';
-  else if(e.featured === 'new') badge = '<span class="ent-badge badge-new">🆕 Nouveau</span>';
-  else if(e.featured === 'verified') badge = '<span class="ent-badge badge-verified">✅ Vérifié</span>';
+  if(e.featured==='premium') badge='<div class="ent-badge badge-premium">⭐ Premium</div>';
+  else if(e.featured==='new') badge='<div class="ent-badge badge-new">🆕 Nouveau</div>';
+  else if(e.featured==='verified') badge='<div class="ent-badge badge-verified">✅ Vérifié</div>';
   var tel = (e.telephone||'').replace(/\s/g,'');
   return '<div class="ent-card" onclick="voirDetail('+e.id+')">'
-    +'<div class="ent-banner">'
-    +badge
-    +'<div class="ent-logo">'+initials+'</div>'
-    +'</div>'
+    +'<div class="ent-initials">'+badge+initials+'</div>'
     +'<div class="ent-body">'
     +'<div class="ent-cat">'+e.categorie+'</div>'
     +'<div class="ent-name">'+e.nom+'</div>'
-    +'<div class="ent-desc">'+(e.description||'')+'</div>'
+    +'<div class="ent-desc">'+(e.description||'Cliquez pour voir plus d\'informations')+'</div>'
     +'<div class="ent-loc">📍 '+(e.quartier||'Abengourou')+'</div>'
     +'<div class="ent-footer">'
-    +'<a class="btn-wa" href="https://wa.me/'+tel+'?text=Bonjour '+encodeURIComponent(e.nom)+', je vous contacte via LOTUS BLANC INTERNATIONAL" target="_blank" onclick="event.stopPropagation()">💬 WhatsApp</a>'
+    +'<a class="btn-wa" href="https://wa.me/'+tel+'?text=Bonjour '+encodeURIComponent(e.nom)+', je vous contacte via L.B.I" target="_blank" onclick="event.stopPropagation()">💬 WhatsApp</a>'
     +'<div class="btn-voir">👁️ Voir</div>'
     +'</div>'
     +'</div>'
     +'</div>';
 }
 
-// ===== DETAIL ENTREPRISE =====
+// ===== DETAIL =====
 function voirDetail(id){
-  var e = DB.entreprises.find(function(x){return x.id === id;});
+  var e = DB.entreprises.find(function(x){return x.id===id;});
   if(!e) return;
-  var initials = (e.nom||'?').substring(0,2).toUpperCase();
-  var tel = (e.telephone||'').replace(/\s/g,'');
+  var initials=(e.nom||'?').substring(0,2).toUpperCase();
+  var tel=(e.telephone||'').replace(/\s/g,'');
   document.getElementById('detail-content').innerHTML =
-    '<div class="ent-detail-banner"><div style="width:100%;height:100%;background:linear-gradient(135deg,#e8f0fe,#dde8fd);display:flex;align-items:center;justify-content:center;font-size:4rem">🏢</div></div>'
-    +'<div class="ent-detail-logo">'+initials+'</div>'
-    +'<div style="margin-bottom:8px"><span style="font-size:0.72rem;font-weight:700;color:var(--or);text-transform:uppercase">'+e.categorie+'</span></div>'
+    '<div class="detail-wrap">'
+    +'<div class="detail-banner">'+initials+'</div>'
+    +'<div style="margin-bottom:6px"><span style="font-size:0.72rem;font-weight:700;color:var(--or);text-transform:uppercase">'+e.categorie+'</span></div>'
     +'<div style="font-family:\'Playfair Display\',serif;font-weight:700;font-size:1.6rem;color:var(--bl);margin-bottom:8px">'+e.nom+'</div>'
-    +'<div style="font-size:0.9rem;color:var(--gy);line-height:1.6;margin-bottom:20px">'+(e.description||'')+'</div>'
-    +'<div style="background:white;border-radius:12px;padding:16px;box-shadow:var(--shadow);margin-bottom:20px">'
-    +'<div style="font-weight:600;color:var(--bl);margin-bottom:12px">📋 Informations</div>'
+    +'<div style="font-size:0.88rem;color:var(--gy);line-height:1.7;margin-bottom:20px">'+(e.description||'')+'</div>'
+    +'<div style="background:#f8f9ff;border-radius:8px;padding:16px;margin-bottom:20px">'
+    +'<div style="font-weight:600;color:var(--bl);margin-bottom:12px;font-size:0.9rem">📋 Informations</div>'
     +'<div class="info-row"><span class="info-label">📍 Adresse</span><span class="info-val">'+(e.quartier||'Abengourou')+', Côte d\'Ivoire</span></div>'
-    +'<div class="info-row"><span class="info-label">📞 Téléphone</span><span class="info-val" style="color:var(--or)">'+(e.telephone||'')+'</span></div>'
+    +'<div class="info-row"><span class="info-label">📞 Téléphone</span><span class="info-val" style="color:var(--or);font-weight:700">'+(e.telephone||'')+'</span></div>'
     +(e.email?'<div class="info-row"><span class="info-label">✉️ Email</span><span class="info-val">'+e.email+'</span></div>':'')
     +(e.responsable?'<div class="info-row"><span class="info-label">👤 Responsable</span><span class="info-val">'+e.responsable+'</span></div>':'')
     +'</div>'
     +'<div style="display:flex;gap:12px;flex-wrap:wrap">'
-    +'<a href="https://wa.me/'+tel+'?text=Bonjour '+encodeURIComponent(e.nom)+', je vous contacte depuis LOTUS BLANC INTERNATIONAL" target="_blank" style="flex:1;padding:14px;background:#25D366;color:white;border-radius:10px;font-weight:700;text-align:center;font-size:0.9rem">💬 Contacter sur WhatsApp</a>'
-    +'<a href="tel:'+tel+'" style="flex:1;padding:14px;background:var(--bl);color:white;border-radius:10px;font-weight:700;text-align:center;font-size:0.9rem">📞 Appeler</a>'
+    +'<a href="https://wa.me/'+tel+'?text=Bonjour '+encodeURIComponent(e.nom)+', je vous contacte depuis L.B.I" target="_blank" style="flex:1;padding:14px;background:#25D366;color:white;border-radius:8px;font-weight:700;text-align:center;font-size:0.9rem">💬 Contacter sur WhatsApp</a>'
+    +'<a href="tel:'+tel+'" style="flex:1;padding:14px;background:var(--bl);color:white;border-radius:8px;font-weight:700;text-align:center;font-size:0.9rem">📞 Appeler</a>'
+    +'</div>'
     +'</div>';
   goPage('detail');
 }
 
 // ===== INSCRIPTION =====
 async function saveInscription(){
-  var nom = document.getElementById('ins-nom').value.trim();
-  var cat = document.getElementById('ins-cat').value;
-  var quartier = document.getElementById('ins-quartier').value.trim();
-  var tel = document.getElementById('ins-tel').value.trim();
-  var desc = document.getElementById('ins-desc').value.trim();
-  var responsable = document.getElementById('ins-responsable').value.trim();
-  var msg = document.getElementById('ins-msg');
-  if(!nom || !cat || !quartier || !tel || !desc || !responsable){
-    msg.style.color='#ef4444'; msg.textContent='❌ Veuillez remplir tous les champs obligatoires'; return;
-  }
-  msg.style.color='#6b7280'; msg.textContent='⏳ Envoi en cours...';
-  var data = {nom:nom, categorie:cat, quartier:quartier, telephone:tel, email:document.getElementById('ins-email').value.trim(), description:desc, responsable:responsable, statut:'pending', featured:'non'};
-  try {
-    await supaPost('km_entreprises', data);
-    await loadEntreprises();
-    msg.style.color='#065f46'; msg.textContent='✅ Demande envoyée ! Nous vous contacterons sous 24h.';
-    toast('✅ Demande d\'inscription envoyée!','ok');
-    setTimeout(function(){closeModal('modalInscription');}, 2000);
-  } catch(e) {
-    msg.style.color='#ef4444'; msg.textContent='❌ Erreur. Contactez-nous sur WhatsApp.';
-  }
+  var nom=document.getElementById('ins-nom').value.trim();
+  var cat=document.getElementById('ins-cat').value;
+  var quartier=document.getElementById('ins-quartier').value.trim();
+  var tel=document.getElementById('ins-tel').value.trim();
+  var desc=document.getElementById('ins-desc').value.trim();
+  var resp=document.getElementById('ins-resp').value.trim();
+  var msg=document.getElementById('ins-msg');
+  if(!nom||!cat||!quartier||!tel||!desc||!resp){msg.style.color='#ef4444';msg.textContent='❌ Veuillez remplir tous les champs obligatoires';return;}
+  msg.style.color='#6b7280';msg.textContent='⏳ Envoi en cours...';
+  try{
+    await supaPost('entreprises',{nom,categorie:cat,quartier,telephone:tel,email:document.getElementById('ins-email').value.trim(),description:desc,responsable:resp,statut:'pending',featured:'non'});
+    await loadData();
+    msg.style.color='#065f46';msg.textContent='✅ Demande envoyée ! Nous vous contacterons sous 24h.';
+    toast('✅ Demande envoyée!','ok');
+    setTimeout(function(){closeModal('modalInscription');},2000);
+  }catch(e){msg.style.color='#ef4444';msg.textContent='❌ Erreur. Contactez-nous sur WhatsApp.';}
 }
 
 // ===== ADMIN =====
 function openAdminLogin(){
   if(isAdmin){goPage('admin');return;}
-  var el = document.getElementById('admin-pwd-input');
+  var el=document.getElementById('admin-pwd-input');
   if(el) el.value='';
   document.getElementById('admin-err').style.display='none';
   document.getElementById('modalAdminLogin').classList.add('show');
 }
-
 function submitAdmin(){
-  var val = document.getElementById('admin-pwd-input').value;
-  if(val === adminPwd){
-    isAdmin = true;
+  var val=document.getElementById('admin-pwd-input').value;
+  if(val===adminPwd){
+    isAdmin=true;
     closeModal('modalAdminLogin');
     goPage('admin');
-    var rv = document.getElementById('a-revenus');
-    if(rv) rv.style.filter = 'none';
+    var rv=document.getElementById('a-revenus');
+    if(rv) rv.style.filter='none';
     toast('✅ Connecté en tant qu\'Admin','ok');
-  } else {
+  }else{
     document.getElementById('admin-err').style.display='block';
-    setTimeout(function(){document.getElementById('admin-err').style.display='none';}, 2500);
+    setTimeout(function(){document.getElementById('admin-err').style.display='none';},2500);
   }
 }
-
 function lockAdmin(){
-  isAdmin = false;
-  var rv = document.getElementById('a-revenus');
-  if(rv) rv.style.filter = 'blur(6px)';
+  isAdmin=false;
+  var rv=document.getElementById('a-revenus');
+  if(rv) rv.style.filter='blur(5px)';
   goPage('accueil');
   toast('🔒 Admin verrouillé','ok');
 }
-
-function changeAdminPwd(){
-  var nw = document.getElementById('new-admin-pwd').value;
-  var cf = document.getElementById('confirm-admin-pwd').value;
-  var msg = document.getElementById('pwd-msg');
-  if(!nw || nw.length < 4){msg.style.color='#ef4444';msg.textContent='❌ Mot de passe trop court';return;}
-  if(nw !== cf){msg.style.color='#ef4444';msg.textContent='❌ Mots de passe différents';return;}
-  adminPwd = nw;
-  localStorage.setItem('km_admin_pwd', nw);
+function changePwd(){
+  var nw=document.getElementById('new-pwd').value;
+  var cf=document.getElementById('confirm-pwd').value;
+  var msg=document.getElementById('pwd-msg');
+  if(!nw||nw.length<4){msg.style.color='#ef4444';msg.textContent='❌ Trop court';return;}
+  if(nw!==cf){msg.style.color='#ef4444';msg.textContent='❌ Mots de passe différents';return;}
+  adminPwd=nw;localStorage.setItem('lbi_admin_pwd',nw);
   msg.style.color='#065f46';msg.textContent='✅ Mot de passe mis à jour!';
 }
 
-// ===== ADMIN TABLE =====
+// ===== ADMIN STATS =====
 function updateAdminStats(){
-  var total = DB.entreprises.length;
-  var actives = DB.entreprises.filter(function(e){return e.statut==='actif';}).length;
-  var essai = DB.entreprises.filter(function(e){return e.statut==='essai';}).length;
-  var revenus = actives * 3000;
-  var el;
-  el = document.getElementById('a-total'); if(el) el.textContent = total;
-  el = document.getElementById('a-actives'); if(el) el.textContent = actives;
-  el = document.getElementById('a-essai'); if(el) el.textContent = essai;
-  el = document.getElementById('a-revenus'); if(el) el.textContent = revenus.toLocaleString()+' FCFA';
-  el = document.getElementById('rev-actif'); if(el) el.textContent = actives;
-  el = document.getElementById('rev-mensuel'); if(el) el.textContent = revenus.toLocaleString()+' FCFA';
-  el = document.getElementById('rev-annuel'); if(el) el.textContent = (revenus*12).toLocaleString()+' FCFA';
-  el = document.getElementById('admin-count'); if(el) el.textContent = total+' entreprise(s) au total';
+  var total=DB.entreprises.length;
+  var actives=DB.entreprises.filter(function(e){return e.statut==='actif';}).length;
+  var essai=DB.entreprises.filter(function(e){return e.statut==='essai';}).length;
+  var pending=DB.entreprises.filter(function(e){return e.statut==='pending';}).length;
+  var revenus=actives*3000;
+  var set=function(id,v){var el=document.getElementById(id);if(el)el.textContent=v;};
+  set('a-total',total);set('a-actives',actives);set('a-essai',essai);set('a-pending',pending);
+  set('a-revenus',revenus.toLocaleString()+' FCFA');
+  set('rev-nb',actives);set('rev-m',revenus.toLocaleString()+' FCFA');set('rev-a',(revenus*12).toLocaleString()+' FCFA');
+  set('admin-count-label',total+' entreprise(s) au total');
   renderAdminTable();
   renderRecentList();
 }
 
 function renderAdminTable(){
-  var tbody = document.getElementById('admin-table-body');
+  var tbody=document.getElementById('admin-tbody');
   if(!tbody) return;
-  if(!DB.entreprises.length){
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--gy);padding:24px">Aucune entreprise</td></tr>';
-    return;
-  }
-  tbody.innerHTML = DB.entreprises.map(function(e,i){
-    var badgeClass = e.statut==='actif'?'badge-active':e.statut==='essai'?'badge-trial':e.statut==='expire'?'badge-expired':'badge-pending';
-    var badgeLabel = e.statut==='actif'?'Actif':e.statut==='essai'?'Essai':e.statut==='expire'?'Expiré':'En attente';
+  if(!DB.entreprises.length){tbody.innerHTML='<tr><td colspan="7" style="text-align:center;color:var(--gy);padding:24px">Aucune entreprise</td></tr>';return;}
+  tbody.innerHTML=DB.entreprises.map(function(e,i){
+    var bc=e.statut==='actif'?'badge-active':e.statut==='essai'?'badge-trial':e.statut==='expire'?'badge-expired':'badge-pending';
+    var bl=e.statut==='actif'?'Actif':e.statut==='essai'?'Essai':e.statut==='expire'?'Expiré':'En attente';
     return '<tr>'
       +'<td>'+(i+1)+'</td>'
-      +'<td><strong>'+e.nom+'</strong><br><span style="font-size:0.72rem;color:var(--gy)">'+(e.responsable||'')+'</span></td>'
-      +'<td>'+e.categorie+'</td>'
-      +'<td>'+e.telephone+'</td>'
-      +'<td><span class="badge '+badgeClass+'">'+badgeLabel+'</span></td>'
-      +'<td><select onchange="updateStatut('+e.id+',this.value)" style="font-size:0.75rem;padding:4px 8px;border:1px solid #e5e7eb;border-radius:6px">'
+      +'<td><strong>'+e.nom+'</strong><br><span style="font-size:0.7rem;color:var(--gy)">'+(e.responsable||'')+'</span></td>'
+      +'<td style="font-size:0.75rem">'+e.categorie+'</td>'
+      +'<td style="font-size:0.75rem">'+e.telephone+'</td>'
+      +'<td><span class="badge '+bc+'">'+bl+'</span></td>'
+      +'<td><select onchange="updateStatut('+e.id+',this.value)" style="font-size:0.72rem;padding:4px 8px;border:1px solid #e5e7eb;border-radius:4px">'
       +'<option value="essai"'+(e.statut==='essai'?' selected':'')+'>Essai</option>'
       +'<option value="actif"'+(e.statut==='actif'?' selected':'')+'>Actif</option>'
       +'<option value="expire"'+(e.statut==='expire'?' selected':'')+'>Expiré</option>'
       +'<option value="pending"'+(e.statut==='pending'?' selected':'')+'>En attente</option>'
       +'</select></td>'
-      +'<td><button onclick="deleteEntreprise('+e.id+')" style="background:#fee2e2;color:#991b1b;border:none;border-radius:6px;padding:4px 10px;font-size:0.72rem;cursor:pointer">🗑️</button></td>'
+      +'<td><button onclick="delEnt('+e.id+')" style="background:#fee2e2;color:#991b1b;border:none;border-radius:5px;padding:4px 10px;font-size:0.7rem;cursor:pointer">🗑️</button></td>'
       +'</tr>';
   }).join('');
 }
 
 function renderRecentList(){
-  var el = document.getElementById('recent-list');
+  var el=document.getElementById('recent-list');
   if(!el) return;
-  var recent = DB.entreprises.slice(0,5);
-  if(!recent.length){el.innerHTML='<p style="color:var(--gy);font-size:0.85rem">Aucune inscription pour l\'instant.</p>';return;}
-  el.innerHTML = recent.map(function(e){
-    var badgeClass = e.statut==='actif'?'badge-active':e.statut==='essai'?'badge-trial':e.statut==='expire'?'badge-expired':'badge-pending';
-    var badgeLabel = e.statut==='actif'?'Actif':e.statut==='essai'?'Essai':e.statut==='expire'?'Expiré':'En attente';
+  var recent=DB.entreprises.slice(0,5);
+  if(!recent.length){el.innerHTML='<p style="color:var(--gy);font-size:0.82rem">Aucune inscription pour l\'instant.</p>';return;}
+  el.innerHTML=recent.map(function(e){
+    var bc=e.statut==='actif'?'badge-active':e.statut==='essai'?'badge-trial':e.statut==='expire'?'badge-expired':'badge-pending';
+    var bl=e.statut==='actif'?'Actif':e.statut==='essai'?'Essai':e.statut==='expire'?'Expiré':'En attente';
     return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f3f4f6">'
       +'<div><div style="font-weight:600;font-size:0.85rem">'+e.nom+'</div><div style="font-size:0.72rem;color:var(--gy)">'+e.categorie+' • '+(e.quartier||'Abengourou')+'</div></div>'
-      +'<span class="badge '+badgeClass+'">'+badgeLabel+'</span>'
+      +'<span class="badge '+bc+'">'+bl+'</span>'
       +'</div>';
   }).join('');
 }
 
 // ===== ADMIN ACTIONS =====
-async function updateStatut(id, statut){
-  await supaPatch('km_entreprises', id, {statut:statut});
-  await loadEntreprises();
+async function updateStatut(id,statut){
+  await supaPatch('entreprises',id,{statut});
+  await loadData();
   toast('✅ Statut mis à jour','ok');
 }
-
-async function deleteEntreprise(id){
+async function delEnt(id){
   if(!confirm('Supprimer cette entreprise ?')) return;
-  await supaDelete('km_entreprises', id);
-  await loadEntreprises();
+  await supaDelete('entreprises',id);
+  await loadData();
   toast('✅ Entreprise supprimée','ok');
 }
-
 async function saveEntreprise(){
-  var data = {
-    nom: document.getElementById('adm-nom').value.trim(),
-    categorie: document.getElementById('adm-cat').value,
-    quartier: document.getElementById('adm-quartier').value.trim(),
-    telephone: document.getElementById('adm-tel').value.trim(),
-    email: document.getElementById('adm-email').value.trim(),
-    responsable: document.getElementById('adm-responsable').value.trim(),
-    description: document.getElementById('adm-desc').value.trim(),
-    statut: document.getElementById('adm-statut').value,
-    featured: document.getElementById('adm-featured').value
+  var data={
+    nom:document.getElementById('adm-nom').value.trim(),
+    categorie:document.getElementById('adm-cat').value,
+    quartier:document.getElementById('adm-quartier').value.trim(),
+    telephone:document.getElementById('adm-tel').value.trim(),
+    email:document.getElementById('adm-email').value.trim(),
+    responsable:document.getElementById('adm-resp').value.trim(),
+    description:document.getElementById('adm-desc').value.trim(),
+    statut:document.getElementById('adm-statut').value,
+    featured:document.getElementById('adm-featured').value
   };
-  if(!data.nom || !data.categorie || !data.telephone){toast('❌ Remplir les champs obligatoires','err');return;}
-  await supaPost('km_entreprises', data);
-  await loadEntreprises();
-  closeModal('modalAjoutAdmin');
+  if(!data.nom||!data.categorie||!data.telephone){toast('❌ Remplir les champs obligatoires','err');return;}
+  await supaPost('entreprises',data);
+  await loadData();
+  closeModal('modalAjout');
   toast('✅ Entreprise ajoutée!','ok');
 }
-
 async function resetAll(){
-  if(!confirm('Effacer TOUTES les entreprises ? Cette action est irréversible !')) return;
-  await fetch(SURL+'/rest/v1/km_entreprises?id=gt.0',{method:'DELETE',headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}});
-  await loadEntreprises();
-  toast('✅ Toutes les données effacées','ok');
+  if(!confirm('Effacer TOUTES les entreprises ?')) return;
+  await fetch(SURL+'/rest/v1/entreprises?id=gt.0',{method:'DELETE',headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}});
+  await loadData();
+  toast('✅ Données effacées','ok');
 }
 
 // ===== TABS =====
-function switchTab(id, btn){
-  ['tab-dashboard','tab-entreprises','tab-abonnements','tab-parametres'].forEach(function(t){
-    var el = document.getElementById(t);
-    if(el) el.style.display = 'none';
+function switchTab(id,btn){
+  ['tab-db','tab-ent','tab-rev','tab-cfg'].forEach(function(t){
+    var el=document.getElementById(t);if(el)el.style.display='none';
   });
-  var el = document.getElementById(id);
-  if(el) el.style.display = 'block';
+  var el=document.getElementById(id);if(el)el.style.display='block';
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
-  if(btn) btn.classList.add('active');
+  if(btn)btn.classList.add('active');
 }
 
 // ===== MODAL =====
-function openModal(id){
-  var el = document.getElementById(id);
-  if(el) el.classList.add('show');
-}
-function closeModal(id){
-  var el = document.getElementById(id);
-  if(el) el.classList.remove('show');
-}
+function openModal(id){var el=document.getElementById(id);if(el)el.classList.add('show');}
+function closeModal(id){var el=document.getElementById(id);if(el)el.classList.remove('show');}
 
 // ===== TOAST =====
-function toast(msg, type){
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast '+(type||'ok')+' show';
-  setTimeout(function(){t.classList.remove('show');}, 3000);
+function toast(msg,type){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast '+(type||'ok')+' show';
+  setTimeout(function(){t.classList.remove('show');},3000);
 }
 </script>
 </body>
