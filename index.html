@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KANJI Market – Vitrine des entreprises à Abengourou</title>
-<meta name="description" content="KANJI Market - Trouvez les meilleures entreprises, boutiques et services à Abengourou, Côte d'Ivoire. La marketplace des entreprises africaines.">
-<meta name="keywords" content="entreprises Abengourou, boutiques Côte d'Ivoire, marketplace Afrique, KANJI Market, services Abengourou">
+<title>LOTUS BLANC INTERNATIONAL – Vitrine des entreprises à Abengourou</title>
+<meta name="description" content="LOTUS BLANC INTERNATIONAL - Trouvez les meilleures entreprises, boutiques et services à Abengourou, Côte d'Ivoire. La marketplace des entreprises africaines.">
+<meta name="keywords" content="entreprises Abengourou, boutiques Côte d'Ivoire, marketplace Afrique, LOTUS BLANC INTERNATIONAL, services Abengourou">
 <link rel="manifest" href="manifest-market.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -215,10 +215,10 @@ button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
 <header class="header">
   <div class="header-inner">
     <div class="logo">
-      <div class="logo-icon">KM</div>
+      <div class="logo-icon">LBI</div>
       <div>
-        <div class="logo-text">KANJI Market</div>
-        <div class="logo-sub">L'Afrique bouge</div>
+        <div class="logo-text">LOTUS BLANC INTERNATIONAL</div>
+        <div class="logo-sub">Les meilleures entreprises, au même endroit</div>
       </div>
     </div>
     <div class="header-nav">
@@ -234,8 +234,8 @@ button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
 <div class="page active" id="page-accueil">
   <div class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">🌍 Marketplace Africain</div>
-      <h1>Trouvez les meilleures<br><span>entreprises à Abengourou</span></h1>
+      <div class="hero-badge">🌸 LOTUS BLANC INTERNATIONAL</div>
+      <h1>Trouvez les meilleures<br><span>entreprises près de chez vous</span></h1>
       <p>Des centaines d'entreprises, boutiques et services à portée de main.<br>Contactez directement via WhatsApp.</p>
       <div class="hero-search">
         <input type="text" id="hero-search-input" placeholder="Rechercher une entreprise, un produit...">
@@ -284,7 +284,7 @@ button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
   <div class="cta-section">
     <div class="cta-inner">
       <h2>Votre entreprise mérite d'être vue</h2>
-      <p>Rejoignez KANJI Market et touchez des milliers de clients à Abengourou et partout en Côte d'Ivoire.</p>
+      <p>Rejoignez LOTUS BLANC INTERNATIONAL et touchez des milliers de clients à Abengourou et partout en Côte d'Ivoire.</p>
       <div class="cta-price">
         <span class="amount">3 000</span>
         <span class="period">FCFA / mois</span>
@@ -294,7 +294,7 @@ button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
       </div>
       <div class="cta-btns">
         <button class="btn-cta-main" onclick="openModal('modalInscription')">📝 Inscrire mon entreprise</button>
-        <button class="btn-cta-wa" onclick="window.open('https://wa.me/2250799630206?text=Bonjour, je veux inscrire mon entreprise sur KANJI Market')">💬 Contacter via WhatsApp</button>
+        <button class="btn-cta-wa" onclick="window.open('https://wa.me/2250799630206?text=Bonjour, je veux inscrire mon entreprise sur LOTUS BLANC INTERNATIONAL')">💬 Contacter via WhatsApp</button>
       </div>
     </div>
   </div>
@@ -536,15 +536,15 @@ button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-logo">KANJI Market</div>
-  <div class="footer-sub">La marketplace des entreprises africaines • L'Afrique bouge !</div>
+  <div class="footer-logo">LOTUS BLANC INTERNATIONAL</div>
+  <div class="footer-sub">La marketplace des entreprises africaines • Les meilleures entreprises, au même endroit !</div>
   <div class="footer-links">
     <a href="#" onclick="goPage('accueil')">Accueil</a>
     <a href="#" onclick="goPage('entreprises')">Entreprises</a>
     <a href="#" onclick="openModal('modalInscription')">Inscrire mon entreprise</a>
     <a href="https://wa.me/2250799630206" target="_blank">Contact</a>
   </div>
-  <div class="footer-copy">© 2026 KANJI Market — Abengourou, Côte d'Ivoire</div>
+  <div class="footer-copy">© 2026 LOTUS BLANC INTERNATIONAL — Abengourou, Côte d'Ivoire</div>
 </footer>
 
 <script>
@@ -627,7 +627,7 @@ function renderHome(){
   var grid = document.getElementById('grid-home');
   if(!grid) return;
   if(!featured.length){
-    grid.innerHTML = '<div class="no-results"><div class="nr-icon">🏢</div><div class="nr-title">Aucune entreprise pour l\'instant</div><p style="color:var(--gy);font-size:0.85rem">Soyez la première entreprise à rejoindre KANJI Market !</p></div>';
+    grid.innerHTML = '<div class="no-results"><div class="nr-icon">🏢</div><div class="nr-title">Aucune entreprise pour l\'instant</div><p style="color:var(--gy);font-size:0.85rem">Soyez la première entreprise à rejoindre LOTUS BLANC INTERNATIONAL !</p></div>';
     return;
   }
   grid.innerHTML = featured.map(function(e){return renderCard(e);}).join('');
@@ -701,7 +701,7 @@ function renderCard(e){
     +'<div class="ent-desc">'+(e.description||'')+'</div>'
     +'<div class="ent-loc">📍 '+(e.quartier||'Abengourou')+'</div>'
     +'<div class="ent-footer">'
-    +'<a class="btn-wa" href="https://wa.me/'+tel+'?text=Bonjour '+encodeURIComponent(e.nom)+', je vous contacte via KANJI Market" target="_blank" onclick="event.stopPropagation()">💬 WhatsApp</a>'
+    +'<a class="btn-wa" href="https://wa.me/'+tel+'?text=Bonjour '+encodeURIComponent(e.nom)+', je vous contacte via LOTUS BLANC INTERNATIONAL" target="_blank" onclick="event.stopPropagation()">💬 WhatsApp</a>'
     +'<div class="btn-voir">👁️ Voir</div>'
     +'</div>'
     +'</div>'
@@ -728,7 +728,7 @@ function voirDetail(id){
     +(e.responsable?'<div class="info-row"><span class="info-label">👤 Responsable</span><span class="info-val">'+e.responsable+'</span></div>':'')
     +'</div>'
     +'<div style="display:flex;gap:12px;flex-wrap:wrap">'
-    +'<a href="https://wa.me/'+tel+'?text=Bonjour '+encodeURIComponent(e.nom)+', je vous contacte depuis KANJI Market" target="_blank" style="flex:1;padding:14px;background:#25D366;color:white;border-radius:10px;font-weight:700;text-align:center;font-size:0.9rem">💬 Contacter sur WhatsApp</a>'
+    +'<a href="https://wa.me/'+tel+'?text=Bonjour '+encodeURIComponent(e.nom)+', je vous contacte depuis LOTUS BLANC INTERNATIONAL" target="_blank" style="flex:1;padding:14px;background:#25D366;color:white;border-radius:10px;font-weight:700;text-align:center;font-size:0.9rem">💬 Contacter sur WhatsApp</a>'
     +'<a href="tel:'+tel+'" style="flex:1;padding:14px;background:var(--bl);color:white;border-radius:10px;font-weight:700;text-align:center;font-size:0.9rem">📞 Appeler</a>'
     +'</div>';
   goPage('detail');
