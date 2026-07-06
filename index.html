@@ -545,6 +545,17 @@ img{max-width:100%}
           </select>
         </div>
         <div class="form-group form-full"><label>Description *</label><textarea id="ins-desc" placeholder="Décrivez votre entreprise, vos produits ou services..."></textarea></div>
+        <div class="form-group form-full">
+          <label>📸 Photo de votre entreprise (logo ou devanture)</label>
+          <div style="margin-bottom:8px">
+            <label style="padding:8px 16px;background:#f3f4f6;border-radius:6px;cursor:pointer;font-size:0.78rem;font-weight:600;color:var(--bl);display:inline-block">
+              📷 Choisir une photo
+              <input type="file" accept="image/*" style="display:none" onchange="previewEntPhoto(this)">
+            </label>
+            <span style="font-size:0.72rem;color:var(--gy);margin-left:8px">Format JPG ou PNG recommandé</span>
+          </div>
+          <div id="ent-photo-preview" style="margin-top:8px"></div>
+        </div>
       </div>
       <div id="ins-msg" style="font-size:0.78rem;margin-bottom:8px"></div>
       <div class="form-actions">
@@ -815,8 +826,11 @@ function renderCard(e){
   else if(e.featured==='new') badge='<div class="ent-badge badge-new">🆕 Nouveau</div>';
   else if(e.featured==='verified') badge='<div class="ent-badge badge-verified">✅ Vérifié</div>';
   var tel = (e.telephone||'').replace(/\s/g,'');
+  var imgHtml = e.photo
+    ? '<div style="position:relative"><img src="'+e.photo+'" style="width:100%;height:140px;object-fit:cover">'+badge+'</div>'
+    : '<div class="ent-initials">'+badge+initials+'</div>';
   return '<div class="ent-card" onclick="voirDetail('+e.id+')">'
-    +'<div class="ent-initials">'+badge+initials+'</div>'
+    +imgHtml
     +'<div class="ent-body">'
     +'<div class="ent-cat">'+e.categorie+'</div>'
     +'<div class="ent-name">'+e.nom+'</div>'
@@ -836,9 +850,12 @@ function voirDetail(id){
   if(!e) return;
   var initials=(e.nom||'?').substring(0,2).toUpperCase();
   var tel=(e.telephone||'').replace(/\s/g,'');
+  var detailBanner = e.photo
+    ? '<img src="'+e.photo+'" style="width:100%;height:220px;object-fit:cover;border-radius:8px;margin-bottom:20px">'
+    : '<div class="detail-banner">'+initials+'</div>';
   document.getElementById('detail-content').innerHTML =
     '<div class="detail-wrap">'
-    +'<div class="detail-banner">'+initials+'</div>'
+    +detailBanner
     +'<div style="margin-bottom:6px"><span style="font-size:0.72rem;font-weight:700;color:var(--or);text-transform:uppercase">'+e.categorie+'</span></div>'
     +'<div style="font-family:\'Playfair Display\',serif;font-weight:700;font-size:1.6rem;color:var(--bl);margin-bottom:8px">'+e.nom+'</div>'
     +'<div style="font-size:0.88rem;color:var(--gy);line-height:1.7;margin-bottom:20px">'+(e.description||'')+'</div>'
@@ -871,8 +888,9 @@ async function saveInscription(){
   if(!nom||!cat||!quartier||!tel||!desc||!resp){msg.style.color='#ef4444';msg.textContent='❌ Veuillez remplir tous les champs obligatoires';return;}
   msg.style.color='#6b7280';msg.textContent='⏳ Envoi en cours...';
   var abonnement = document.getElementById('ins-abonnement') ? document.getElementById('ins-abonnement').value : 'essai';
+  var photo = window.entPhotoBase64 || null;
   try{
-    await supaPost('entreprises',{nom:nom,categorie:cat,quartier:quartier,telephone:tel,email:document.getElementById('ins-email').value.trim(),description:desc,responsable:resp,statut:'pending',featured:'non',abonnement:abonnement});
+    await supaPost('entreprises',{nom:nom,categorie:cat,quartier:quartier,telephone:tel,email:document.getElementById('ins-email').value.trim(),description:desc,responsable:resp,statut:'pending',featured:'non',abonnement:abonnement,photo:photo});
     await loadData();
     msg.style.color='#065f46';msg.textContent='✅ Demande envoyée ! Nous vous contacterons sous 24h.';
     toast('✅ Demande envoyée!','ok');
@@ -1026,6 +1044,40 @@ function switchTab(id,btn){
 // ===== MODAL =====
 function openModal(id){var el=document.getElementById(id);if(el)el.classList.add('show');}
 function closeModal(id){var el=document.getElementById(id);if(el)el.classList.remove('show');}
+
+// ===== PHOTO ENTREPRISE =====
+window.entPhotoBase64 = null;
+
+function previewEntPhoto(input){
+  var file = input.files[0];
+  if(!file) return;
+  var img = new Image();
+  var url = URL.createObjectURL(file);
+  img.onload = function(){
+    var canvas = document.createElement('canvas');
+    var w = img.width, h = img.height, maxW = 800;
+    if(w > maxW){h = Math.round(h*maxW/w);w = maxW;}
+    canvas.width = w; canvas.height = h;
+    canvas.getContext('2d').drawImage(img,0,0,w,h);
+    var dataUrl = canvas.toDataURL('image/jpeg', 0.75);
+    window.entPhotoBase64 = dataUrl;
+    var prev = document.getElementById('ent-photo-preview');
+    if(prev){
+      prev.innerHTML = '<div style="position:relative;display:inline-block">'
+        +'<img src="'+dataUrl+'" style="width:120px;height:80px;object-fit:cover;border-radius:8px;border:2px solid var(--or)">'
+        +'<button onclick="removeEntPhoto()" style="position:absolute;top:-4px;right:-4px;width:18px;height:18px;background:#ef4444;color:white;border:none;border-radius:50%;font-size:0.65rem;cursor:pointer">✕</button>'
+        +'</div>';
+    }
+    URL.revokeObjectURL(url);
+  };
+  img.src = url;
+}
+
+function removeEntPhoto(){
+  window.entPhotoBase64 = null;
+  var prev = document.getElementById('ent-photo-preview');
+  if(prev) prev.innerHTML = '';
+}
 
 // ===== PRODUITS =====
 var currentEntrepriseId = null;
