@@ -471,6 +471,10 @@ img{max-width:100%}
         <div style="font-weight:600;color:var(--bl);margin-bottom:14px;font-size:0.9rem">📋 Dernières inscriptions</div>
         <div id="recent-list"></div>
       </div>
+      <div class="admin-wrap" style="margin-top:16px">
+        <div style="font-weight:600;color:var(--bl);margin-bottom:14px;font-size:0.9rem">📊 Top entreprises les plus vues</div>
+        <div id="stats-visites"><p style="color:var(--gy);font-size:0.82rem">Chargement...</p></div>
+      </div>
     </div>
     <div id="tab-ent" style="display:none">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
@@ -915,6 +919,8 @@ function voirDetail(id){
     +'<a href="tel:'+tel+'" style="flex:1;padding:14px;background:var(--bl);color:white;border-radius:8px;font-weight:700;text-align:center;font-size:0.9rem">📞 Appeler</a>'
     +'</div>'
     +'</div>';
+  // Enregistrer la visite
+  enregistrerVisite(e.id);
   // Charger les produits
   loadProduits(e.id);
   goPage('detail');
@@ -1001,6 +1007,7 @@ function updateAdminStats(){
   set('admin-count-label',total+' entreprise(s) au total');
   renderAdminTable();
   renderRecentList();
+  loadStatsVisites();
 }
 
 function renderAdminTable(){
@@ -1015,6 +1022,7 @@ function renderAdminTable(){
       +'<td><strong>'+e.nom+'</strong><br><span style="font-size:0.7rem;color:var(--gy)">'+(e.responsable||'')+'</span></td>'
       +'<td style="font-size:0.75rem">'+e.categorie+'</td>'
       +'<td style="font-size:0.75rem">'+e.telephone+'</td>'
+      +'<td style="font-size:0.78rem;color:var(--bl);font-weight:600" id="vis-'+e.id+'">...</td>'
       +'<td><span class="badge '+bc+'">'+bl+'</span></td>'
       +'<td><select onchange="updateStatut('+e.id+',this.value)" style="font-size:0.72rem;padding:4px 8px;border:1px solid #e5e7eb;border-radius:4px">'
       +'<option value="essai"'+(e.statut==='essai'?' selected':'')+'>Essai</option>'
@@ -1076,6 +1084,44 @@ async function saveEntreprise(){
   closeModal('modalAjout');
   toast('✅ Entreprise ajoutée!','ok');
 }
+async function loadStatsVisites(){
+  try{
+    var res = await fetch(SURL+'/rest/v1/visites?select=entreprise_id,entreprises(nom)&order=created_at.desc',{
+      headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
+    });
+    var visites = await res.json();
+    if(!Array.isArray(visites)||!visites.length){
+      var el=document.getElementById('stats-visites');
+      if(el)el.innerHTML='<p style="color:var(--gy);font-size:0.82rem">Aucune visite enregistrée pour l\'instant.</p>';
+      return;
+    }
+    // Compter par entreprise
+    var counts = {};
+    var names = {};
+    visites.forEach(function(v){
+      var id = v.entreprise_id;
+      counts[id] = (counts[id]||0)+1;
+      if(v.entreprises) names[id] = v.entreprises.nom;
+    });
+    // Trier
+    var sorted = Object.keys(counts).sort(function(a,b){return counts[b]-counts[a];}).slice(0,5);
+    var el = document.getElementById('stats-visites');
+    if(!el) return;
+    el.innerHTML = sorted.map(function(id,i){
+      return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f3f4f6">'
+        +'<div style="display:flex;align-items:center;gap:10px">'
+        +'<div style="width:28px;height:28px;background:var(--bl);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">'+(i+1)+'</div>'
+        +'<span style="font-weight:600;font-size:0.85rem">'+(names[id]||'Entreprise '+id)+'</span>'
+        +'</div>'
+        +'<span style="background:#f0e6ff;color:var(--bl);padding:3px 12px;border-radius:20px;font-size:0.75rem;font-weight:700">'+counts[id]+' vue(s)</span>'
+        +'</div>';
+    }).join('');
+  }catch(e){
+    var el=document.getElementById('stats-visites');
+    if(el)el.innerHTML='<p style="color:var(--gy);font-size:0.82rem">Erreur de chargement.</p>';
+  }
+}
+
 async function resetAll(){
   if(!confirm('Effacer TOUTES les entreprises ?')) return;
   await fetch(SURL+'/rest/v1/entreprises?id=gt.0',{method:'DELETE',headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}});
@@ -1133,6 +1179,12 @@ function removeEntPhoto(){
 
 // ===== PRODUITS =====
 var currentEntrepriseId = null;
+
+async function enregistrerVisite(entrepriseId){
+  try{
+    await supaPost('visites',{entreprise_id:entrepriseId});
+  }catch(e){ console.log('Visite error:',e); }
+}
 
 async function loadProduits(entrepriseId){
   currentEntrepriseId = entrepriseId;
