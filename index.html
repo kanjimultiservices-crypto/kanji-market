@@ -6,6 +6,7 @@
 <title>LOTUS BLANC INTERNATIONAL – Les meilleures entreprises, au même endroit</title>
 <meta name="description" content="L.B.I - Trouvez les meilleures entreprises, boutiques et services à Abengourou, Côte d'Ivoire.">
 <link rel="manifest" href="manifest.json">
+<script src="https://cdn.fedapay.com/checkout.js?v=1.1.7"></script>
 <meta name="theme-color" content="#F7941D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -470,6 +471,7 @@ img{max-width:100%}
       <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:10px 20px;margin-bottom:16px;font-size:0.82rem;color:rgba(255,255,255,0.9)">5 photos par produit. 1 mois essai gratuit. Resiliable a tout moment.</div>
       <div class="cta-btns">
         <button class="btn-cta-white" onclick="openModal('modalInscription')">📝 Inscrire mon entreprise</button>
+        <button class="btn-cta-outline" onclick="openModal('modalPaiement')">💳 Payer mon abonnement</button>
         <button class="btn-cta-outline" onclick="window.open('https://wa.me/0758219671?text=Bonjour, je veux inscrire mon entreprise sur L.B.I')">💬 WhatsApp</button>
       </div>
     </div>
@@ -734,6 +736,43 @@ img{max-width:100%}
       <div class="form-actions">
         <button class="btn-primary" onclick="saveProduit()">✔ Enregistrer</button>
         <button class="btn-outline" onclick="closeModal('modalProduit');tempPhotos=[];renderPhotoPreview()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PAIEMENT -->
+<div class="overlay" id="modalPaiement">
+  <div class="modal" style="max-width:440px">
+    <div class="modal-head">
+      <h3>💳 Payer mon abonnement</h3>
+      <button class="modal-close" onclick="closeModal('modalPaiement')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="background:#f5f0ff;border-radius:10px;padding:16px;margin-bottom:20px">
+        <div style="font-weight:700;color:var(--bl);margin-bottom:8px">Choisissez votre formule :</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <div id="plan-mensuel" onclick="selectPlan('mensuel')" style="flex:1;padding:14px;border:2px solid var(--bl);border-radius:8px;cursor:pointer;text-align:center;background:var(--bl);color:white">
+            <div style="font-weight:700;font-size:0.9rem">Mensuel</div>
+            <div style="font-size:1.2rem;font-weight:900;font-family:'Playfair Display',serif">3 000 FCFA</div>
+            <div style="font-size:0.7rem;opacity:0.8">par mois</div>
+          </div>
+          <div id="plan-annuel" onclick="selectPlan('annuel')" style="flex:1;padding:14px;border:2px solid #e5e7eb;border-radius:8px;cursor:pointer;text-align:center">
+            <div style="font-weight:700;font-size:0.9rem;color:var(--bl)">Annuel ⭐</div>
+            <div style="font-size:1.2rem;font-weight:900;font-family:'Playfair Display',serif;color:var(--or)">30 000 FCFA</div>
+            <div style="font-size:0.7rem;color:var(--gy)">Economisez 6 000 FCFA</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group"><label>Nom de votre entreprise</label><input type="text" id="pay-nom" placeholder="Nom de l'entreprise"></div>
+      <div class="form-group"><label>Téléphone Mobile Money</label><input type="tel" id="pay-tel" placeholder="+225 07 XX XX XX XX"></div>
+      <div id="pay-msg" style="font-size:0.78rem;margin-bottom:8px"></div>
+      <div class="form-actions">
+        <button class="btn-primary" onclick="lancerPaiement()">💳 Payer maintenant</button>
+        <button class="btn-outline" onclick="closeModal('modalPaiement')">Annuler</button>
+      </div>
+      <div style="margin-top:12px;text-align:center;font-size:0.72rem;color:var(--gy)">
+        🔒 Paiement sécurisé via FedaPay<br>Orange Money • Wave • MTN • Moov
       </div>
     </div>
   </div>
@@ -1323,6 +1362,71 @@ async function saveProduit(){
     toast('✅ Produit ajouté!','ok');
   } catch(e){
     msg.style.color='#ef4444';msg.textContent='❌ Erreur lors de l\'enregistrement';
+  }
+}
+
+// ===== FEDAPAY PAIEMENT =====
+var FEDAPAY_PK = 'pk_sandbox_XwZ2gSj8m7kuWtW_bsEtog-Q';
+var selectedPlan = 'mensuel';
+var planMontants = {mensuel: 300000, annuel: 3000000}; // en centimes FCFA
+
+function selectPlan(plan){
+  selectedPlan = plan;
+  var mensuel = document.getElementById('plan-mensuel');
+  var annuel = document.getElementById('plan-annuel');
+  if(plan === 'mensuel'){
+    if(mensuel){mensuel.style.background='var(--bl)';mensuel.style.color='white';mensuel.style.borderColor='var(--bl)';}
+    if(annuel){annuel.style.background='white';annuel.style.color='#222';annuel.style.borderColor='#e5e7eb';}
+  } else {
+    if(annuel){annuel.style.background='var(--bl)';annuel.style.color='white';annuel.style.borderColor='var(--bl)';}
+    if(mensuel){mensuel.style.background='white';mensuel.style.color='#222';mensuel.style.borderColor='#e5e7eb';}
+  }
+}
+
+function lancerPaiement(){
+  var nom = document.getElementById('pay-nom').value.trim();
+  var tel = document.getElementById('pay-tel').value.trim();
+  var msg = document.getElementById('pay-msg');
+  if(!nom){msg.style.color='#ef4444';msg.textContent='❌ Entrez le nom de votre entreprise';return;}
+  if(!tel){msg.style.color='#ef4444';msg.textContent='❌ Entrez votre numéro de téléphone';return;}
+  
+  var montant = planMontants[selectedPlan];
+  var description = selectedPlan === 'mensuel' 
+    ? 'Abonnement mensuel LBI - ' + nom 
+    : 'Abonnement annuel LBI - ' + nom;
+
+  msg.style.color='#6b7280';msg.textContent='⏳ Ouverture du paiement...';
+
+  try {
+    FedaPay.init({
+      public_key: FEDAPAY_PK,
+      transaction: {
+        amount: montant,
+        description: description
+      },
+      customer: {
+        phone_number: {
+          number: tel,
+          country: 'CI'
+        }
+      },
+      onComplete: function(resp){
+        if(resp.reason === FedaPay.CHECKOUT_COMPLETED){
+          closeModal('modalPaiement');
+          toast('✅ Paiement réussi ! Nous activons votre compte sous 24h.','ok');
+          // Notifier par email
+          sendNotification(
+            'LBI - Nouveau paiement: ' + nom,
+            'Paiement recu:\nEntreprise: ' + nom + '\nPlan: ' + selectedPlan + '\nTelephone: ' + tel + '\nMontant: ' + (selectedPlan==='mensuel'?'3 000':'30 000') + ' FCFA'
+          );
+        } else {
+          msg.style.color='#ef4444';msg.textContent='❌ Paiement annulé ou échoué. Réessayez.';
+        }
+      }
+    }).open();
+  } catch(e){
+    msg.style.color='#ef4444';msg.textContent='❌ Erreur. Contactez-nous sur WhatsApp.';
+    console.log('FedaPay error:', e);
   }
 }
 
