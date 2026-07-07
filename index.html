@@ -510,6 +510,9 @@ img{max-width:100%}
         <div class="admin-stat-card"><div class="val" id="a-pending">0</div><div class="lab">En attente</div></div>
         <div class="admin-stat-card"><div class="val" id="a-revenus" style="font-size:1.1rem;filter:blur(5px)">••••</div><div class="lab">FCFA/mois</div></div>
       </div>
+      <div id="alertes-exp" class="admin-wrap" style="display:none;margin-bottom:16px;border:1px solid #fed7aa">
+        <div style="font-weight:600;color:#f97316;margin-bottom:14px;font-size:0.9rem">⚠️ Abonnements qui expirent bientôt</div>
+      </div>
       <div class="admin-wrap">
         <div style="font-weight:600;color:var(--bl);margin-bottom:14px;font-size:0.9rem">📋 Dernières inscriptions</div>
         <div id="recent-list"></div>
@@ -1428,7 +1431,30 @@ async function renouveler(id, plan){
   });
   await loadData();
   updateAdminStats();
-  toast('✅ Abonnement renouvelé jusqu\'au ' + newDate.toLocaleDateString('fr-FR'), 'ok');
+  
+  var dateFormatee = newDate.toLocaleDateString('fr-FR');
+  var duree = plan === 'annuel' ? '1 an' : '30 jours';
+  var montant = plan === 'annuel' ? '30 000 FCFA' : '3 000 FCFA';
+  
+  toast('✅ Abonnement renouvelé jusqu\'au ' + dateFormatee, 'ok');
+  
+  // Envoyer message WhatsApp à l'entreprise
+  if(ent && ent.telephone){
+    var tel = ent.telephone.replace(/[^0-9]/g, '');
+    var msg = 'Bonjour ' + ent.nom + ' ! 🌸\n\n'
+      + 'Votre abonnement LOTUS BLANC INTERNATIONAL a été renouvelé avec succès.\n\n'
+      + '✅ Durée : ' + duree + '\n'
+      + '📅 Valable jusqu\'au : ' + dateFormatee + '\n'
+      + '💰 Montant : ' + montant + '\n\n'
+      + 'Merci de votre confiance ! 😊\n'
+      + 'L.B.I - Les meilleures entreprises, au même endroit';
+    
+    setTimeout(function(){
+      if(confirm('Envoyer un message WhatsApp de confirmation à ' + ent.nom + ' ?')){
+        window.open('https://wa.me/' + tel + '?text=' + encodeURIComponent(msg), '_blank');
+      }
+    }, 500);
+  }
 }
 
 // Alertes expiration - vérifier au chargement
@@ -1448,6 +1474,20 @@ function checkExpirations(){
         'L\'abonnement de ' + e.nom + ' expire dans ' + diff + ' jour(s).\nContactez: ' + e.telephone
       );
     });
+    // Afficher bouton alerte dans le dashboard
+    var alertDiv = document.getElementById('alertes-exp');
+    if(alertDiv && alertes.length > 0){
+      alertDiv.innerHTML = alertes.map(function(e){
+        var diff = Math.ceil((new Date(e.date_expiration) - aujourd) / (1000*60*60*24));
+        var tel = (e.telephone||'').replace(/[^0-9]/g,'');
+        var msg = 'Bonjour ' + e.nom + ' ! 🌸\n\nVotre abonnement LOTUS BLANC INTERNATIONAL expire dans ' + diff + ' jour(s).\n\nRenouvelez maintenant pour continuer à être visible sur LBI !\n\n💰 Mensuel : 3 000 FCFA\n⭐ Annuel : 30 000 FCFA\n\nContactez-nous pour renouveler.\nL.B.I';
+        return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px;background:#fff8f0;border-radius:8px;margin-bottom:8px;border-left:3px solid #f97316">'
+          +'<div><strong style="font-size:0.85rem">'+e.nom+'</strong><br><span style="font-size:0.75rem;color:#f97316">⚠️ Expire dans '+diff+' jour(s)</span></div>'
+          +'<a href="https://wa.me/'+tel+'?text='+encodeURIComponent(msg)+'" target="_blank" style="padding:6px 12px;background:#25D366;color:white;border-radius:6px;font-size:0.75rem;font-weight:600;text-decoration:none">💬 Alerter</a>'
+          +'</div>';
+      }).join('');
+      alertDiv.style.display = 'block';
+    }
   }
 }
 
