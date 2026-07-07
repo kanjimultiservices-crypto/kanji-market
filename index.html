@@ -873,6 +873,7 @@ async function loadData(){
     updateTotal();
     renderMain();
     updateAdminStats();
+    checkExpirations();
   }catch(e){DB.entreprises=[];}
 }
 
@@ -929,6 +930,8 @@ function renderMain(){
   var sort = document.getElementById('main-sort')?document.getElementById('main-sort').value:'';
   var list = DB.entreprises.filter(function(e){
     if(e.statut==='expire') return false;
+    // Cacher les entreprises expirées automatiquement
+    if(e.date_expiration && new Date(e.date_expiration) < new Date() && e.statut !== 'actif') return false;
     if(currentCat && e.categorie!==currentCat) return false;
     if(currentZone && !(e.quartier||'').toLowerCase().includes(currentZone.toLowerCase())) return false;
     if(q && !(e.nom+e.description+e.categorie+e.quartier).toLowerCase().includes(q)) return false;
@@ -1020,7 +1023,10 @@ async function saveInscription(){
   var abonnement = document.getElementById('ins-abonnement') ? document.getElementById('ins-abonnement').value : 'essai';
   var photo = window.entPhotoBase64 || null;
   try{
-    await supaPost('entreprises',{nom:nom,categorie:cat,quartier:quartier,telephone:tel,email:document.getElementById('ins-email').value.trim(),description:desc,responsable:resp,statut:'pending',featured:'non',abonnement:abonnement,photo:photo});
+    var expDate = new Date();
+    expDate.setDate(expDate.getDate() + 30);
+    var expStr = expDate.toISOString().split('T')[0];
+    await supaPost('entreprises',{nom:nom,categorie:cat,quartier:quartier,telephone:tel,email:document.getElementById('ins-email').value.trim(),description:desc,responsable:resp,statut:'pending',featured:'non',abonnement:abonnement,photo:photo,date_expiration:expStr,date_inscription:new Date().toISOString().split('T')[0]});
     await loadData();
     sendNotification(
       '🌸 LBI - Nouvelle inscription: ' + nom,
@@ -1110,7 +1116,11 @@ function renderAdminTable(){
       +'<option value="expire"'+(e.statut==='expire'?' selected':'')+'>Expiré</option>'
       +'<option value="pending"'+(e.statut==='pending'?' selected':'')+'>En attente</option>'
       +'</select></td>'
-      +'<td><button onclick="delEnt('+e.id+')" style="background:#fee2e2;color:#991b1b;border:none;border-radius:5px;padding:4px 10px;font-size:0.7rem;cursor:pointer">🗑️</button></td>'
+      +'<td style="display:flex;gap:4px">'
+      +'<button onclick="renouveler('+e.id+',\"mensuel\")" style="background:#e0e7ff;color:#3730a3;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer" title="Renouveler 30 jours">+30j</button>'
+      +'<button onclick="renouveler('+e.id+',\"annuel\")" style="background:#fef3c7;color:#92400e;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer" title="Renouveler 1 an">+1an</button>'
+      +'<button onclick="delEnt('+e.id+')" style="background:#fee2e2;color:#991b1b;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer">🗑️</button>'
+      +'</td>'
       +'</tr>';
   }).join('');
 }
@@ -1362,6 +1372,75 @@ async function saveProduit(){
     toast('✅ Produit ajouté!','ok');
   } catch(e){
     msg.style.color='#ef4444';msg.textContent='❌ Erreur lors de l\'enregistrement';
+  }
+}
+
+// ===== GESTION DATES =====
+function formatExp(date){
+  if(!date) return '—';
+  var d = new Date(date);
+  var now = new Date();
+  var diff = Math.ceil((d - now) / (1000*60*60*24));
+  if(diff < 0) return '❌ Expiré';
+  if(diff <= 3) return '⚠️ ' + diff + 'j restants';
+  if(diff <= 7) return '🟡 ' + diff + 'j restants';
+  return '✅ ' + d.toLocaleDateString('fr-FR');
+}
+
+function getExpColor(date){
+  if(!date) return '#6b7280';
+  var d = new Date(date);
+  var now = new Date();
+  var diff = Math.ceil((d - now) / (1000*60*60*24));
+  if(diff < 0) return '#ef4444';
+  if(diff <= 3) return '#f97316';
+  if(diff <= 7) return '#eab308';
+  return '#10b981';
+}
+
+async function renouveler(id, plan){
+  var now = new Date();
+  // Trouver date expiration actuelle
+  var ent = DB.entreprises.find(function(e){return e.id===id;});
+  var baseDate = ent && ent.date_expiration && new Date(ent.date_expiration) > now 
+    ? new Date(ent.date_expiration) 
+    : now;
+  
+  var newDate = new Date(baseDate);
+  if(plan === 'annuel'){
+    newDate.setFullYear(newDate.getFullYear() + 1);
+  } else {
+    newDate.setDate(newDate.getDate() + 30);
+  }
+  
+  var dateStr = newDate.toISOString().split('T')[0];
+  await supaPatch('entreprises', id, {
+    date_expiration: dateStr,
+    statut: 'actif',
+    abonnement: plan
+  });
+  await loadData();
+  updateAdminStats();
+  toast('✅ Abonnement renouvelé jusqu\'au ' + newDate.toLocaleDateString('fr-FR'), 'ok');
+}
+
+// Alertes expiration - vérifier au chargement
+function checkExpirations(){
+  var aujourd = new Date();
+  var alertes = DB.entreprises.filter(function(e){
+    if(!e.date_expiration) return false;
+    var exp = new Date(e.date_expiration);
+    var diff = Math.ceil((exp - aujourd) / (1000*60*60*24));
+    return diff >= 0 && diff <= 3;
+  });
+  if(alertes.length > 0){
+    alertes.forEach(function(e){
+      var diff = Math.ceil((new Date(e.date_expiration) - aujourd) / (1000*60*60*24));
+      sendNotification(
+        'LBI - Expiration imminente: ' + e.nom,
+        'L\'abonnement de ' + e.nom + ' expire dans ' + diff + ' jour(s).\nContactez: ' + e.telephone
+      );
+    });
   }
 }
 
