@@ -1117,8 +1117,8 @@ function renderAdminTable(){
       +'<option value="pending"'+(e.statut==='pending'?' selected':'')+'>En attente</option>'
       +'</select></td>'
       +'<td style="display:flex;gap:4px">'
-      +'<button onclick="renouveler('+e.id+',\"mensuel\")" style="background:#e0e7ff;color:#3730a3;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer" title="Renouveler 30 jours">+30j</button>'
-      +'<button onclick="renouveler('+e.id+',\"annuel\")" style="background:#fef3c7;color:#92400e;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer" title="Renouveler 1 an">+1an</button>'
+      +'<button data-id="'+e.id+'" data-plan="mensuel" onclick="renouvelerBtn(this)" style="background:#e0e7ff;color:#3730a3;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer" title="Renouveler 30 jours">+30j</button>'
+      +'<button data-id="'+e.id+'" data-plan="annuel" onclick="renouvelerBtn(this)" style="background:#fef3c7;color:#92400e;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer" title="Renouveler 1 an">+1an</button>'
       +'<button onclick="delEnt('+e.id+')" style="background:#fee2e2;color:#991b1b;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer">🗑️</button>'
       +'</td>'
       +'</tr>';
@@ -1176,7 +1176,7 @@ async function saveEntreprise(){
 }
 async function loadStatsVisites(){
   try{
-    var res = await fetch(SURL+'/rest/v1/visites?select=entreprise_id,entreprises(nom)&order=created_at.desc',{
+    var res = await fetch(SURL+'/rest/v1/visites?select=entreprise_id&order=created_at.desc',{
       headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
     });
     var visites = await res.json();
@@ -1191,7 +1191,8 @@ async function loadStatsVisites(){
     visites.forEach(function(v){
       var id = v.entreprise_id;
       counts[id] = (counts[id]||0)+1;
-      if(v.entreprises) names[id] = v.entreprises.nom;
+      var ent = DB.entreprises.find(function(e){return e.id===id;});
+      if(ent) names[id] = ent.nom;
     });
     // Trier
     var sorted = Object.keys(counts).sort(function(a,b){return counts[b]-counts[a];}).slice(0,5);
@@ -1396,6 +1397,12 @@ function getExpColor(date){
   if(diff <= 3) return '#f97316';
   if(diff <= 7) return '#eab308';
   return '#10b981';
+}
+
+function renouvelerBtn(btn){
+  var id = parseInt(btn.getAttribute('data-id'));
+  var plan = btn.getAttribute('data-plan');
+  renouveler(id, plan);
 }
 
 async function renouveler(id, plan){
