@@ -1,0 +1,40 @@
+{
+  "name": "LOTUS BLANC INTERNATIONAL",
+  "short_name": "L.B.I",
+  "description": "Les meilleures entreprises, au même endroit. Marketplace des entreprises à Abengourou, Côte d'Ivoire.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a1f5e",
+  "theme_color": "#F7941D",
+  "orientation": "portrait",
+  "lang": "fr",
+  "id": "com.lotusblancintl.app",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "shopping"],
+  "shortcuts": [
+    {
+      "name": "Inscrire mon entreprise",
+      "url": "/#inscription",
+      "description": "Inscrire mon entreprise sur LBI"
+    },
+    {
+      "name": "Rechercher",
+      "url": "/#recherche",
+      "description": "Rechercher une entreprise"
+    }
+  ]
+}
