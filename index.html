@@ -737,6 +737,23 @@ async function supaDelete(table,id){
   await fetch(SURL+'/rest/v1/'+table+'?id=eq.'+id,{method:'DELETE',headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}});
 }
 
+// ===== NOTIFICATIONS EMAIL =====
+var FORMSPREE_LBI = 'https://formspree.io/f/mkoleybv';
+
+async function sendNotification(sujet, message){
+  try{
+    await fetch(FORMSPREE_LBI, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        subject: sujet,
+        message: message,
+        _subject: sujet
+      })
+    });
+  } catch(e){ console.log('Notification error:', e); }
+}
+
 // ===== LOAD =====
 async function loadData(){
   try{
@@ -892,6 +909,10 @@ async function saveInscription(){
   try{
     await supaPost('entreprises',{nom:nom,categorie:cat,quartier:quartier,telephone:tel,email:document.getElementById('ins-email').value.trim(),description:desc,responsable:resp,statut:'pending',featured:'non',abonnement:abonnement,photo:photo});
     await loadData();
+    sendNotification(
+      '🌸 LBI - Nouvelle inscription: ' + nom,
+      'Nouvelle entreprise inscrite sur LOTUS BLANC INTERNATIONAL:\n\nNom: ' + nom + '\nCategorie: ' + cat + '\nQuartier: ' + quartier + '\nTelephone: ' + tel + '\nAbonnement: ' + abonnement
+    );
     msg.style.color='#065f46';msg.textContent='✅ Demande envoyée ! Nous vous contacterons sous 24h.';
     toast('✅ Demande envoyée!','ok');
     setTimeout(function(){closeModal('modalInscription');},2000);
@@ -1021,6 +1042,10 @@ async function saveEntreprise(){
   if(!data.nom||!data.categorie||!data.telephone){toast('❌ Remplir les champs obligatoires','err');return;}
   await supaPost('entreprises',data);
   await loadData();
+  sendNotification(
+    '🌸 LBI - Entreprise ajoutée: ' + data.nom,
+    'Entreprise ajoutee par Admin:\n\nNom: ' + data.nom + '\nCategorie: ' + data.categorie + '\nStatut: ' + data.statut
+  );
   closeModal('modalAjout');
   toast('✅ Entreprise ajoutée!','ok');
 }
