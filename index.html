@@ -219,8 +219,8 @@ img{max-width:100%}
 
 /* MENU DEROULANT CATEGORIES */
 .nav-cat-wrapper{position:relative;display:inline-block}
-.nav-cat-wrapper:hover .nav-dropdown{display:block}
 .nav-dropdown{display:none;position:absolute;top:100%;left:0;background:white;border-radius:0 0 10px 10px;box-shadow:0 8px 24px rgba(74,14,143,0.15);z-index:200;min-width:200px;border-top:2px solid var(--or);padding:8px 0}
+.nav-cat-wrapper.open .nav-dropdown{display:block}
 .nav-dropdown-item{padding:8px 16px;font-size:0.78rem;color:#374151;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background 0.2s;white-space:nowrap}
 .nav-dropdown-item:hover{background:#f5f0ff;color:var(--bl)}
 .nav-dropdown-title{padding:8px 16px 4px;font-size:0.65rem;font-weight:700;color:var(--gy);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #f3f4f6;margin-bottom:4px}
@@ -363,8 +363,8 @@ img{max-width:100%}
   <div class="nav-cats-inner">
     <div class="nav-cat active" onclick="setNavCat('',this)">🏠 Tous</div>
 
-    <div class="nav-cat-wrapper">
-      <div class="nav-cat" onclick="setNavCat('Commerce & Boutique',this)">🛒 Commerce ▾</div>
+    <div class="nav-cat-wrapper" onclick="toggleDropdown(this)">
+      <div class="nav-cat" onclick="setNavCat('Commerce & Boutique',this);event.stopPropagation()">🛒 Commerce ▾</div>
       <div class="nav-dropdown">
         <div class="nav-dropdown-title">Commerce & Boutique</div>
         <div class="nav-dropdown-item" onclick="setSubCat('Supermarché & Épicerie')">🛍️ Supermarché & Épicerie</div>
@@ -376,8 +376,8 @@ img{max-width:100%}
       </div>
     </div>
 
-    <div class="nav-cat-wrapper">
-      <div class="nav-cat" onclick="setNavCat('Restaurant & Alimentation',this)">🍽️ Restaurant ▾</div>
+    <div class="nav-cat-wrapper" onclick="toggleDropdown(this)">
+      <div class="nav-cat" onclick="setNavCat('Restaurant & Alimentation',this);event.stopPropagation()">🍽️ Restaurant ▾</div>
       <div class="nav-dropdown">
         <div class="nav-dropdown-title">Restaurant & Alimentation</div>
         <div class="nav-dropdown-item" onclick="setSubCat('Maquis traditionnel')">🥘 Maquis traditionnel</div>
@@ -389,8 +389,8 @@ img{max-width:100%}
       </div>
     </div>
 
-    <div class="nav-cat-wrapper">
-      <div class="nav-cat" onclick="setNavCat('Hôtels & Résidences',this)">🏨 Hôtels ▾</div>
+    <div class="nav-cat-wrapper" onclick="toggleDropdown(this)">
+      <div class="nav-cat" onclick="setNavCat('Hôtels & Résidences',this);event.stopPropagation()">🏨 Hôtels ▾</div>
       <div class="nav-dropdown">
         <div class="nav-dropdown-title">Hôtels & Résidences</div>
         <div class="nav-dropdown-item" onclick="setSubCat('Hôtel')">🏨 Hôtel</div>
@@ -401,8 +401,8 @@ img{max-width:100%}
       </div>
     </div>
 
-    <div class="nav-cat-wrapper">
-      <div class="nav-cat" onclick="setNavCat('Services & Artisanat',this)">🔧 Services ▾</div>
+    <div class="nav-cat-wrapper" onclick="toggleDropdown(this)">
+      <div class="nav-cat" onclick="setNavCat('Services & Artisanat',this);event.stopPropagation()">🔧 Services ▾</div>
       <div class="nav-dropdown">
         <div class="nav-dropdown-title">Services & Artisanat</div>
         <div class="nav-dropdown-item" onclick="setSubCat('Coiffure & Barbier')">✂️ Coiffure & Barbier</div>
@@ -415,8 +415,8 @@ img{max-width:100%}
       </div>
     </div>
 
-    <div class="nav-cat-wrapper">
-      <div class="nav-cat" onclick="setNavCat('Santé & Beauté',this)">💊 Santé & Beauté ▾</div>
+    <div class="nav-cat-wrapper" onclick="toggleDropdown(this)">
+      <div class="nav-cat" onclick="setNavCat('Santé & Beauté',this);event.stopPropagation()">💊 Santé & Beauté ▾</div>
       <div class="nav-dropdown">
         <div class="nav-dropdown-title">Santé & Beauté</div>
         <div class="nav-dropdown-item" onclick="setSubCat('Clinique & Cabinet médical')">🏥 Clinique & Cabinet médical</div>
@@ -428,8 +428,8 @@ img{max-width:100%}
       </div>
     </div>
 
-    <div class="nav-cat-wrapper">
-      <div class="nav-cat" onclick="setNavCat('Pharmacie & Santé',this)">💉 Pharmacie ▾</div>
+    <div class="nav-cat-wrapper" onclick="toggleDropdown(this)">
+      <div class="nav-cat" onclick="setNavCat('Pharmacie & Santé',this);event.stopPropagation()">💉 Pharmacie ▾</div>
       <div class="nav-dropdown">
         <div class="nav-dropdown-title">Pharmacie & Santé</div>
         <div class="nav-dropdown-item" onclick="setSubCat('Pharmacie')">💊 Pharmacie</div>
@@ -439,8 +439,8 @@ img{max-width:100%}
       </div>
     </div>
 
-    <div class="nav-cat-wrapper">
-      <div class="nav-cat" onclick="setNavCat('Immobilier & BTP',this)">🏗️ Immobilier ▾</div>
+    <div class="nav-cat-wrapper" onclick="toggleDropdown(this)">
+      <div class="nav-cat" onclick="setNavCat('Immobilier & BTP',this);event.stopPropagation()">🏗️ Immobilier ▾</div>
       <div class="nav-dropdown">
         <div class="nav-dropdown-title">Immobilier & BTP</div>
         <div class="nav-dropdown-item" onclick="setSubCat('Agence immobilière')">🏢 Agence immobilière</div>
@@ -452,8 +452,8 @@ img{max-width:100%}
       </div>
     </div>
 
-    <div class="nav-cat-wrapper">
-      <div class="nav-cat" onclick="setNavCat('Transport & Logistique',this)">🚛 Transport ▾</div>
+    <div class="nav-cat-wrapper" onclick="toggleDropdown(this)">
+      <div class="nav-cat" onclick="setNavCat('Transport & Logistique',this);event.stopPropagation()">🚛 Transport ▾</div>
       <div class="nav-dropdown">
         <div class="nav-dropdown-title">Transport & Logistique</div>
         <div class="nav-dropdown-item" onclick="setSubCat('Taxi & VTC')">🚕 Taxi & VTC</div>
@@ -465,8 +465,8 @@ img{max-width:100%}
       </div>
     </div>
 
-    <div class="nav-cat-wrapper">
-      <div class="nav-cat" onclick="setNavCat('Éducation & Formation',this)">📚 Éducation ▾</div>
+    <div class="nav-cat-wrapper" onclick="toggleDropdown(this)">
+      <div class="nav-cat" onclick="setNavCat('Éducation & Formation',this);event.stopPropagation()">📚 Éducation ▾</div>
       <div class="nav-dropdown">
         <div class="nav-dropdown-title">Éducation & Formation</div>
         <div class="nav-dropdown-item" onclick="setSubCat('École primaire & Maternelle')">🎒 École primaire & Maternelle</div>
@@ -478,8 +478,8 @@ img{max-width:100%}
       </div>
     </div>
 
-    <div class="nav-cat-wrapper">
-      <div class="nav-cat" onclick="setNavCat('Technologie',this)">💻 Tech ▾</div>
+    <div class="nav-cat-wrapper" onclick="toggleDropdown(this)">
+      <div class="nav-cat" onclick="setNavCat('Technologie',this);event.stopPropagation()">💻 Tech ▾</div>
       <div class="nav-dropdown">
         <div class="nav-dropdown-title">Technologie</div>
         <div class="nav-dropdown-item" onclick="setSubCat('Vente & Réparation téléphones')">📱 Vente & Réparation téléphones</div>
@@ -1133,6 +1133,22 @@ function setNavCat(cat, btn){
   if(btn) btn.classList.add('active');
   renderMain();
 }
+function toggleDropdown(wrapper){
+  // Fermer tous les autres
+  document.querySelectorAll('.nav-cat-wrapper').forEach(function(w){
+    if(w !== wrapper) w.classList.remove('open');
+  });
+  wrapper.classList.toggle('open');
+  event.stopPropagation();
+}
+
+// Fermer tous les dropdowns quand on clique ailleurs
+document.addEventListener('click', function(){
+  document.querySelectorAll('.nav-cat-wrapper').forEach(function(w){
+    w.classList.remove('open');
+  });
+});
+
 function setSubCat(subcat){
   // Filtrer par sous-catégorie dans la description
   document.getElementById('main-search').value = subcat;
