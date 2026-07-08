@@ -1447,8 +1447,10 @@ function renderAdminTable(){
       +'<option value="pending"'+(e.statut==='pending'?' selected':'')+'>En attente</option>'
       +'</select></td>'
       +'<td style="display:flex;gap:4px">'
-      +'<button data-id="'+e.id+'" data-plan="mensuel" onclick="renouvelerBtn(this)" style="background:#16a34a;color:white;border:none;border-radius:5px;padding:5px 10px;font-size:0.72rem;cursor:pointer;font-weight:600" title="Renouveler 1 mois">+1 mois</button>'
-      +'<button data-id="'+e.id+'" data-plan="annuel" onclick="renouvelerBtn(this)" style="background:#7c3aed;color:white;border:none;border-radius:5px;padding:5px 10px;font-size:0.72rem;cursor:pointer;font-weight:600" title="Renouveler 1 an">+1 an</button>'
+      +'<button data-id="'+e.id+'" data-plan="1mois" onclick="renouvelerBtn(this)" style="background:#16a34a;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="1 mois">+30j</button>'
+      +'<button data-id="'+e.id+'" data-plan="3mois" onclick="renouvelerBtn(this)" style="background:#0284c7;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="3 mois">+90j</button>'
+      +'<button data-id="'+e.id+'" data-plan="6mois" onclick="renouvelerBtn(this)" style="background:#d97706;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="6 mois">+180j</button>'
+      +'<button data-id="'+e.id+'" data-plan="1an" onclick="renouvelerBtn(this)" style="background:#7c3aed;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="1 an">+1an</button>'
       +'<button onclick="delEnt('+e.id+')" style="background:#fee2e2;color:#991b1b;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer">🗑️</button>'
       +'</td>'
       +'</tr>';
