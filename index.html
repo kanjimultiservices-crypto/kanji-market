@@ -237,7 +237,7 @@ img{max-width:100%}
 .mega-sub-item:hover{background:#ede9fe;color:var(--bl);border-color:var(--or);transform:translateY(-1px)}
 
 /* PHARMACIE DE GARDE */
-.garde-section{background:linear-gradient(135deg,#dc2626,#b91c1c);padding:24px 20px;margin-bottom:0}
+.garde-section{background:linear-gradient(135deg,#16a34a,#15803d);padding:24px 20px;margin-bottom:0}
 .garde-inner{max-width:1280px;margin:0 auto}
 .garde-title{font-family:'Playfair Display',serif;font-weight:900;font-size:1.3rem;color:white;margin-bottom:4px;display:flex;align-items:center;gap:10px}
 .garde-sub{font-size:0.82rem;color:rgba(255,255,255,0.8);margin-bottom:16px}
@@ -249,9 +249,9 @@ img{max-width:100%}
 .garde-horaire{font-size:0.75rem;color:#dc2626;font-weight:600;margin-top:4px}
 .garde-btns{display:flex;gap:8px}
 .garde-btn-wa{padding:10px 18px;background:#25D366;color:white;border-radius:8px;font-weight:700;font-size:0.82rem;text-decoration:none;display:flex;align-items:center;gap:6px}
-.garde-btn-tel{padding:10px 18px;background:#dc2626;color:white;border-radius:8px;font-weight:700;font-size:0.82rem;text-decoration:none;display:flex;align-items:center;gap:6px}
+.garde-btn-tel{padding:10px 18px;background:#16a34a;color:white;border-radius:8px;font-weight:700;font-size:0.82rem;text-decoration:none;display:flex;align-items:center;gap:6px}
 .garde-empty{background:rgba(255,255,255,0.15);border-radius:10px;padding:16px;text-align:center;color:rgba(255,255,255,0.8);font-size:0.85rem}
-.garde-badge{background:#dc2626;color:white;padding:3px 10px;border-radius:20px;font-size:0.68rem;font-weight:700;animation:pulse 2s infinite}
+.garde-badge{background:#16a34a;color:white;padding:3px 10px;border-radius:20px;font-size:0.68rem;font-weight:700;animation:pulse 2s infinite}
 .produit-wa{width:100%;padding:7px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;border:none;border-radius:6px;font-size:0.75rem;font-weight:700;cursor:pointer;margin-top:8px;font-family:'Poppins',sans-serif;transition:all 0.2s}
 .produit-wa:hover{opacity:0.9;transform:scale(1.02)}
 .photo-preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
@@ -473,7 +473,7 @@ img{max-width:100%}
         <div class="mega-sub-item" onclick="filterMega('Pharmacie & Santé','Pharmacie')">💊 Pharmacie</div>
         <div class="mega-sub-item" onclick="filterMega('Pharmacie & Santé','Parapharmacie')">🧪 Parapharmacie</div>
         <div class="mega-sub-item" onclick="filterMega('Pharmacie & Santé','Herboristerie')">🌿 Herboristerie</div>
-        <div class="mega-sub-item" onclick="closeMegaMenu();goPage('garde')" style="background:#fee2e2;color:#dc2626;border-color:#dc2626">🔴 Pharmacie de garde</div>
+        <div class="mega-sub-item" onclick="closeMegaMenu();goPage('garde')" style="background:#dcfce7;color:#16a34a;border-color:#dc2626">🔴 Pharmacie de garde</div>
       </div>
     </div>
 
@@ -701,7 +701,7 @@ img{max-width:100%}
 <div class="page" id="page-garde">
   <div style="max-width:1280px;margin:0 auto;padding:20px">
     <button onclick="goPage('accueil')" style="background:none;border:none;color:var(--gy);font-size:0.82rem;margin-bottom:16px;cursor:pointer">← Retour</button>
-    <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:#dc2626;margin-bottom:6px">💊 Pharmacies de Garde</div>
+    <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:#16a34a;margin-bottom:6px">💊 Pharmacies de Garde</div>
     <div style="font-size:0.85rem;color:var(--gy);margin-bottom:24px">Abengourou, Côte d'Ivoire</div>
     <div id="garde-list-full"></div>
     <div style="background:#fff8f0;border-radius:12px;padding:20px;margin-top:24px;border-left:4px solid var(--or)">
@@ -1447,8 +1447,8 @@ function renderAdminTable(){
       +'<option value="pending"'+(e.statut==='pending'?' selected':'')+'>En attente</option>'
       +'</select></td>'
       +'<td style="display:flex;gap:4px">'
-      +'<button data-id="'+e.id+'" data-plan="mensuel" onclick="renouvelerBtn(this)" style="background:#e0e7ff;color:#3730a3;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer" title="Renouveler 30 jours">+30j</button>'
-      +'<button data-id="'+e.id+'" data-plan="annuel" onclick="renouvelerBtn(this)" style="background:#fef3c7;color:#92400e;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer" title="Renouveler 1 an">+1an</button>'
+      +'<button data-id="'+e.id+'" data-plan="mensuel" onclick="renouvelerBtn(this)" style="background:#16a34a;color:white;border:none;border-radius:5px;padding:5px 10px;font-size:0.72rem;cursor:pointer;font-weight:600" title="Renouveler 1 mois">+1 mois</button>'
+      +'<button data-id="'+e.id+'" data-plan="annuel" onclick="renouvelerBtn(this)" style="background:#7c3aed;color:white;border:none;border-radius:5px;padding:5px 10px;font-size:0.72rem;cursor:pointer;font-weight:600" title="Renouveler 1 an">+1 an</button>'
       +'<button onclick="delEnt('+e.id+')" style="background:#fee2e2;color:#991b1b;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer">🗑️</button>'
       +'</td>'
       +'</tr>';
@@ -1585,7 +1585,7 @@ function renderGardeAdminList(){
     return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px;background:#fff5f5;border-radius:8px;margin-bottom:8px;border-left:3px solid #dc2626">'
       +'<div><strong style="font-size:0.85rem">'+g.nom+'</strong><br>'
       +'<span style="font-size:0.72rem;color:var(--gy)">'+g.adresse+' • '+g.horaire+' • '+(g.permanent?'Tous les jours':g.jour)+'</span></div>'
-      +'<button onclick="removeGarde('+g.id+')" style="background:#fee2e2;color:#dc2626;border:none;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer">🗑️</button>'
+      +'<button onclick="removeGarde('+g.id+')" style="background:#dcfce7;color:#16a34a;border:none;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer">🗑️</button>'
       +'</div>';
   }).join('');
 }
@@ -1937,17 +1937,17 @@ function renderGardeFull(){
   el.innerHTML = gardes.map(function(g){
     var tel = (g.telephone||'').replace(/[^0-9]/g,'');
     var isToday = g.jour === jourActuel || g.permanent;
-    return '<div style="background:white;border-radius:12px;padding:16px;margin-bottom:12px;border:2px solid '+(isToday?'#dc2626':'#f0f0f0')+';box-shadow:var(--shadow)">'
+    return '<div style="background:white;border-radius:12px;padding:16px;margin-bottom:12px;border:2px solid '+(isToday?'#16a34a':'#f0f0f0')+';box-shadow:var(--shadow)">'
       +'<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">'
       +'<div style="display:flex;align-items:center;gap:12px">'
-      +'<div style="width:44px;height:44px;background:'+(isToday?'#fee2e2':'#f5f0ff')+';border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem">💊</div>'
+      +'<div style="width:44px;height:44px;background:'+(isToday?'#dcfce7':'#f5f0ff')+';border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem">💊</div>'
       +'<div>'
       +'<div style="font-weight:800;font-size:0.95rem;color:#222;font-family:Poppins,sans-serif">'+g.nom+'</div>'
       +'<div style="font-size:0.75rem;color:var(--gy)">📍 '+g.adresse+'</div>'
       +'<div style="font-size:0.75rem;color:#dc2626;font-weight:600">🕐 '+g.horaire+' • '+(g.permanent?'Tous les jours':g.jour)+'</div>'
       +'</div>'
       +'</div>'
-      +(isToday?'<span style="background:#dc2626;color:white;padding:4px 12px;border-radius:20px;font-size:0.7rem;font-weight:700">DE GARDE AUJOURD\'HUI</span>':'')
+      +(isToday?'<span style="background:#16a34a;color:white;padding:4px 12px;border-radius:20px;font-size:0.7rem;font-weight:700">DE GARDE AUJOURD\'HUI</span>':'')
       +'</div>'
       +(tel?'<div style="display:flex;gap:8px;margin-top:12px">'
         +'<a href="https://wa.me/'+tel+'" target="_blank" style="flex:1;padding:8px;background:#25D366;color:white;border-radius:6px;font-weight:700;font-size:0.78rem;text-align:center;text-decoration:none">💬 WhatsApp</a>'
