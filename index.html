@@ -217,6 +217,14 @@ img{max-width:100%}
 .produit-prix{font-family:'Poppins',sans-serif;font-weight:900;font-size:1rem;color:#e44d26;margin-bottom:4px}
 .produit-badge{display:inline-flex;align-items:center;gap:4px;background:#f0fdf4;color:#065f46;font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:6px}
 
+/* MENU DEROULANT CATEGORIES */
+.nav-cat-wrapper{position:relative;display:inline-block}
+.nav-cat-wrapper:hover .nav-dropdown{display:block}
+.nav-dropdown{display:none;position:absolute;top:100%;left:0;background:white;border-radius:0 0 10px 10px;box-shadow:0 8px 24px rgba(74,14,143,0.15);z-index:200;min-width:200px;border-top:2px solid var(--or);padding:8px 0}
+.nav-dropdown-item{padding:8px 16px;font-size:0.78rem;color:#374151;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background 0.2s;white-space:nowrap}
+.nav-dropdown-item:hover{background:#f5f0ff;color:var(--bl)}
+.nav-dropdown-title{padding:8px 16px 4px;font-size:0.65rem;font-weight:700;color:var(--gy);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #f3f4f6;margin-bottom:4px}
+
 /* PHARMACIE DE GARDE */
 .garde-section{background:linear-gradient(135deg,#dc2626,#b91c1c);padding:24px 20px;margin-bottom:0}
 .garde-inner{max-width:1280px;margin:0 auto}
@@ -354,16 +362,134 @@ img{max-width:100%}
 <nav class="nav-cats">
   <div class="nav-cats-inner">
     <div class="nav-cat active" onclick="setNavCat('',this)">🏠 Tous</div>
-    <div class="nav-cat" onclick="setNavCat('Commerce & Boutique',this)">🛒 Commerce</div>
-    <div class="nav-cat" onclick="setNavCat('Restaurant & Alimentation',this)">🍽️ Restaurant</div>
-    <div class="nav-cat" onclick="setNavCat('Hôtels & Résidences',this)">🏨 Hôtels</div>
-    <div class="nav-cat" onclick="setNavCat('Services & Artisanat',this)">🔧 Services</div>
-    <div class="nav-cat" onclick="setNavCat('Santé & Beauté',this)">💊 Santé & Beauté</div>
-    <div class="nav-cat" onclick="setNavCat('Pharmacie & Santé',this)">💉 Pharmacie</div>
-    <div class="nav-cat" onclick="setNavCat('Immobilier & BTP',this)">🏗️ Immobilier</div>
-    <div class="nav-cat" onclick="setNavCat('Transport & Logistique',this)">🚛 Transport</div>
-    <div class="nav-cat" onclick="setNavCat('Éducation & Formation',this)">📚 Éducation</div>
-    <div class="nav-cat" onclick="setNavCat('Technologie',this)">💻 Tech</div>
+
+    <div class="nav-cat-wrapper">
+      <div class="nav-cat" onclick="setNavCat('Commerce & Boutique',this)">🛒 Commerce ▾</div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-title">Commerce & Boutique</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Supermarché & Épicerie')">🛍️ Supermarché & Épicerie</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Vêtements & Mode')">👗 Vêtements & Mode</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Électronique & Téléphonie')">📱 Électronique & Téléphonie</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Quincaillerie & Matériaux')">🔨 Quincaillerie & Matériaux</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Alimentation & Produits locaux')">🌽 Alimentation & Produits locaux</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Bijoux & Accessoires')">💍 Bijoux & Accessoires</div>
+      </div>
+    </div>
+
+    <div class="nav-cat-wrapper">
+      <div class="nav-cat" onclick="setNavCat('Restaurant & Alimentation',this)">🍽️ Restaurant ▾</div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-title">Restaurant & Alimentation</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Maquis traditionnel')">🥘 Maquis traditionnel</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Fast-food & Snack')">🍔 Fast-food & Snack</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Boulangerie & Pâtisserie')">🥖 Boulangerie & Pâtisserie</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Café & Boissons')">☕ Café & Boissons</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Traiteur & Livraison repas')">🚚 Traiteur & Livraison repas</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Restaurant gastronomique')">🍷 Restaurant gastronomique</div>
+      </div>
+    </div>
+
+    <div class="nav-cat-wrapper">
+      <div class="nav-cat" onclick="setNavCat('Hôtels & Résidences',this)">🏨 Hôtels ▾</div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-title">Hôtels & Résidences</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Hôtel')">🏨 Hôtel</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Résidence meublée')">🏠 Résidence meublée</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Auberge & Gîte')">🛏️ Auberge & Gîte</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Appartement à louer')">🏢 Appartement à louer</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Villa & Maison de vacances')">🌴 Villa & Maison de vacances</div>
+      </div>
+    </div>
+
+    <div class="nav-cat-wrapper">
+      <div class="nav-cat" onclick="setNavCat('Services & Artisanat',this)">🔧 Services ▾</div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-title">Services & Artisanat</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Coiffure & Barbier')">✂️ Coiffure & Barbier</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Mécanique & Garage')">🔩 Mécanique & Garage</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Plomberie & Électricité')">💧 Plomberie & Électricité</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Couture & Broderie')">🧵 Couture & Broderie</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Menuiserie & Ferronnerie')">🪵 Menuiserie & Ferronnerie</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Nettoyage & Entretien')">🧹 Nettoyage & Entretien</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Photographe & Studio')">📸 Photographe & Studio</div>
+      </div>
+    </div>
+
+    <div class="nav-cat-wrapper">
+      <div class="nav-cat" onclick="setNavCat('Santé & Beauté',this)">💊 Santé & Beauté ▾</div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-title">Santé & Beauté</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Clinique & Cabinet médical')">🏥 Clinique & Cabinet médical</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Salon de beauté & Spa')">💅 Salon de beauté & Spa</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Opticien')">👓 Opticien</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Dentiste')">🦷 Dentiste</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Laboratoire d'analyse')">🔬 Laboratoire d'analyse</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Vente de produits cosmétiques')">🧴 Produits cosmétiques</div>
+      </div>
+    </div>
+
+    <div class="nav-cat-wrapper">
+      <div class="nav-cat" onclick="setNavCat('Pharmacie & Santé',this)">💉 Pharmacie ▾</div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-title">Pharmacie & Santé</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Pharmacie')">💊 Pharmacie</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Parapharmacie')">🧪 Parapharmacie</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Herboristerie & Médecine traditionnelle')">🌿 Herboristerie</div>
+        <div class="nav-dropdown-item" onclick="goPage('garde')" style="color:#dc2626;font-weight:700">🔴 Pharmacie de garde</div>
+      </div>
+    </div>
+
+    <div class="nav-cat-wrapper">
+      <div class="nav-cat" onclick="setNavCat('Immobilier & BTP',this)">🏗️ Immobilier ▾</div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-title">Immobilier & BTP</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Agence immobilière')">🏢 Agence immobilière</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Construction & BTP')">🏗️ Construction & BTP</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Vente de terrains')">🌍 Vente de terrains</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Location de maisons')">🏠 Location de maisons</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Architecture & Design')">📐 Architecture & Design</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Décoration intérieure')">🛋️ Décoration intérieure</div>
+      </div>
+    </div>
+
+    <div class="nav-cat-wrapper">
+      <div class="nav-cat" onclick="setNavCat('Transport & Logistique',this)">🚛 Transport ▾</div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-title">Transport & Logistique</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Taxi & VTC')">🚕 Taxi & VTC</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Agence de voyage')">✈️ Agence de voyage</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Transport de marchandises')">📦 Transport de marchandises</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Livraison express')">🛵 Livraison express</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Location de véhicules')">🚗 Location de véhicules</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Déménagement')">🏠 Déménagement</div>
+      </div>
+    </div>
+
+    <div class="nav-cat-wrapper">
+      <div class="nav-cat" onclick="setNavCat('Éducation & Formation',this)">📚 Éducation ▾</div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-title">Éducation & Formation</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('École primaire & Maternelle')">🎒 École primaire & Maternelle</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Collège & Lycée')">📖 Collège & Lycée</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Université & Grandes écoles')">🎓 Université & Grandes écoles</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Cours particuliers')">✏️ Cours particuliers</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Centre de formation professionnelle')">🛠️ Formation professionnelle</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Informatique & Langues')">💻 Informatique & Langues</div>
+      </div>
+    </div>
+
+    <div class="nav-cat-wrapper">
+      <div class="nav-cat" onclick="setNavCat('Technologie',this)">💻 Tech ▾</div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-title">Technologie</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Vente & Réparation téléphones')">📱 Vente & Réparation téléphones</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Informatique & Réseaux')">🖥️ Informatique & Réseaux</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Impression & Photocopie')">🖨️ Impression & Photocopie</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Développement web & App')">🌐 Développement web & App</div>
+        <div class="nav-dropdown-item" onclick="setSubCat('Cybercafé & Internet')">📡 Cybercafé & Internet</div>
+      </div>
+    </div>
+
     <div class="nav-cat" onclick="goPage('garde')" style="color:#dc2626;font-weight:700">💊 Garde</div>
   </div>
 </nav>
@@ -1007,6 +1133,13 @@ function setNavCat(cat, btn){
   if(btn) btn.classList.add('active');
   renderMain();
 }
+function setSubCat(subcat){
+  // Filtrer par sous-catégorie dans la description
+  document.getElementById('main-search').value = subcat;
+  renderMain();
+  window.scrollTo(0, document.querySelector('.main-layout').offsetTop - 80);
+}
+
 function setSidebarCat(cat, btn){
   currentCat = cat;
   document.querySelectorAll('.sidebar-item').forEach(function(b){b.classList.remove('active');});
