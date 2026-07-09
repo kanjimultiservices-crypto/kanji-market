@@ -1489,9 +1489,11 @@ function updateAdminStats(){
   var actives=DB.entreprises.filter(function(e){return e.statut==='actif';}).length;
   var essai=DB.entreprises.filter(function(e){return e.statut==='essai';}).length;
   var pending=DB.entreprises.filter(function(e){return e.statut==='pending';}).length;
-  var mensuel=DB.entreprises.filter(function(e){return e.statut==='actif'&&e.abonnement!=='annuel';}).length;
-  var annuel=DB.entreprises.filter(function(e){return e.statut==='actif'&&e.abonnement==='annuel';}).length;
-  var revenus=(mensuel*3000)+(annuel*2500);
+  var rev1mois=DB.entreprises.filter(function(e){return e.statut==='actif'&&(e.abonnement==='1mois'||e.abonnement==='mensuel'||!e.abonnement);}).length;
+  var rev3mois=DB.entreprises.filter(function(e){return e.statut==='actif'&&e.abonnement==='3mois';}).length;
+  var rev6mois=DB.entreprises.filter(function(e){return e.statut==='actif'&&e.abonnement==='6mois';}).length;
+  var rev1an=DB.entreprises.filter(function(e){return e.statut==='actif'&&(e.abonnement==='1an'||e.abonnement==='annuel');}).length;
+  var revenus=(rev1mois*5000)+(rev3mois*Math.round(10000/3))+(rev6mois*Math.round(25000/6))+(rev1an*Math.round(50000/12));
   var set=function(id,v){var el=document.getElementById(id);if(el)el.textContent=v;};
   set('a-total',total);set('a-actives',actives);set('a-essai',essai);set('a-pending',pending);
   set('a-revenus',revenus.toLocaleString()+' FCFA');
