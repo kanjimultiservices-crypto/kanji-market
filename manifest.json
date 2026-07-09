@@ -2,39 +2,27 @@
   "name": "LOTUS BLANC INTERNATIONAL",
   "short_name": "L.B.I",
   "description": "Les meilleures entreprises, au même endroit. Marketplace des entreprises à Abengourou, Côte d'Ivoire.",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "https://kanjimultiservices-crypto.github.io/kanji-market/",
+  "scope": "https://kanjimultiservices-crypto.github.io/kanji-market/",
   "display": "standalone",
-  "background_color": "#0a1f5e",
-  "theme_color": "#F7941D",
+  "background_color": "#4a0e8f",
+  "theme_color": "#C9A84C",
   "orientation": "portrait",
   "lang": "fr",
   "id": "com.lotusblancintl.app",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "https://kanjimultiservices-crypto.github.io/kanji-market/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "https://kanjimultiservices-crypto.github.io/kanji-market/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
-  "categories": ["business", "shopping"],
-  "shortcuts": [
-    {
-      "name": "Inscrire mon entreprise",
-      "url": "/#inscription",
-      "description": "Inscrire mon entreprise sur LBI"
-    },
-    {
-      "name": "Rechercher",
-      "url": "/#recherche",
-      "description": "Rechercher une entreprise"
-    }
-  ]
+  "categories": ["business", "shopping"]
 }
