@@ -6,6 +6,7 @@
 <title>LOTUS BLANC INTERNATIONAL – Les meilleures entreprises, au même endroit</title>
 <meta name="description" content="L.B.I - Trouvez les meilleures entreprises, boutiques et services à Abengourou, Côte d'Ivoire.">
 <link rel="manifest" href="manifest.json">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdn.fedapay.com/checkout.js?v=1.1.7"></script>
 <meta name="theme-color" content="#F7941D">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -787,6 +788,33 @@ img{max-width:100%}
         <div class="admin-stat-card"><div class="val" id="a-essai">0</div><div class="lab">En essai</div></div>
         <div class="admin-stat-card"><div class="val" id="a-pending">0</div><div class="lab">En attente</div></div>
         <div class="admin-stat-card"><div class="val" id="a-revenus" style="font-size:1.1rem;filter:blur(5px)">••••</div><div class="lab">FCFA/mois</div></div>
+        <div class="admin-stat-card" style="background:#fff0f0"><div class="val" id="a-expire-soon" style="color:#dc2626">0</div><div class="lab">Expirent bientôt</div></div>
+        <div class="admin-stat-card" style="background:#f0fff4"><div class="val" id="a-cette-semaine" style="color:#16a34a">0</div><div class="lab">Cette semaine</div></div>
+        <div class="admin-stat-card" style="background:#f5f0ff"><div class="val" id="a-conversion" style="color:#7c3aed">0%</div><div class="lab">Taux conversion</div></div>
+      </div>
+      
+      <!-- GRAPHIQUES -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div class="admin-wrap" style="padding:16px">
+          <div style="font-weight:600;color:var(--bl);margin-bottom:12px;font-size:0.85rem">📊 Répartition par catégorie</div>
+          <canvas id="chart-categories" height="200"></canvas>
+        </div>
+        <div class="admin-wrap" style="padding:16px">
+          <div style="font-weight:600;color:var(--bl);margin-bottom:12px;font-size:0.85rem">💰 Répartition abonnements</div>
+          <canvas id="chart-abonnements" height="200"></canvas>
+        </div>
+      </div>
+
+      <!-- RAPPORT EXPIRATIONS -->
+      <div class="admin-wrap" style="margin-bottom:16px">
+        <div style="font-weight:600;color:#dc2626;margin-bottom:12px;font-size:0.85rem">⚠️ Abonnements expirant dans 7 jours</div>
+        <div id="rapport-expirations"></div>
+      </div>
+
+      <!-- RAPPORT NON PAYÉS -->
+      <div class="admin-wrap" style="margin-bottom:16px">
+        <div style="font-weight:600;color:#d97706;margin-bottom:12px;font-size:0.85rem">💳 Entreprises en attente de paiement</div>
+        <div id="rapport-pending"></div>
       </div>
       <div id="alertes-exp" class="admin-wrap" style="display:none;margin-bottom:16px;border:1px solid #fed7aa">
         <div style="font-weight:600;color:#f97316;margin-bottom:14px;font-size:0.9rem">⚠️ Abonnements qui expirent bientôt</div>
@@ -1472,6 +1500,8 @@ function updateAdminStats(){
   renderAdminTable();
   renderRecentList();
   loadStatsVisites();
+  renderCharts();
+  renderRapports();
 }
 
 function renderAdminTable(){
@@ -1554,6 +1584,148 @@ async function saveEntreprise(){
   closeModal('modalAjout');
   toast('✅ Entreprise ajoutée!','ok');
 }
+function renderCharts(){
+  // Graphique catégories
+  var cats = {};
+  DB.entreprises.forEach(function(e){
+    if(e.statut !== 'expire'){
+      cats[e.categorie] = (cats[e.categorie]||0) + 1;
+    }
+  });
+  
+  var catCtx = document.getElementById('chart-categories');
+  if(catCtx){
+    if(catCtx._chart) catCtx._chart.destroy();
+    catCtx._chart = new Chart(catCtx, {
+      type: 'doughnut',
+      data: {
+        labels: Object.keys(cats),
+        datasets: [{
+          data: Object.values(cats),
+          backgroundColor: ['#4a0e8f','#C9A84C','#16a34a','#0284c7','#dc2626','#7c3aed','#d97706','#0891b2','#be185d','#065f46'],
+          borderWidth: 2,
+          borderColor: '#fff'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {position: 'bottom', labels: {font: {size: 10}, boxWidth: 12}}
+        }
+      }
+    });
+  }
+
+  // Graphique abonnements
+  var abons = {'Essai':0, '1 mois':0, '3 mois':0, '6 mois':0, '1 an':0};
+  DB.entreprises.forEach(function(e){
+    if(e.statut !== 'expire'){
+      if(e.abonnement === 'essai' || !e.abonnement) abons['Essai']++;
+      else if(e.abonnement === '1mois' || e.abonnement === 'mensuel') abons['1 mois']++;
+      else if(e.abonnement === '3mois') abons['3 mois']++;
+      else if(e.abonnement === '6mois') abons['6 mois']++;
+      else if(e.abonnement === '1an' || e.abonnement === 'annuel') abons['1 an']++;
+    }
+  });
+
+  var abonCtx = document.getElementById('chart-abonnements');
+  if(abonCtx){
+    if(abonCtx._chart) abonCtx._chart.destroy();
+    abonCtx._chart = new Chart(abonCtx, {
+      type: 'bar',
+      data: {
+        labels: Object.keys(abons),
+        datasets: [{
+          label: 'Entreprises',
+          data: Object.values(abons),
+          backgroundColor: ['#e9d5ff','#16a34a','#0284c7','#d97706','#7c3aed'],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {legend: {display: false}},
+        scales: {y: {beginAtZero: true, ticks: {stepSize: 1}}}
+      }
+    });
+  }
+}
+
+function renderRapports(){
+  var now = new Date();
+  var in7days = new Date();
+  in7days.setDate(in7days.getDate() + 7);
+  var thisWeek = new Date();
+  thisWeek.setDate(thisWeek.getDate() - 7);
+
+  // Expirent dans 7 jours
+  var expireBientot = DB.entreprises.filter(function(e){
+    if(!e.date_expiration) return false;
+    var d = new Date(e.date_expiration);
+    return d >= now && d <= in7days;
+  });
+
+  // Inscrits cette semaine
+  var cetteSeamaine = DB.entreprises.filter(function(e){
+    if(!e.date_inscription && !e.created_at) return false;
+    var d = new Date(e.date_inscription || e.created_at);
+    return d >= thisWeek;
+  });
+
+  // En attente paiement
+  var pending = DB.entreprises.filter(function(e){
+    return e.statut === 'pending' || e.statut === 'essai';
+  });
+
+  // Taux conversion
+  var total = DB.entreprises.length;
+  var payants = DB.entreprises.filter(function(e){return e.statut === 'actif';}).length;
+  var taux = total > 0 ? Math.round((payants/total)*100) : 0;
+
+  // Mettre à jour stats
+  var set = function(id,v){var el=document.getElementById(id);if(el)el.textContent=v;};
+  set('a-expire-soon', expireBientot.length);
+  set('a-cette-semaine', cetteSeamaine.length);
+  set('a-conversion', taux+'%');
+
+  // Rapport expirations
+  var expEl = document.getElementById('rapport-expirations');
+  if(expEl){
+    if(!expireBientot.length){
+      expEl.innerHTML = '<p style="color:var(--gy);font-size:0.82rem">✅ Aucun abonnement n\'expire dans les 7 prochains jours.</p>';
+    } else {
+      expEl.innerHTML = expireBientot.map(function(e){
+        var diff = Math.ceil((new Date(e.date_expiration)-now)/(1000*60*60*24));
+        var tel = (e.telephone||'').replace(/[^0-9]/g,'');
+        var msg = 'Bonjour '+e.nom+' ! Votre abonnement LBI expire dans '+diff+' jour(s). Renouvelez maintenant pour continuer a etre visible !';
+        return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px;background:#fff5f5;border-radius:8px;margin-bottom:8px;border-left:3px solid #dc2626">'
+          +'<div><strong style="font-size:0.85rem">'+e.nom+'</strong><br>'
+          +'<span style="font-size:0.72rem;color:#dc2626">⏰ Expire dans '+diff+' jour(s) — '+new Date(e.date_expiration).toLocaleDateString('fr-FR')+'</span></div>'
+          +'<a href="https://wa.me/'+tel+'?text='+encodeURIComponent(msg)+'" target="_blank" style="padding:6px 12px;background:#25D366;color:white;border-radius:6px;font-size:0.75rem;font-weight:600;text-decoration:none;white-space:nowrap">💬 Alerter</a>'
+          +'</div>';
+      }).join('');
+    }
+  }
+
+  // Rapport pending
+  var pendEl = document.getElementById('rapport-pending');
+  if(pendEl){
+    if(!pending.length){
+      pendEl.innerHTML = '<p style="color:var(--gy);font-size:0.82rem">✅ Aucune entreprise en attente.</p>';
+    } else {
+      pendEl.innerHTML = pending.map(function(e){
+        var tel = (e.telephone||'').replace(/[^0-9]/g,'');
+        var msg = 'Bonjour '+e.nom+' ! Votre inscription sur LBI est en attente. Payez votre abonnement pour etre visible : 5 000 F/mois ou 50 000 F/an.';
+        return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px;background:#fffbeb;border-radius:8px;margin-bottom:8px;border-left:3px solid #d97706">'
+          +'<div><strong style="font-size:0.85rem">'+e.nom+'</strong><br>'
+          +'<span style="font-size:0.72rem;color:#d97706">💳 Statut: '+(e.statut==='essai'?'Essai gratuit':'En attente')+'</span></div>'
+          +'<a href="https://wa.me/'+tel+'?text='+encodeURIComponent(msg)+'" target="_blank" style="padding:6px 12px;background:#d97706;color:white;border-radius:6px;font-size:0.75rem;font-weight:600;text-decoration:none;white-space:nowrap">💬 Relancer</a>'
+          +'</div>';
+      }).join('');
+    }
+  }
+}
+
 async function loadStatsVisites(){
   try{
     var res = await fetch(SURL+'/rest/v1/visites?select=entreprise_id&order=created_at.desc',{
