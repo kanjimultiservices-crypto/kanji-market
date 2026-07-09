@@ -79,7 +79,7 @@ img{max-width:100%}
 .hero-stat-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:12px 20px;text-align:center}
 .hero-inner{max-width:1280px;margin:0 auto}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.5);color:#f0d060;padding:5px 14px;border-radius:20px;font-size:0.72rem;font-weight:600;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.5px}
-.hero h1{font-family:'Playfair Display',serif;font-weight:900;font-size:2.2rem;color:white;margin-bottom:10px;line-height:1.3}
+.hero h1{font-family:'Playfair Display',serif;font-weight:900;font-size:2.4rem;color:white;margin-bottom:10px;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
 .hero h1 span{color:#fbbf24}
 .hero p{font-size:0.9rem;color:rgba(255,255,255,0.7);margin-bottom:28px}
 .hero-search-big{display:flex;max-width:700px;height:54px;border-radius:8px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.3)}
@@ -113,7 +113,7 @@ img{max-width:100%}
 .results-count{font-size:0.78rem;color:var(--gy)}
 
 /* ===== ENTREPRISES GRID ===== */
-.ent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.ent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
 .ent-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(74,14,143,0.08);transition:all 0.3s cubic-bezier(0.4,0,0.2,1);cursor:pointer;border:1px solid #f0f0f0;position:relative;animation:fadeInUp 0.5s ease forwards}
 .ent-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(74,14,143,0.18);border-color:var(--gold)}
 .ent-card:hover .ent-name{color:var(--bl)}
@@ -123,7 +123,7 @@ img{max-width:100%}
 .badge-premium{background:var(--gold);color:white}
 .badge-new{background:var(--gr);color:white}
 .badge-verified{background:var(--bl);color:white}
-.ent-body{padding:12px}
+.ent-body{padding:14px}
 .ent-cat{font-size:0.65rem;font-weight:700;color:var(--or);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
 .ent-name{font-weight:800;font-size:0.95rem;color:#222;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Poppins',sans-serif;transition:color 0.2s}
 .ent-desc{font-size:0.75rem;color:var(--gy);line-height:1.5;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -299,6 +299,7 @@ img{max-width:100%}
   .footer-top{grid-template-columns:1fr 1fr}
   .header-search select{display:none}
 }
+#banner-slider::-webkit-scrollbar{display:none}
 @media(max-width:640px){
   .hero{padding:40px 16px}
   .hero h1{font-size:1.6rem;line-height:1.3}
@@ -572,13 +573,53 @@ img{max-width:100%}
     </div>
   </div>
 
+  <!-- SLIDER BANNIÈRES -->
+  <div style="background:white;padding:16px 0;border-bottom:1px solid #f0f0f0">
+    <div style="max-width:1280px;margin:0 auto;padding:0 20px">
+      <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none" id="banner-slider">
+        <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#4a0e8f,#7c3aed);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="openModal('modalInscription')">
+          <div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Offre spéciale</div>
+            <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:white;margin-bottom:6px">1 mois GRATUIT !</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.8)">Inscrivez votre entreprise maintenant</div>
+          </div>
+          <div style="font-size:3rem;margin-left:auto">🎁</div>
+        </div>
+        <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#C9A84C,#e8c96a);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="goPage('garde')">
+          <div>
+            <div style="font-size:0.65rem;color:rgba(0,0,0,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Service 24h/24</div>
+            <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:#2d1b69;margin-bottom:6px">Pharmacie de garde</div>
+            <div style="font-size:0.72rem;color:rgba(0,0,0,0.6)">Trouvez la pharmacie ouverte</div>
+          </div>
+          <div style="font-size:3rem;margin-left:auto">💊</div>
+        </div>
+        <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#16a34a,#15803d);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="openModal('modalPaiement')">
+          <div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Abonnement annuel</div>
+            <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:white;margin-bottom:6px">50 000 F / 1 an</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.8)">Meilleure offre disponible</div>
+          </div>
+          <div style="font-size:3rem;margin-left:auto">⭐</div>
+        </div>
+        <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#0369a1);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="window.open('https://www.facebook.com/share/1DtfnqHmqx/','_blank')">
+          <div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Suivez-nous</div>
+            <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:white;margin-bottom:6px">LBI sur Facebook</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.8)">Actualités et offres exclusives</div>
+          </div>
+          <div style="font-size:3rem;margin-left:auto">📘</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- MAIN -->
   <div class="main-layout">
     <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="sidebar-card">
         <div class="sidebar-title">📂 Catégories</div>
-        <div class="sidebar-item active" onclick="setSidebarCat('',this)">🏠 Toutes les entreprises</div>
+        <div class="sidebar-item active" onclick="setSidebarCat('',this)" style="font-weight:700">🏠 Toutes les entreprises <span id="count-total" class="sidebar-count">0</span></div>
         <div class="sidebar-item" onclick="setSidebarCat('Commerce & Boutique',this)">🛒 Commerce & Boutique</div>
         <div class="sidebar-item" onclick="setSidebarCat('Restaurant & Alimentation',this)">🍽️ Restaurant</div>
         <div class="sidebar-item" onclick="setSidebarCat('Hôtels & Résidences',this)">🏨 Hôtels</div>
@@ -1165,8 +1206,11 @@ async function loadData(){
 }
 
 function updateTotal(){
+  var total = DB.entreprises.filter(function(e){return e.statut!=='expire';}).length;
   var el = document.getElementById('stat-total');
-  if(el) el.textContent = DB.entreprises.filter(function(e){return e.statut!=='expire';}).length;
+  if(el) el.textContent = total;
+  var ct = document.getElementById('count-total');
+  if(ct) ct.textContent = total;
 }
 
 // ===== PAGES =====
@@ -1286,8 +1330,10 @@ function renderCard(e){
   var initials = (e.nom||'?').substring(0,2).toUpperCase();
   var badge = '';
   if(e.featured==='premium') badge='<div class="ent-badge badge-premium">⭐ Premium</div>';
-  else if(e.featured==='new') badge='<div class="ent-badge badge-new">🆕 Nouveau</div>';
+  else if(e.featured==='new') badge='<div class="ent-badge badge-new">✨ Nouveau</div>';
   else if(e.featured==='verified') badge='<div class="ent-badge badge-verified">✅ Vérifié</div>';
+  // Badge abonnement annuel
+  if(e.abonnement==='1an' && !badge) badge='<div class="ent-badge badge-premium">👑 Annuel</div>';
   var tel = (e.telephone||'').replace(/\s/g,'');
   var imgHtml = e.photo
     ? '<div style="position:relative"><img src="'+e.photo+'" style="width:100%;height:140px;object-fit:cover">'+badge+'</div>'
