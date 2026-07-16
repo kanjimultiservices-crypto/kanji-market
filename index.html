@@ -16,10 +16,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bl:#4a0e8f;--or:#C9A84C;--gy:#6b7280;--wh:#fff;--bg:#f8f5ff;
-  --gr:#10b981;--rd:#ef4444;--gold:#C9A84C;--violet:#6d28d9;--dark:#2d1b69;
-  --shadow:0 2px 8px rgba(74,14,143,0.10);
-  --shadow-lg:0 8px 32px rgba(74,14,143,0.18);
+  --bl:#3730a3;--or:#C9A84C;--gy:#6b7280;--wh:#fff;--bg:#f8f5ff;
+  --gr:#10b981;--rd:#ef4444;--gold:#C9A84C;--violet:#4338ca;--dark:#1e1b4b;
+  --shadow:0 2px 8px rgba(55,48,163,0.10);
+  --shadow-lg:0 8px 32px rgba(55,48,163,0.18);
   --radius:8px;
 }
 /* ANIMATIONS */
@@ -73,7 +73,7 @@ img{max-width:100%}
 .nav-cat:hover,.nav-cat.active{color:var(--gold);border-bottom-color:var(--gold)}
 
 /* ===== HERO ===== */
-.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--bl) 50%,var(--violet) 100%);padding:60px 20px;position:relative;overflow:hidden}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--bl) 50%,#4f46e5 100%);padding:60px 20px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
 .hero::after{content:'🌸';position:absolute;right:3%;top:50%;transform:translateY(-50%);font-size:10rem;opacity:0.08;pointer-events:none;animation:float 4s ease-in-out infinite}
 .hero-stats-wrap{display:flex;gap:24px;margin-top:28px;flex-wrap:wrap}
@@ -98,7 +98,7 @@ img{max-width:100%}
 .sidebar-card{background:white;border-radius:var(--radius);padding:0;margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden}
 .sidebar-title{padding:12px 16px;font-size:0.82rem;font-weight:700;color:var(--bl);border-bottom:1px solid #f3f4f6;background:#f8f9ff}
 .sidebar-item{padding:10px 16px;font-size:0.8rem;color:#374151;cursor:pointer;display:flex;align-items:center;gap:8px;border-bottom:1px solid #f9fafb;transition:background 0.2s}
-.sidebar-item:hover,.sidebar-item.active{background:#f5f0ff;color:var(--bl)}
+.sidebar-item:hover,.sidebar-item.active{background:#eef2ff;color:var(--bl)}
 .sidebar-item:last-child{border-bottom:none}
 .sidebar-count{margin-left:auto;font-size:0.68rem;color:var(--gy);background:#f3f4f6;padding:2px 8px;border-radius:10px}
 
@@ -115,8 +115,8 @@ img{max-width:100%}
 
 /* ===== ENTREPRISES GRID ===== */
 .ent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
-.ent-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(74,14,143,0.08);transition:all 0.3s cubic-bezier(0.4,0,0.2,1);cursor:pointer;border:1px solid #f0f0f0;position:relative;animation:fadeInUp 0.5s ease forwards}
-.ent-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(74,14,143,0.18);border-color:var(--gold)}
+.ent-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(55,48,163,0.08);transition:all 0.3s cubic-bezier(0.4,0,0.2,1);cursor:pointer;border:1px solid #f0f0f0;position:relative;animation:fadeInUp 0.5s ease forwards}
+.ent-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(55,48,163,0.18);border-color:var(--gold)}
 .ent-card:hover .ent-name{color:var(--bl)}
 .ent-img{width:100%;height:140px;object-fit:cover;background:linear-gradient(135deg,#e8f0fe,#dde8fd);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--bl);position:relative}
 .ent-initials{width:100%;height:140px;background:linear-gradient(135deg,var(--dark),var(--bl));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:2.5rem;color:rgba(255,255,255,0.9)}
@@ -132,11 +132,11 @@ img{max-width:100%}
 .ent-footer{display:flex;gap:6px;padding-top:10px;border-top:1px solid #f3f4f6}
 .btn-wa{flex:1;padding:8px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;border-radius:6px;font-size:0.72rem;font-weight:700;text-align:center;display:block;transition:all 0.2s;letter-spacing:0.3px}
 .btn-wa:hover{transform:scale(1.02);box-shadow:0 4px 12px rgba(37,211,102,0.3)}
-.btn-voir{flex:1;padding:8px;background:#f5f0ff;color:var(--bl);border-radius:6px;font-size:0.72rem;font-weight:700;text-align:center;cursor:pointer;transition:all 0.2s}
-.btn-voir:hover{background:#e9d5ff}
+.btn-voir{flex:1;padding:8px;background:#eef2ff;color:var(--bl);border-radius:6px;font-size:0.72rem;font-weight:700;text-align:center;cursor:pointer;transition:all 0.2s}
+.btn-voir:hover{background:#c7d2fe}
 
 /* ===== CTA SECTION ===== */
-.cta-section{background:linear-gradient(135deg,var(--bl),var(--violet));padding:48px 20px;text-align:center;margin-top:40px}
+.cta-section{background:linear-gradient(135deg,var(--bl),#4f46e5);padding:48px 20px;text-align:center;margin-top:40px}
 .cta-inner{max-width:600px;margin:0 auto}
 .cta-section h2{font-family:'Playfair Display',serif;font-weight:900;font-size:1.8rem;color:white;margin-bottom:10px}
 .cta-section p{color:rgba(255,255,255,0.9);font-size:0.88rem;margin-bottom:20px;line-height:1.6}
@@ -164,18 +164,18 @@ img{max-width:100%}
 /* ===== ADMIN ===== */
 .admin-wrap{background:white;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);margin-bottom:20px}
 .admin-stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:24px}
-.admin-stat-card{background:#f5f0ff;border-radius:8px;padding:16px;text-align:center;border:1px solid #e9d5ff}
+.admin-stat-card{background:#eef2ff;border-radius:8px;padding:16px;text-align:center;border:1px solid #c7d2fe}
 .admin-stat-card .val{font-family:'Playfair Display',serif;font-weight:900;font-size:1.8rem;color:var(--bl)}
 .admin-stat-card .lab{font-size:0.7rem;color:var(--gy);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
 .admin-table{width:100%;border-collapse:collapse;font-size:0.8rem}
-.admin-table th{text-align:left;padding:10px 12px;background:#f5f0ff;color:var(--gy);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:2px solid #e8f0fe}
+.admin-table th{text-align:left;padding:10px 12px;background:#eef2ff;color:var(--gy);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:2px solid #e8f0fe}
 .admin-table td{padding:12px;border-bottom:1px solid #f3f4f6;color:#374151;vertical-align:middle}
 .admin-table tr:hover td{background:#fafafa}
 .badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:0.65rem;font-weight:700;text-transform:uppercase}
 .badge-active{background:#d1fae5;color:#065f46}
 .badge-trial{background:#fef3c7;color:#92400e}
 .badge-expired{background:#fee2e2;color:#991b1b}
-.badge-pending{background:#ede9fe;color:#4c1d95}
+.badge-pending{background:#e0e7ff;color:#4c1d95}
 
 /* ===== TABS ===== */
 .tabs{display:flex;gap:0;border-bottom:2px solid #e5e7eb;margin-bottom:20px}
@@ -206,12 +206,12 @@ img{max-width:100%}
 
 /* ===== PRODUITS ===== */
 .produits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-top:16px}
-.produit-card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(74,14,143,0.08);border:1px solid #f0f0f0;transition:all 0.3s;cursor:pointer}
-.produit-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(74,14,143,0.15);border-color:var(--gold)}
-.produit-img-wrap{position:relative;width:100%;height:160px;overflow:hidden;background:linear-gradient(135deg,#f5f0ff,#ede9fe)}
+.produit-card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(55,48,163,0.08);border:1px solid #f0f0f0;transition:all 0.3s;cursor:pointer}
+.produit-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(55,48,163,0.15);border-color:var(--gold)}
+.produit-img-wrap{position:relative;width:100%;height:160px;overflow:hidden;background:linear-gradient(135deg,#eef2ff,#e0e7ff)}
 .produit-img-wrap img{width:100%;height:160px;object-fit:cover;transition:transform 0.3s}
 .produit-card:hover .produit-img-wrap img{transform:scale(1.05)}
-.produit-img-placeholder{width:100%;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:linear-gradient(135deg,#f5f0ff,#ede9fe)}
+.produit-img-placeholder{width:100%;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:linear-gradient(135deg,#eef2ff,#e0e7ff)}
 .produit-body{padding:12px}
 .produit-nom{font-weight:800;font-size:0.85rem;color:#222;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.4;font-family:'Poppins',sans-serif}
 .produit-desc{font-size:0.72rem;color:var(--gy);margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.4}
@@ -221,12 +221,12 @@ img{max-width:100%}
 /* MENU DEROULANT CATEGORIES */
 /* MEGA MENU ALIBABA STYLE */
 .mega-menu-btn{background:linear-gradient(135deg,var(--dark),var(--bl));color:white;padding:10px 20px;font-size:0.85rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;border:none;font-family:'Poppins',sans-serif;white-space:nowrap}
-.mega-menu-btn:hover{background:linear-gradient(135deg,var(--bl),var(--violet))}
+.mega-menu-btn:hover{background:linear-gradient(135deg,var(--bl),#4f46e5)}
 .mega-menu-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:299}
 .mega-menu-overlay.open{display:block}
 .mega-menu{display:none;position:absolute;top:100%;left:0;width:100%;background:white;box-shadow:0 8px 32px rgba(0,0,0,0.2);z-index:300;border-top:3px solid var(--or)}
 .mega-menu.open{display:flex}
-.mega-left{width:220px;background:#f8f5ff;border-right:1px solid #e9d5ff;flex-shrink:0}
+.mega-left{width:220px;background:#f8f5ff;border-right:1px solid #c7d2fe;flex-shrink:0}
 .mega-left-item{padding:12px 16px;font-size:0.82rem;color:#374151;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;transition:all 0.2s;border-left:3px solid transparent}
 .mega-left-item:hover,.mega-left-item.active{background:white;color:var(--bl);border-left-color:var(--or);font-weight:600}
 .mega-left-icon{font-size:1.1rem}
@@ -235,7 +235,7 @@ img{max-width:100%}
 .mega-right-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:var(--bl);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
 .mega-right-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .mega-sub-item{padding:10px 14px;background:#f8f5ff;border-radius:8px;font-size:0.78rem;color:#374151;cursor:pointer;transition:all 0.2s;border:1px solid transparent;display:flex;align-items:center;gap:8px}
-.mega-sub-item:hover{background:#ede9fe;color:var(--bl);border-color:var(--or);transform:translateY(-1px)}
+.mega-sub-item:hover{background:#e0e7ff;color:var(--bl);border-color:var(--or);transform:translateY(-1px)}
 
 /* PHARMACIE DE GARDE */
 .garde-section{background:linear-gradient(135deg,#16a34a,#15803d);padding:24px 20px;margin-bottom:0}
@@ -535,7 +535,10 @@ img{max-width:100%}
   <!-- PHARMACIE DE GARDE -->
   <div class="garde-section">
     <div class="garde-inner">
-      <div class="garde-title">💊 Pharmacie de Garde <span class="garde-badge">EN DIRECT</span></div>
+      <div class="garde-title" style="display:flex;align-items:center;gap:10px">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32" style="flex-shrink:0"><rect width="100" height="100" rx="12" fill="white"/><rect x="38" y="15" width="24" height="70" rx="6" fill="#16a34a"/><rect x="15" y="38" width="70" height="24" rx="6" fill="#16a34a"/></svg>
+        Pharmacie de Garde <span class="garde-badge">EN DIRECT</span>
+      </div>
       <div class="garde-sub" id="garde-date">Aujourd'hui — Abengourou</div>
       <div id="garde-content">
         <div class="garde-empty">⏳ Chargement...</div>
@@ -578,7 +581,7 @@ img{max-width:100%}
   <div style="background:white;padding:16px 0;border-bottom:1px solid #f0f0f0">
     <div style="max-width:1280px;margin:0 auto;padding:0 20px">
       <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none" id="banner-slider">
-        <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#4a0e8f,#7c3aed);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="openModal('modalInscription')">
+        <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#3730a3,#4f46e5);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="openModal('modalInscription')">
           <div>
             <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Offre spéciale</div>
             <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:white;margin-bottom:6px">1 mois GRATUIT !</div>
@@ -589,7 +592,7 @@ img{max-width:100%}
         <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#C9A84C,#e8c96a);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="goPage('garde')">
           <div>
             <div style="font-size:0.65rem;color:rgba(0,0,0,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Service 24h/24</div>
-            <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:#2d1b69;margin-bottom:6px">Pharmacie de garde</div>
+            <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:#1e1b4b;margin-bottom:6px">Pharmacie de garde</div>
             <div style="font-size:0.72rem;color:rgba(0,0,0,0.6)">Trouvez la pharmacie ouverte</div>
           </div>
           <div style="font-size:3rem;margin-left:auto">💊</div>
@@ -688,7 +691,7 @@ img{max-width:100%}
           <div style="font-weight:700;color:var(--bl);margin-bottom:8px;font-size:0.95rem">Contact direct WhatsApp</div>
           <div style="font-size:0.82rem;color:var(--gy);line-height:1.6">Vos clients vous contactent directement sur WhatsApp en un clic. Pas d'intermédiaire !</div>
         </div>
-        <div style="background:#f8f5ff;border-radius:12px;padding:24px;border-left:4px solid #7c3aed">
+        <div style="background:#f8f5ff;border-radius:12px;padding:24px;border-left:4px solid #4f46e5">
           <div style="font-size:2rem;margin-bottom:12px">📊</div>
           <div style="font-weight:700;color:var(--bl);margin-bottom:8px;font-size:0.95rem">Statistiques de visites</div>
           <div style="font-size:0.82rem;color:var(--gy);line-height:1.6">Suivez combien de personnes visitent votre profil chaque jour. Mesurez votre popularité !</div>
@@ -790,7 +793,7 @@ img{max-width:100%}
         <div class="admin-stat-card"><div class="val" id="a-revenus" style="font-size:1.1rem;filter:blur(5px)">••••</div><div class="lab">FCFA/mois</div></div>
         <div class="admin-stat-card" style="background:#fff0f0"><div class="val" id="a-expire-soon" style="color:#dc2626">0</div><div class="lab">Expirent bientôt</div></div>
         <div class="admin-stat-card" style="background:#f0fff4"><div class="val" id="a-cette-semaine" style="color:#16a34a">0</div><div class="lab">Cette semaine</div></div>
-        <div class="admin-stat-card" style="background:#f5f0ff"><div class="val" id="a-conversion" style="color:#7c3aed">0%</div><div class="lab">Taux conversion</div></div>
+        <div class="admin-stat-card" style="background:#eef2ff"><div class="val" id="a-conversion" style="color:#4f46e5">0%</div><div class="lab">Taux conversion</div></div>
       </div>
       
       <!-- GRAPHIQUES -->
@@ -1094,7 +1097,7 @@ img{max-width:100%}
       <button class="modal-close" onclick="closeModal('modalPaiement')">✕</button>
     </div>
     <div class="modal-body">
-      <div style="background:#f5f0ff;border-radius:10px;padding:16px;margin-bottom:20px">
+      <div style="background:#eef2ff;border-radius:10px;padding:16px;margin-bottom:20px">
         <div style="font-weight:700;color:var(--bl);margin-bottom:12px">Choisissez votre formule :</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
           <div id="plan-1mois" onclick="selectPlan('1mois')" style="padding:12px;border:2px solid var(--bl);border-radius:8px;cursor:pointer;text-align:center;background:var(--bl);color:white">
@@ -1530,7 +1533,7 @@ function renderAdminTable(){
       +'<button data-id="'+e.id+'" data-plan="1mois" onclick="renouvelerBtn(this)" style="background:#16a34a;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="1 mois">+30j</button>'
       +'<button data-id="'+e.id+'" data-plan="3mois" onclick="renouvelerBtn(this)" style="background:#0284c7;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="3 mois">+90j</button>'
       +'<button data-id="'+e.id+'" data-plan="6mois" onclick="renouvelerBtn(this)" style="background:#d97706;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="6 mois">+180j</button>'
-      +'<button data-id="'+e.id+'" data-plan="1an" onclick="renouvelerBtn(this)" style="background:#7c3aed;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="1 an">+1an</button>'
+      +'<button data-id="'+e.id+'" data-plan="1an" onclick="renouvelerBtn(this)" style="background:#4f46e5;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="1 an">+1an</button>'
       +'<button onclick="delEnt('+e.id+')" style="background:#fee2e2;color:#991b1b;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer">🗑️</button>'
       +'</td>'
       +'</tr>';
@@ -1604,7 +1607,7 @@ function renderCharts(){
         labels: Object.keys(cats),
         datasets: [{
           data: Object.values(cats),
-          backgroundColor: ['#4a0e8f','#C9A84C','#16a34a','#0284c7','#dc2626','#7c3aed','#d97706','#0891b2','#be185d','#065f46'],
+          backgroundColor: ['#3730a3','#C9A84C','#16a34a','#0284c7','#dc2626','#4f46e5','#d97706','#0891b2','#be185d','#065f46'],
           borderWidth: 2,
           borderColor: '#fff'
         }]
@@ -1640,7 +1643,7 @@ function renderCharts(){
         datasets: [{
           label: 'Entreprises',
           data: Object.values(abons),
-          backgroundColor: ['#e9d5ff','#16a34a','#0284c7','#d97706','#7c3aed'],
+          backgroundColor: ['#c7d2fe','#16a34a','#0284c7','#d97706','#4f46e5'],
           borderRadius: 6
         }]
       },
@@ -2130,7 +2133,7 @@ function renderGardeAccueil(){
     var msgWa = 'Bonjour '+g.nom+', vous etes la pharmacie de garde ? Je voulais confirmer vos horaires.';
     return '<div class="garde-card">'
       +'<div class="garde-info">'
-      +'<div class="garde-icon">💊</div>'
+      +'<div class="garde-icon" style="background:white;padding:4px"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" width=\"40\" height=\"40\"><rect width=\"100\" height=\"100\" rx=\"12\" fill=\"#16a34a\"/><rect x=\"38\" y=\"15\" width=\"24\" height=\"70\" rx=\"6\" fill=\"white\"/><rect x=\"15\" y=\"38\" width=\"70\" height=\"24\" rx=\"6\" fill=\"white\"/></svg></div>'
       +'<div>'
       +'<div class="garde-nom">'+g.nom+'</div>'
       +'<div class="garde-adresse">📍 '+g.adresse+'</div>'
@@ -2164,7 +2167,7 @@ function renderGardeFull(){
     return '<div style="background:white;border-radius:12px;padding:16px;margin-bottom:12px;border:2px solid '+(isToday?'#16a34a':'#f0f0f0')+';box-shadow:var(--shadow)">'
       +'<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">'
       +'<div style="display:flex;align-items:center;gap:12px">'
-      +'<div style="width:44px;height:44px;background:'+(isToday?'#dcfce7':'#f5f0ff')+';border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem">💊</div>'
+      +'<div style="width:44px;height:44px;background:'+(isToday?'#dcfce7':'#eef2ff')+';border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem">💊</div>'
       +'<div>'
       +'<div style="font-weight:800;font-size:0.95rem;color:#222;font-family:Poppins,sans-serif">'+g.nom+'</div>'
       +'<div style="font-size:0.75rem;color:var(--gy)">📍 '+g.adresse+'</div>'
