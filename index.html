@@ -1,7 +1,2298 @@
-<div class="logo">
-<img src="logo-header.png" alt="Lotus Blanc International" style="width:42px;height:42px;border-radius:8px;object-fit:cover">
-<div class="logo-text">
-<div class="logo-name">LOTUS BLANC INT'L</div>
-<div class="logo-sub">Les meilleures entreprises</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOTUS BLANC INTERNATIONAL – Les meilleures entreprises, au même endroit</title>
+<meta name="description" content="L.B.I - Trouvez les meilleures entreprises, boutiques et services à Abengourou, Côte d'Ivoire.">
+<link rel="manifest" href="manifest.json">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.fedapay.com/checkout.js?v=1.1.7"></script>
+<meta name="theme-color" content="#F7941D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="L.B.I">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bl:#3730a3;--or:#C9A84C;--gy:#6b7280;--wh:#fff;--bg:#f8f5ff;
+  --gr:#10b981;--rd:#ef4444;--gold:#C9A84C;--violet:#4338ca;--dark:#1e1b4b;
+  --shadow:0 2px 8px rgba(55,48,163,0.10);
+  --shadow-lg:0 8px 32px rgba(55,48,163,0.18);
+  --radius:8px;
+}
+/* ANIMATIONS */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.fade-in{animation:fadeInUp 0.6s ease forwards}
+.fade-in-delay{animation:fadeInUp 0.6s ease 0.2s forwards;opacity:0}
+.fade-in-delay2{animation:fadeInUp 0.6s ease 0.4s forwards;opacity:0}
+.float{animation:float 3s ease-in-out infinite}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:#f8f5ff;color:#222;min-height:100vh}
+a{text-decoration:none;color:inherit}
+button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
+img{max-width:100%}
+
+/* ===== TOP BAR ===== */
+.top-bar{background:var(--dark);padding:6px 0;font-size:0.72rem;color:rgba(255,255,255,0.7)}
+.top-bar-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+.top-bar a{color:rgba(255,255,255,0.7);margin-left:16px}
+.top-bar a:hover{color:var(--or)}
+
+/* ===== HEADER ===== */
+.header{background:var(--bl);padding:12px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--gold),#e8c96a);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:13px;color:var(--dark)}
+.logo-text{color:white}
+.logo-name{font-family:'Playfair Display',serif;font-weight:900;font-size:1rem;line-height:1.2}
+.logo-sub{font-size:0.62rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.5px}
+
+/* SEARCH BAR HEADER */
+.header-search{flex:1;display:flex;height:44px;border-radius:6px;overflow:hidden;box-shadow:0 0 0 2px var(--gold)}
+.header-search select{padding:0 12px;border:none;border-right:1px solid #e5e7eb;font-size:0.78rem;color:#374151;background:white;min-width:140px;cursor:pointer;outline:none}
+.header-search input{flex:1;padding:0 16px;border:none;font-size:0.88rem;outline:none;color:#222}
+.header-search button{padding:0 20px;background:linear-gradient(135deg,var(--or),#b8860b);color:white;font-weight:700;font-size:0.88rem;white-space:nowrap;transition:all 0.2s}
+.header-search button:hover{background:linear-gradient(135deg,#b8860b,var(--or));box-shadow:0 4px 12px rgba(201,168,76,0.4)}
+
+.header-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.btn-header{padding:8px 16px;border-radius:6px;font-size:0.78rem;font-weight:600}
+.btn-inscrire{background:var(--or);color:white}
+.btn-inscrire:hover{background:#e07f0a}
+.btn-admin{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2)}
+.btn-admin:hover{background:rgba(255,255,255,0.2)}
+
+/* ===== NAV CATEGORIES ===== */
+.nav-cats{background:#ffffff;border-bottom:2px solid #e0e7ff;padding:0 20px;box-shadow:0 2px 8px rgba(55,48,163,0.06)}
+.nav-cats-inner{max-width:1280px;margin:0 auto;display:flex;gap:0;overflow-x:auto}
+.nav-cat{padding:10px 16px;font-size:0.78rem;font-weight:500;color:#374151;white-space:nowrap;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav-cat:hover,.nav-cat.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--bl) 50%,#4f46e5 100%);padding:60px 20px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero::after{content:'🌸';position:absolute;right:3%;top:50%;transform:translateY(-50%);font-size:10rem;opacity:0.08;pointer-events:none;animation:float 4s ease-in-out infinite}
+.hero-stats-wrap{display:flex;gap:24px;margin-top:28px;flex-wrap:wrap}
+.hero-stat-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:12px 20px;text-align:center}
+.hero-inner{max-width:1280px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.5);color:#f0d060;padding:5px 14px;border-radius:20px;font-size:0.72rem;font-weight:600;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.5px}
+.hero h1{font-family:'Playfair Display',serif;font-weight:900;font-size:2.4rem;color:white;margin-bottom:10px;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.hero h1 span{color:#fbbf24}
+.hero p{font-size:0.9rem;color:rgba(255,255,255,0.7);margin-bottom:28px}
+.hero-search-big{display:flex;max-width:700px;height:54px;border-radius:8px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.3)}
+.hero-search-big select{padding:0 16px;border:none;border-right:1px solid #e5e7eb;font-size:0.85rem;color:#374151;background:white;min-width:160px;cursor:pointer;outline:none}
+.hero-search-big input{flex:1;padding:0 20px;border:none;font-size:0.95rem;outline:none;color:#222}
+.hero-search-big button{padding:0 28px;background:var(--or);color:white;font-weight:700;font-size:0.95rem}
+.hero-search-big button:hover{background:#e07f0a}
+.hero-stats{display:flex;gap:32px;margin-top:24px;flex-wrap:wrap}
+.hero-stat .num{font-family:'Playfair Display',serif;font-weight:900;font-size:1.6rem;color:white}
+.hero-stat .lab{font-size:0.72rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.5px}
+
+/* ===== LAYOUT ===== */
+.main-layout{max-width:1280px;margin:0 auto;padding:24px 20px;display:grid;grid-template-columns:200px 1fr;gap:20px}
+.sidebar{flex-shrink:0}
+.sidebar-card{background:#ffffff;border-radius:10px;padding:0;margin-bottom:16px;box-shadow:0 2px 12px rgba(30,27,75,0.08);overflow:hidden;border:1px solid #e8e8f0}
+.sidebar-title{padding:12px 16px;font-size:0.82rem;font-weight:700;color:var(--bl);border-bottom:1px solid #f3f4f6;background:#f8f9ff}
+.sidebar-item{padding:10px 16px;font-size:0.8rem;color:#374151;cursor:pointer;display:flex;align-items:center;gap:8px;border-bottom:1px solid #f9fafb;transition:background 0.2s}
+.sidebar-item:hover,.sidebar-item.active{background:#eef2ff;color:var(--bl)}
+.sidebar-item:last-child{border-bottom:none}
+.sidebar-count{margin-left:auto;font-size:0.68rem;color:var(--gy);background:#f3f4f6;padding:2px 8px;border-radius:10px}
+
+/* ===== CONTENT ===== */
+.content{}
+.content-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.content-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--bl)}
+.filter-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.filter-select{padding:7px 12px;border:1.5px solid #e5e7eb;border-radius:6px;font-size:0.78rem;background:white;color:#374151;outline:none;cursor:pointer}
+.filter-select:focus{border-color:var(--or)}
+.search-inline{padding:7px 12px;border:1.5px solid #e5e7eb;border-radius:6px;font-size:0.78rem;outline:none;min-width:200px}
+.search-inline:focus{border-color:var(--or)}
+.results-count{font-size:0.78rem;color:var(--gy)}
+
+/* ===== ENTREPRISES GRID ===== */
+.ent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.ent-card{background:#ffffff;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(30,27,75,0.08);transition:all 0.3s cubic-bezier(0.4,0,0.2,1);cursor:pointer;border:1px solid #e8e8f0;position:relative;animation:fadeInUp 0.5s ease forwards}
+.ent-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,27,75,0.15);border-color:var(--gold)}
+.ent-card:hover .ent-name{color:var(--bl)}
+.ent-img{width:100%;height:140px;object-fit:cover;background:linear-gradient(135deg,#e8f0fe,#dde8fd);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--bl);position:relative}
+.ent-initials{width:100%;height:140px;background:linear-gradient(135deg,var(--dark),var(--bl));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:2.5rem;color:rgba(255,255,255,0.9)}
+.ent-badge{position:absolute;top:8px;left:8px;padding:3px 10px;border-radius:4px;font-size:0.65rem;font-weight:700;text-transform:uppercase;z-index:1}
+.badge-premium{background:var(--gold);color:white}
+.badge-new{background:var(--gr);color:white}
+.badge-verified{background:var(--bl);color:white}
+.ent-body{padding:14px}
+.ent-cat{font-size:0.65rem;font-weight:700;color:var(--or);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.ent-name{font-weight:800;font-size:0.95rem;color:#222;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Poppins',sans-serif;transition:color 0.2s}
+.ent-desc{font-size:0.75rem;color:var(--gy);line-height:1.5;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ent-loc{font-size:0.72rem;color:var(--gy);display:flex;align-items:center;gap:4px;margin-bottom:10px}
+.ent-footer{display:flex;gap:6px;padding-top:10px;border-top:1px solid #f3f4f6}
+.btn-wa{flex:1;padding:8px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;border-radius:6px;font-size:0.72rem;font-weight:700;text-align:center;display:block;transition:all 0.2s;letter-spacing:0.3px}
+.btn-wa:hover{transform:scale(1.02);box-shadow:0 4px 12px rgba(37,211,102,0.3)}
+.btn-voir{flex:1;padding:8px;background:#eef2ff;color:var(--bl);border-radius:6px;font-size:0.72rem;font-weight:700;text-align:center;cursor:pointer;transition:all 0.2s}
+.btn-voir:hover{background:#c7d2fe}
+
+/* ===== CTA SECTION ===== */
+.cta-section{background:linear-gradient(135deg,var(--bl),#4f46e5);padding:48px 20px;text-align:center;margin-top:40px}
+.cta-inner{max-width:600px;margin:0 auto}
+.cta-section h2{font-family:'Playfair Display',serif;font-weight:900;font-size:1.8rem;color:white;margin-bottom:10px}
+.cta-section p{color:rgba(255,255,255,0.9);font-size:0.88rem;margin-bottom:20px;line-height:1.6}
+.cta-price-box{display:inline-flex;align-items:baseline;gap:6px;background:rgba(255,255,255,0.2);border-radius:10px;padding:10px 24px;margin-bottom:20px}
+.cta-price-box .amount{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:white}
+.cta-price-box .period{font-size:0.82rem;color:rgba(255,255,255,0.8)}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-cta-white{padding:14px 32px;background:white;color:var(--bl);border-radius:8px;font-weight:800;font-size:0.9rem;cursor:pointer;border:none;transition:all 0.3s;font-family:'Poppins',sans-serif}
+.btn-cta-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+.btn-cta-outline{padding:12px 28px;background:rgba(255,255,255,0.15);color:white;border-radius:7px;font-weight:700;font-size:0.88rem;cursor:pointer;border:1px solid rgba(255,255,255,0.4)}
+
+/* ===== NO RESULTS ===== */
+.no-results{text-align:center;padding:60px;background:white;border-radius:var(--radius);box-shadow:var(--shadow)}
+.no-results .nr-icon{font-size:3rem;margin-bottom:12px}
+.no-results .nr-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--bl);margin-bottom:8px}
+
+/* ===== DETAIL ===== */
+.detail-wrap{background:white;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.detail-banner{height:220px;background:linear-gradient(135deg,var(--dark),var(--bl));border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:4rem;color:rgba(255,255,255,0.8);margin-bottom:20px}
+.info-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f3f4f6;font-size:0.85rem}
+.info-row:last-child{border-bottom:none}
+.info-label{color:var(--gy);min-width:110px;font-size:0.78rem;font-weight:500}
+.info-val{color:#222;font-weight:500}
+
+/* ===== ADMIN ===== */
+.admin-wrap{background:white;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);margin-bottom:20px}
+.admin-stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:24px}
+.admin-stat-card{background:#eef2ff;border-radius:8px;padding:16px;text-align:center;border:1px solid #c7d2fe}
+.admin-stat-card .val{font-family:'Playfair Display',serif;font-weight:900;font-size:1.8rem;color:var(--bl)}
+.admin-stat-card .lab{font-size:0.7rem;color:var(--gy);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
+.admin-table{width:100%;border-collapse:collapse;font-size:0.8rem}
+.admin-table th{text-align:left;padding:10px 12px;background:#eef2ff;color:var(--gy);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:2px solid #e8f0fe}
+.admin-table td{padding:12px;border-bottom:1px solid #f3f4f6;color:#374151;vertical-align:middle}
+.admin-table tr:hover td{background:#fafafa}
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:0.65rem;font-weight:700;text-transform:uppercase}
+.badge-active{background:#d1fae5;color:#065f46}
+.badge-trial{background:#fef3c7;color:#92400e}
+.badge-expired{background:#fee2e2;color:#991b1b}
+.badge-pending{background:#e0e7ff;color:#4c1d95}
+
+/* ===== TABS ===== */
+.tabs{display:flex;gap:0;border-bottom:2px solid #e5e7eb;margin-bottom:20px}
+.tab{padding:10px 20px;font-size:0.82rem;font-weight:600;color:var(--gy);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s}
+.tab.active{color:var(--or);border-bottom-color:var(--or)}
+.tab:hover{color:var(--bl)}
+
+/* ===== MODAL ===== */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;display:none;align-items:center;justify-content:center;padding:16px}
+.overlay.show{display:flex}
+.modal{background:white;border-radius:12px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto}
+.modal-head{padding:18px 24px;border-bottom:1px solid #f3f4f6;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:white;z-index:1;border-radius:12px 12px 0 0}
+.modal-head h3{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:var(--bl)}
+.modal-close{width:30px;height:30px;border-radius:6px;background:#f3f4f6;border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.modal-body{padding:20px 24px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:0.78rem;font-weight:600;color:#374151;margin-bottom:5px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:9px 12px;border:1.5px solid #e5e7eb;border-radius:6px;font-family:'Inter',sans-serif;font-size:0.85rem;outline:none;transition:border-color 0.2s;color:#222}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--or)}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-full{grid-column:1/-1}
+.form-actions{display:flex;gap:10px;margin-top:16px}
+.btn-primary{flex:1;padding:11px;background:linear-gradient(135deg,#C9A84C,#b8960a);color:white;border-radius:6px;font-weight:700;font-size:0.88rem;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(201,168,76,0.3)}
+.btn-primary:hover{background:#e07f0a}
+.btn-outline{padding:11px 18px;background:white;color:var(--gy);border:1.5px solid #e5e7eb;border-radius:6px;font-weight:600;font-size:0.88rem;cursor:pointer}
+.btn-outline:hover{background:#f9fafb}
+
+/* ===== PRODUITS ===== */
+.produits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-top:16px}
+.produit-card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(55,48,163,0.08);border:1px solid #f0f0f0;transition:all 0.3s;cursor:pointer}
+.produit-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(55,48,163,0.15);border-color:var(--gold)}
+.produit-img-wrap{position:relative;width:100%;height:160px;overflow:hidden;background:linear-gradient(135deg,#eef2ff,#e0e7ff)}
+.produit-img-wrap img{width:100%;height:160px;object-fit:cover;transition:transform 0.3s}
+.produit-card:hover .produit-img-wrap img{transform:scale(1.05)}
+.produit-img-placeholder{width:100%;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:linear-gradient(135deg,#eef2ff,#e0e7ff)}
+.produit-body{padding:12px}
+.produit-nom{font-weight:800;font-size:0.85rem;color:#222;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.4;font-family:'Poppins',sans-serif}
+.produit-desc{font-size:0.72rem;color:var(--gy);margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.4}
+.produit-prix{font-family:'Poppins',sans-serif;font-weight:900;font-size:1rem;color:#e44d26;margin-bottom:4px}
+.produit-badge{display:inline-flex;align-items:center;gap:4px;background:#f0fdf4;color:#065f46;font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:6px}
+
+/* MENU DEROULANT CATEGORIES */
+/* MEGA MENU ALIBABA STYLE */
+.mega-menu-btn{background:linear-gradient(135deg,var(--dark),var(--bl));color:white;padding:10px 20px;font-size:0.85rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;border:none;font-family:'Poppins',sans-serif;white-space:nowrap}
+.mega-menu-btn:hover{background:linear-gradient(135deg,var(--bl),#4f46e5)}
+.mega-menu-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:299}
+.mega-menu-overlay.open{display:block}
+.mega-menu{display:none;position:absolute;top:100%;left:0;width:100%;background:white;box-shadow:0 8px 32px rgba(0,0,0,0.2);z-index:300;border-top:3px solid var(--or)}
+.mega-menu.open{display:flex}
+.mega-left{width:220px;background:#f8f5ff;border-right:1px solid #c7d2fe;flex-shrink:0}
+.mega-left-item{padding:12px 16px;font-size:0.82rem;color:#374151;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;transition:all 0.2s;border-left:3px solid transparent}
+.mega-left-item:hover,.mega-left-item.active{background:white;color:var(--bl);border-left-color:var(--or);font-weight:600}
+.mega-left-icon{font-size:1.1rem}
+.mega-right{flex:1;padding:20px 24px;display:none;max-height:400px;overflow-y:auto}
+.mega-right.active{display:block}
+.mega-right-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:var(--bl);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+.mega-right-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mega-sub-item{padding:10px 14px;background:#f8f5ff;border-radius:8px;font-size:0.78rem;color:#374151;cursor:pointer;transition:all 0.2s;border:1px solid transparent;display:flex;align-items:center;gap:8px}
+.mega-sub-item:hover{background:#e0e7ff;color:var(--bl);border-color:var(--or);transform:translateY(-1px)}
+
+/* PHARMACIE DE GARDE */
+.garde-section{background:linear-gradient(135deg,#16a34a,#15803d);padding:24px 20px;margin-bottom:0}
+.garde-inner{max-width:1280px;margin:0 auto}
+.garde-title{font-family:'Playfair Display',serif;font-weight:900;font-size:1.3rem;color:white;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.garde-sub{font-size:0.82rem;color:rgba(255,255,255,0.8);margin-bottom:16px}
+.garde-card{background:white;border-radius:12px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+.garde-info{display:flex;align-items:center;gap:14px}
+.garde-icon{width:50px;height:50px;background:#fee2e2;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0}
+.garde-nom{font-weight:800;font-size:1rem;color:#222;font-family:'Poppins',sans-serif}
+.garde-adresse{font-size:0.78rem;color:var(--gy);margin-top:2px}
+.garde-horaire{font-size:0.75rem;color:#dc2626;font-weight:600;margin-top:4px}
+.garde-btns{display:flex;gap:8px}
+.garde-btn-wa{padding:10px 18px;background:#25D366;color:white;border-radius:8px;font-weight:700;font-size:0.82rem;text-decoration:none;display:flex;align-items:center;gap:6px}
+.garde-btn-tel{padding:10px 18px;background:#16a34a;color:white;border-radius:8px;font-weight:700;font-size:0.82rem;text-decoration:none;display:flex;align-items:center;gap:6px}
+.garde-empty{background:rgba(255,255,255,0.15);border-radius:10px;padding:16px;text-align:center;color:rgba(255,255,255,0.8);font-size:0.85rem}
+.garde-badge{background:#16a34a;color:white;padding:3px 10px;border-radius:20px;font-size:0.68rem;font-weight:700;animation:pulse 2s infinite}
+.produit-wa{width:100%;padding:7px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;border:none;border-radius:6px;font-size:0.75rem;font-weight:700;cursor:pointer;margin-top:8px;font-family:'Poppins',sans-serif;transition:all 0.2s}
+.produit-wa:hover{opacity:0.9;transform:scale(1.02)}
+.photo-preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.photo-preview img{width:60px;height:60px;object-fit:cover;border-radius:6px;border:1px solid #e5e7eb}
+.photo-add{width:60px;height:60px;border:2px dashed #e5e7eb;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--gy);cursor:pointer}
+.photo-add:hover{border-color:var(--or);color:var(--or)}
+.section-title-sm{font-weight:700;font-size:0.9rem;color:var(--bl);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+
+/* ===== TOAST ===== */
+.toast{position:fixed;bottom:24px;right:24px;padding:12px 20px;border-radius:8px;font-size:0.82rem;font-weight:600;z-index:999;transform:translateY(100px);opacity:0;transition:all 0.3s;max-width:300px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.ok{background:var(--bl);color:white}
+.toast.err{background:var(--rd);color:white}
+
+/* ===== MOBILE NAV ===== */
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:#0f0e2a;z-index:200;border-top:2px solid rgba(247,148,29,0.4);padding:8px 0 12px}
+.mn-items{display:flex;justify-content:space-around}
+.mn-item{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:rgba(255,255,255,0.5);font-size:0.58rem;font-weight:600;padding:4px 8px;cursor:pointer}
+.mn-item.active,.mn-item:hover{color:var(--or)}
+.mn-ico{font-size:1.2rem}
+
+/* ===== PAGE ===== */
+.page{display:none}
+.page.active{display:block}
+
+/* ===== FOOTER ===== */
+.footer{background:#0f0e2a;padding:40px 20px 20px;margin-top:40px}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
+.footer-brand .brand-name{font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:white;margin-bottom:8px}
+.footer-brand p{font-size:0.78rem;color:rgba(255,255,255,0.5);line-height:1.6}
+.footer-col h4{font-size:0.82rem;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.5px}
+.footer-col a{display:block;font-size:0.78rem;color:rgba(255,255,255,0.5);margin-bottom:8px;cursor:pointer}
+.footer-col a:hover{color:var(--or)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.3)}
+.footer-socials{display:flex;gap:12px}
+.footer-socials a{font-size:1.1rem;color:rgba(255,255,255,0.5)}
+.footer-socials a:hover{color:var(--or)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .main-layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .header-search select{display:none}
+}
+#banner-slider::-webkit-scrollbar{display:none}
+@media(max-width:640px){
+  .hero{padding:40px 16px}
+  .hero h1{font-size:1.6rem;line-height:1.3}
+  .hero p{font-size:0.85rem}
+  .hero-search-big{flex-direction:column;height:auto;border-radius:10px;overflow:hidden}
+  .hero-search-big select,.hero-search-big input{height:48px;border-radius:0;border-bottom:1px solid #e5e7eb}
+  .hero-search-big button{height:48px;border-radius:0;font-size:1rem}
+  .mobile-nav{display:block}
+  .main-layout{padding:16px 12px 90px}
+  .top-bar{display:none}
+  .header-actions .btn-admin{display:none}
+  .footer-top{grid-template-columns:1fr}
+  .ent-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .ent-body{padding:10px}
+  .header-inner{padding:0 12px;gap:10px}
+  .logo-name{font-size:0.85rem}
+  .btn-inscrire{padding:8px 12px;font-size:0.72rem}
+}
+@media(max-width:400px){
+  .ent-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span>🌍 Côte d'Ivoire • La marketplace des entreprises africaines</span>
+    <div>
+      <a href="https://www.facebook.com/share/1DtfnqHmqx/" target="_blank">📘 Facebook</a>
+      <a href="https://www.tiktok.com/@lotus.blanc.inter" target="_blank">🎵 TikTok</a>
+      <a href="https://wa.me/0758219671" target="_blank">💬 WhatsApp</a>
+      <a href="tel:+2250758219671">📞 Appeler</a>
+    </div>
+  </div>
 </div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <img src="logo-header.png" alt="Lotus Blanc International" style="width:42px;height:42px;border-radius:8px;object-fit:cover">
+      <div class="logo-text">
+        <div class="logo-name">LOTUS BLANC INT'L</div>
+        <div class="logo-sub">Les meilleures entreprises</div>
+      </div>
+    </div>
+    <div class="header-search">
+      <select id="h-cat">
+        <option value="">Toutes catégories</option>
+        <option>Commerce & Boutique</option>
+        <option>Restaurant & Alimentation</option>
+        <option>Hôtels & Résidences</option>
+        <option>Services & Artisanat</option>
+        <option>Santé & Beauté</option>
+        <option>Pharmacie & Santé</option>
+        <option>Immobilier & BTP</option>
+        <option>Transport & Logistique</option>
+        <option>Éducation & Formation</option>
+        <option>Technologie</option>
+      </select>
+      <input type="text" id="h-q" placeholder="Rechercher une entreprise, un service...">
+      <button onclick="doSearch()">🔍 Rechercher</button>
+    </div>
+    <div class="header-actions">
+      <button class="btn-header btn-admin" onclick="openAdminLogin()">🔐 Admin</button>
+      <button class="btn-header btn-inscrire" onclick="openModal('modalInscription')">+ Inscrire mon entreprise</button>
+    </div>
+  </div>
+</header>
+
+<!-- NAV CATS -->
+<nav class="nav-cats" style="position:relative">
+  <div class="nav-cats-inner" style="display:flex;align-items:center;gap:0;padding:0">
+    <button class="mega-menu-btn" onclick="toggleMegaMenu()">☰ Toutes les catégories ▾</button>
+    <div class="nav-cat active" onclick="setNavCat('',this)" style="padding:10px 14px">🏠 Tous</div>
+    <div class="nav-cat" onclick="setNavCat('Commerce & Boutique',this)" style="padding:10px 14px">🛒 Commerce</div>
+    <div class="nav-cat" onclick="setNavCat('Restaurant & Alimentation',this)" style="padding:10px 14px">🍽️ Restaurant</div>
+    <div class="nav-cat" onclick="setNavCat('Hôtels & Résidences',this)" style="padding:10px 14px">🏨 Hôtels</div>
+    <div class="nav-cat" onclick="setNavCat('Services & Artisanat',this)" style="padding:10px 14px">🔧 Services</div>
+    <div class="nav-cat" onclick="setNavCat('Santé & Beauté',this)" style="padding:10px 14px">💊 Santé</div>
+    <div class="nav-cat" onclick="setNavCat('Pharmacie & Santé',this)" style="padding:10px 14px">💉 Pharmacie</div>
+    <div class="nav-cat" onclick="setNavCat('Immobilier & BTP',this)" style="padding:10px 14px">🏗️ Immobilier</div>
+    <div class="nav-cat" onclick="setNavCat('Transport & Logistique',this)" style="padding:10px 14px">🚛 Transport</div>
+    <div class="nav-cat" onclick="setNavCat('Éducation & Formation',this)" style="padding:10px 14px">📚 Éducation</div>
+    <div class="nav-cat" onclick="setNavCat('Technologie',this)" style="padding:10px 14px">💻 Tech</div>
+    <div class="nav-cat" onclick="goPage('garde')" style="padding:10px 14px;color:#dc2626;font-weight:700">💊 Garde</div>
+  </div>
+
+  <!-- MEGA MENU -->
+  <div class="mega-menu-overlay" id="megaOverlay" onclick="closeMegaMenu()"></div>
+  <div class="mega-menu" id="megaMenu">
+    <div class="mega-left">
+      <div class="mega-left-item active" onmouseenter="showMegaSub('commerce',this)"><span class="mega-left-icon">🛒</span> Commerce & Boutique <span>›</span></div>
+      <div class="mega-left-item" onmouseenter="showMegaSub('restaurant',this)"><span class="mega-left-icon">🍽️</span> Restaurant & Alimentation <span>›</span></div>
+      <div class="mega-left-item" onmouseenter="showMegaSub('hotel',this)"><span class="mega-left-icon">🏨</span> Hôtels & Résidences <span>›</span></div>
+      <div class="mega-left-item" onmouseenter="showMegaSub('services',this)"><span class="mega-left-icon">🔧</span> Services & Artisanat <span>›</span></div>
+      <div class="mega-left-item" onmouseenter="showMegaSub('sante',this)"><span class="mega-left-icon">💊</span> Santé & Beauté <span>›</span></div>
+      <div class="mega-left-item" onmouseenter="showMegaSub('pharmacie',this)"><span class="mega-left-icon">💉</span> Pharmacie & Santé <span>›</span></div>
+      <div class="mega-left-item" onmouseenter="showMegaSub('immo',this)"><span class="mega-left-icon">🏗️</span> Immobilier & BTP <span>›</span></div>
+      <div class="mega-left-item" onmouseenter="showMegaSub('transport',this)"><span class="mega-left-icon">🚛</span> Transport & Logistique <span>›</span></div>
+      <div class="mega-left-item" onmouseenter="showMegaSub('education',this)"><span class="mega-left-icon">📚</span> Éducation & Formation <span>›</span></div>
+      <div class="mega-left-item" onmouseenter="showMegaSub('tech',this)"><span class="mega-left-icon">💻</span> Technologie <span>›</span></div>
+    </div>
+
+    <div class="mega-right active" id="sub-commerce">
+      <div class="mega-right-title">🛒 Commerce & Boutique</div>
+      <div class="mega-right-grid">
+        <div class="mega-sub-item" onclick="filterMega('Commerce & Boutique','Supermarché & Épicerie')">🛍️ Supermarché & Épicerie</div>
+        <div class="mega-sub-item" onclick="filterMega('Commerce & Boutique','Vêtements & Mode')">👗 Vêtements & Mode</div>
+        <div class="mega-sub-item" onclick="filterMega('Commerce & Boutique','Électronique')">📱 Électronique</div>
+        <div class="mega-sub-item" onclick="filterMega('Commerce & Boutique','Quincaillerie')">🔨 Quincaillerie</div>
+        <div class="mega-sub-item" onclick="filterMega('Commerce & Boutique','Alimentation locale')">🌽 Alimentation locale</div>
+        <div class="mega-sub-item" onclick="filterMega('Commerce & Boutique','Bijoux & Accessoires')">💍 Bijoux & Accessoires</div>
+        <div class="mega-sub-item" onclick="filterMega('Commerce & Boutique','Cosmétiques & Beauté')">💄 Cosmétiques & Beauté</div>
+        <div class="mega-sub-item" onclick="filterMega('Commerce & Boutique','Librairie & Papeterie')">📚 Librairie & Papeterie</div>
+        <div class="mega-sub-item" onclick="filterMega('Commerce & Boutique','Meubles & Décoration')">🛋️ Meubles & Décoration</div>
+      </div>
+    </div>
+
+    <div class="mega-right" id="sub-restaurant">
+      <div class="mega-right-title">🍽️ Restaurant & Alimentation</div>
+      <div class="mega-right-grid">
+        <div class="mega-sub-item" onclick="filterMega('Restaurant & Alimentation','Maquis traditionnel')">🥘 Maquis traditionnel</div>
+        <div class="mega-sub-item" onclick="filterMega('Restaurant & Alimentation','Fast-food & Snack')">🍔 Fast-food & Snack</div>
+        <div class="mega-sub-item" onclick="filterMega('Restaurant & Alimentation','Boulangerie & Pâtisserie')">🥖 Boulangerie & Pâtisserie</div>
+        <div class="mega-sub-item" onclick="filterMega('Restaurant & Alimentation','Café & Boissons')">☕ Café & Boissons</div>
+        <div class="mega-sub-item" onclick="filterMega('Restaurant & Alimentation','Traiteur & Livraison')">🚚 Traiteur & Livraison</div>
+        <div class="mega-sub-item" onclick="filterMega('Restaurant & Alimentation','Restaurant gastronomique')">🍷 Restaurant gastronomique</div>
+      </div>
+    </div>
+
+    <div class="mega-right" id="sub-hotel">
+      <div class="mega-right-title">🏨 Hôtels & Résidences</div>
+      <div class="mega-right-grid">
+        <div class="mega-sub-item" onclick="filterMega('Hôtels & Résidences','Hôtel')">🏨 Hôtel</div>
+        <div class="mega-sub-item" onclick="filterMega('Hôtels & Résidences','Résidence meublée')">🏠 Résidence meublée</div>
+        <div class="mega-sub-item" onclick="filterMega('Hôtels & Résidences','Auberge & Gîte')">🛏️ Auberge & Gîte</div>
+        <div class="mega-sub-item" onclick="filterMega('Hôtels & Résidences','Appartement à louer')">🏢 Appartement à louer</div>
+        <div class="mega-sub-item" onclick="filterMega('Hôtels & Résidences','Villa & Maison de vacances')">🌴 Villa & Maison de vacances</div>
+      </div>
+    </div>
+
+    <div class="mega-right" id="sub-services">
+      <div class="mega-right-title">🔧 Services & Artisanat</div>
+      <div class="mega-right-grid">
+        <div class="mega-sub-item" onclick="filterMega('Services & Artisanat','Coiffure & Barbier')">✂️ Coiffure & Barbier</div>
+        <div class="mega-sub-item" onclick="filterMega('Services & Artisanat','Mécanique & Garage')">🔩 Mécanique & Garage</div>
+        <div class="mega-sub-item" onclick="filterMega('Services & Artisanat','Plomberie & Électricité')">💧 Plomberie & Électricité</div>
+        <div class="mega-sub-item" onclick="filterMega('Services & Artisanat','Couture & Broderie')">🧵 Couture & Broderie</div>
+        <div class="mega-sub-item" onclick="filterMega('Services & Artisanat','Menuiserie & Ferronnerie')">🪵 Menuiserie & Ferronnerie</div>
+        <div class="mega-sub-item" onclick="filterMega('Services & Artisanat','Nettoyage & Entretien')">🧹 Nettoyage & Entretien</div>
+        <div class="mega-sub-item" onclick="filterMega('Services & Artisanat','Photographe & Studio')">📸 Photographe & Studio</div>
+        <div class="mega-sub-item" onclick="filterMega('Services & Artisanat','Sécurité & Gardiennage')">🛡️ Sécurité & Gardiennage</div>
+      </div>
+    </div>
+
+    <div class="mega-right" id="sub-sante">
+      <div class="mega-right-title">💊 Santé & Beauté</div>
+      <div class="mega-right-grid">
+        <div class="mega-sub-item" onclick="filterMega('Santé & Beauté','Clinique & Cabinet médical')">🏥 Clinique & Cabinet médical</div>
+        <div class="mega-sub-item" onclick="filterMega('Santé & Beauté','Salon de beauté & Spa')">💅 Salon de beauté & Spa</div>
+        <div class="mega-sub-item" onclick="filterMega('Santé & Beauté','Opticien')">👓 Opticien</div>
+        <div class="mega-sub-item" onclick="filterMega('Santé & Beauté','Dentiste')">🦷 Dentiste</div>
+        <div class="mega-sub-item" onclick="filterMega('Santé & Beauté','Laboratoire')">🔬 Laboratoire</div>
+        <div class="mega-sub-item" onclick="filterMega('Santé & Beauté','Produits cosmétiques')">🧴 Produits cosmétiques</div>
+      </div>
+    </div>
+
+    <div class="mega-right" id="sub-pharmacie">
+      <div class="mega-right-title">💉 Pharmacie & Santé</div>
+      <div class="mega-right-grid">
+        <div class="mega-sub-item" onclick="filterMega('Pharmacie & Santé','Pharmacie')">💊 Pharmacie</div>
+        <div class="mega-sub-item" onclick="filterMega('Pharmacie & Santé','Parapharmacie')">🧪 Parapharmacie</div>
+        <div class="mega-sub-item" onclick="filterMega('Pharmacie & Santé','Herboristerie')">🌿 Herboristerie</div>
+        <div class="mega-sub-item" onclick="closeMegaMenu();goPage('garde')" style="background:#dcfce7;color:#16a34a;border-color:#dc2626">🔴 Pharmacie de garde</div>
+      </div>
+    </div>
+
+    <div class="mega-right" id="sub-immo">
+      <div class="mega-right-title">🏗️ Immobilier & BTP</div>
+      <div class="mega-right-grid">
+        <div class="mega-sub-item" onclick="filterMega('Immobilier & BTP','Agence immobilière')">🏢 Agence immobilière</div>
+        <div class="mega-sub-item" onclick="filterMega('Immobilier & BTP','Construction & BTP')">🏗️ Construction & BTP</div>
+        <div class="mega-sub-item" onclick="filterMega('Immobilier & BTP','Vente de terrains')">🌍 Vente de terrains</div>
+        <div class="mega-sub-item" onclick="filterMega('Immobilier & BTP','Location de maisons')">🏠 Location de maisons</div>
+        <div class="mega-sub-item" onclick="filterMega('Immobilier & BTP','Architecture & Design')">📐 Architecture & Design</div>
+        <div class="mega-sub-item" onclick="filterMega('Immobilier & BTP','Décoration intérieure')">🛋️ Décoration intérieure</div>
+      </div>
+    </div>
+
+    <div class="mega-right" id="sub-transport">
+      <div class="mega-right-title">🚛 Transport & Logistique</div>
+      <div class="mega-right-grid">
+        <div class="mega-sub-item" onclick="filterMega('Transport & Logistique','Taxi & VTC')">🚕 Taxi & VTC</div>
+        <div class="mega-sub-item" onclick="filterMega('Transport & Logistique','Agence de voyage')">✈️ Agence de voyage</div>
+        <div class="mega-sub-item" onclick="filterMega('Transport & Logistique','Transport de marchandises')">📦 Transport de marchandises</div>
+        <div class="mega-sub-item" onclick="filterMega('Transport & Logistique','Livraison express')">🛵 Livraison express</div>
+        <div class="mega-sub-item" onclick="filterMega('Transport & Logistique','Location de véhicules')">🚗 Location de véhicules</div>
+        <div class="mega-sub-item" onclick="filterMega('Transport & Logistique','Déménagement')">📦 Déménagement</div>
+      </div>
+    </div>
+
+    <div class="mega-right" id="sub-education">
+      <div class="mega-right-title">📚 Éducation & Formation</div>
+      <div class="mega-right-grid">
+        <div class="mega-sub-item" onclick="filterMega('Éducation & Formation','École primaire & Maternelle')">🎒 École primaire & Maternelle</div>
+        <div class="mega-sub-item" onclick="filterMega('Éducation & Formation','Collège & Lycée')">📖 Collège & Lycée</div>
+        <div class="mega-sub-item" onclick="filterMega('Éducation & Formation','Université & Grandes écoles')">🎓 Université & Grandes écoles</div>
+        <div class="mega-sub-item" onclick="filterMega('Éducation & Formation','Cours particuliers')">✏️ Cours particuliers</div>
+        <div class="mega-sub-item" onclick="filterMega('Éducation & Formation','Formation professionnelle')">🛠️ Formation professionnelle</div>
+        <div class="mega-sub-item" onclick="filterMega('Éducation & Formation','Informatique & Langues')">💻 Informatique & Langues</div>
+      </div>
+    </div>
+
+    <div class="mega-right" id="sub-tech">
+      <div class="mega-right-title">💻 Technologie</div>
+      <div class="mega-right-grid">
+        <div class="mega-sub-item" onclick="filterMega('Technologie','Vente & Réparation téléphones')">📱 Vente & Réparation téléphones</div>
+        <div class="mega-sub-item" onclick="filterMega('Technologie','Informatique & Réseaux')">🖥️ Informatique & Réseaux</div>
+        <div class="mega-sub-item" onclick="filterMega('Technologie','Impression & Photocopie')">🖨️ Impression & Photocopie</div>
+        <div class="mega-sub-item" onclick="filterMega('Technologie','Développement web & App')">🌐 Développement web & App</div>
+        <div class="mega-sub-item" onclick="filterMega('Technologie','Cybercafé & Internet')">📡 Cybercafé & Internet</div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE ACCUEIL -->
+<div class="page active" id="page-accueil">
+  <!-- PHARMACIE DE GARDE -->
+  <div class="garde-section">
+    <div class="garde-inner">
+      <div class="garde-title" style="display:flex;align-items:center;gap:10px">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32" style="flex-shrink:0"><rect width="100" height="100" rx="12" fill="white"/><rect x="38" y="15" width="24" height="70" rx="6" fill="#16a34a"/><rect x="15" y="38" width="70" height="24" rx="6" fill="#16a34a"/></svg>
+        Pharmacie de Garde <span class="garde-badge">EN DIRECT</span>
+      </div>
+      <div class="garde-sub" id="garde-date">Aujourd'hui — Abengourou</div>
+      <div id="garde-content">
+        <div class="garde-empty">⏳ Chargement...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🌸 LOTUS BLANC INTERNATIONAL</div>
+      <h1>Les meilleures entreprises,<br><span>au même endroit</span></h1>
+      <p>Trouvez et contactez les meilleures entreprises partout en Côte d'Ivoire</p>
+      <div class="hero-search-big">
+        <select id="hero-cat">
+          <option value="">Toutes catégories</option>
+          <option>Commerce & Boutique</option>
+          <option>Restaurant & Alimentation</option>
+          <option>Hôtels & Résidences</option>
+          <option>Services & Artisanat</option>
+          <option>Santé & Beauté</option>
+          <option>Pharmacie & Santé</option>
+          <option>Immobilier & BTP</option>
+          <option>Transport & Logistique</option>
+          <option>Éducation & Formation</option>
+          <option>Technologie</option>
+        </select>
+        <input type="text" id="hero-q" placeholder="Rechercher une entreprise, un produit, un service...">
+        <button onclick="doHeroSearch()">Rechercher</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num" id="stat-total">0</div><div class="lab">Entreprises</div></div>
+        <div class="hero-stat"><div class="num">10</div><div class="lab">Catégories</div></div>
+        <div class="hero-stat"><div class="num">🇨🇮</div><div class="lab">Côte d'Ivoire</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDER BANNIÈRES -->
+  <div style="background:white;padding:16px 0;border-bottom:1px solid #f0f0f0">
+    <div style="max-width:1280px;margin:0 auto;padding:0 20px">
+      <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none" id="banner-slider">
+        <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#3730a3,#4f46e5);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="openModal('modalInscription')">
+          <div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Offre spéciale</div>
+            <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:white;margin-bottom:6px">1 mois GRATUIT !</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.8)">Inscrivez votre entreprise maintenant</div>
+          </div>
+          <div style="font-size:3rem;margin-left:auto">🎁</div>
+        </div>
+        <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#C9A84C,#e8c96a);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="goPage('garde')">
+          <div>
+            <div style="font-size:0.65rem;color:rgba(0,0,0,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Service 24h/24</div>
+            <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:#1e1b4b;margin-bottom:6px">Pharmacie de garde</div>
+            <div style="font-size:0.72rem;color:rgba(0,0,0,0.6)">Trouvez la pharmacie ouverte</div>
+          </div>
+          <div style="font-size:3rem;margin-left:auto">💊</div>
+        </div>
+        <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#16a34a,#15803d);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="openModal('modalPaiement')">
+          <div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Abonnement annuel</div>
+            <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:white;margin-bottom:6px">50 000 F / 1 an</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.8)">Meilleure offre disponible</div>
+          </div>
+          <div style="font-size:3rem;margin-left:auto">⭐</div>
+        </div>
+        <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#0284c7,#0369a1);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="window.open('https://www.facebook.com/share/1DtfnqHmqx/','_blank')">
+          <div>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Suivez-nous</div>
+            <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:white;margin-bottom:6px">LBI sur Facebook</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.8)">Actualités et offres exclusives</div>
+          </div>
+          <div style="font-size:3rem;margin-left:auto">📘</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTRE VILLES MOBILE -->
+  <div style="background:white;padding:10px 16px;border-bottom:1px solid #e8e8f0;overflow-x:auto;display:flex;gap:8px;scrollbar-width:none" id="ville-filter-bar">
+    <button onclick="setSidebarZone('',this)" class="ville-btn active" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #3730a3;background:#3730a3;color:white;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🌍 Toutes</button>
+    <button onclick="setSidebarZone('Abengourou',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">📍 Abengourou</button>
+    <button onclick="setSidebarZone('Abidjan',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🏙️ Abidjan</button>
+    <button onclick="setSidebarZone('Bouaké',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🏘️ Bouaké</button>
+    <button onclick="setSidebarZone('Yamoussoukro',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🏛️ Yamoussoukro</button>
+    <button onclick="setSidebarZone('San-Pédro',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">⚓ San-Pédro</button>
+    <button onclick="setSidebarZone('Daloa',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🌿 Daloa</button>
+    <button onclick="setSidebarZone('Korhogo',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🌾 Korhogo</button>
+    <button onclick="setSidebarZone('Man',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">⛰️ Man</button>
+    <button onclick="setSidebarZone('Gagnoa',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🌱 Gagnoa</button>
+    <button onclick="setSidebarZone('Divo',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🌳 Divo</button>
+  </div>
+  <style>#ville-filter-bar::-webkit-scrollbar{display:none}.ville-btn.active{background:#3730a3!important;color:white!important;border-color:#3730a3!important}</style>
+
+  <!-- MAIN -->
+  <div class="main-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-title">📂 Catégories</div>
+        <div class="sidebar-item active" onclick="setSidebarCat('',this)" style="font-weight:700">🏠 Toutes les entreprises <span id="count-total" class="sidebar-count">0</span></div>
+        <div class="sidebar-item" onclick="setSidebarCat('Commerce & Boutique',this)">🛒 Commerce & Boutique</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Restaurant & Alimentation',this)">🍽️ Restaurant</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Hôtels & Résidences',this)">🏨 Hôtels</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Services & Artisanat',this)">🔧 Services</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Santé & Beauté',this)">💊 Santé & Beauté</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Pharmacie & Santé',this)">💉 Pharmacie</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Immobilier & BTP',this)">🏗️ Immobilier</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Transport & Logistique',this)">🚛 Transport</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Éducation & Formation',this)">📚 Éducation</div>
+        <div class="sidebar-item" onclick="setSidebarCat('Technologie',this)">💻 Technologie</div>
+      </div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">🌍 Villes</div>
+        <div class="sidebar-item active" onclick="setSidebarZone('',this)">Toutes les villes</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Abengourou',this)">📍 Abengourou</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Abidjan',this)">🏙️ Abidjan</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Bouaké',this)">🏘️ Bouaké</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Yamoussoukro',this)">🏛️ Yamoussoukro</div>
+        <div class="sidebar-item" onclick="setSidebarZone('San-Pédro',this)">⚓ San-Pédro</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Daloa',this)">🌿 Daloa</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Korhogo',this)">🌾 Korhogo</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Man',this)">⛰️ Man</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Gagnoa',this)">🌱 Gagnoa</div>
+        <div class="sidebar-item" onclick="setSidebarZone('Divo',this)">🌳 Divo</div>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <div class="content-header">
+        <div class="content-title">Entreprises disponibles</div>
+        <div class="filter-row">
+          <input class="search-inline" id="main-search" placeholder="🔍 Rechercher..." oninput="renderMain()">
+          <select class="filter-select" id="main-sort" onchange="renderMain()">
+            <option value="">Trier par</option>
+            <option value="nom">Nom A-Z</option>
+            <option value="recent">Plus récents</option>
+          </select>
+          <span class="results-count" id="main-count"></span>
+        </div>
+      </div>
+      <div class="ent-grid" id="main-grid"></div>
+    </div>
+  </div>
+
+  <!-- POURQUOI LBI -->
+  <div style="background:white;padding:48px 20px;text-align:center">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="font-size:0.78rem;font-weight:700;color:var(--or);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Pourquoi nous choisir ?</div>
+      <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.8rem;color:var(--bl);margin-bottom:8px">Rejoignez LOTUS BLANC INTERNATIONAL</div>
+      <div style="font-size:0.88rem;color:var(--gy);margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto">La plateforme qui connecte les meilleures entreprises de Côte d'Ivoire avec leurs clients</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px;text-align:left">
+        <div style="background:#f8f5ff;border-radius:12px;padding:24px;border-left:4px solid var(--bl)">
+          <div style="font-size:2rem;margin-bottom:12px">👁️</div>
+          <div style="font-weight:700;color:var(--bl);margin-bottom:8px;font-size:0.95rem">Visibilité maximale</div>
+          <div style="font-size:0.82rem;color:var(--gy);line-height:1.6">Des milliers de clients voient votre entreprise chaque jour sur LBI. Soyez trouvé facilement !</div>
+        </div>
+        <div style="background:#f8f5ff;border-radius:12px;padding:24px;border-left:4px solid var(--or)">
+          <div style="font-size:2rem;margin-bottom:12px">📸</div>
+          <div style="font-weight:700;color:var(--bl);margin-bottom:8px;font-size:0.95rem">Vitrine de produits</div>
+          <div style="font-size:0.82rem;color:var(--gy);line-height:1.6">Ajoutez jusqu'à 5 photos par produit. Montrez ce que vous vendez et attirez plus de clients !</div>
+        </div>
+        <div style="background:#f8f5ff;border-radius:12px;padding:24px;border-left:4px solid var(--gr)">
+          <div style="font-size:2rem;margin-bottom:12px">💬</div>
+          <div style="font-weight:700;color:var(--bl);margin-bottom:8px;font-size:0.95rem">Contact direct WhatsApp</div>
+          <div style="font-size:0.82rem;color:var(--gy);line-height:1.6">Vos clients vous contactent directement sur WhatsApp en un clic. Pas d'intermédiaire !</div>
+        </div>
+        <div style="background:#f8f5ff;border-radius:12px;padding:24px;border-left:4px solid #4f46e5">
+          <div style="font-size:2rem;margin-bottom:12px">📊</div>
+          <div style="font-weight:700;color:var(--bl);margin-bottom:8px;font-size:0.95rem">Statistiques de visites</div>
+          <div style="font-size:0.82rem;color:var(--gy);line-height:1.6">Suivez combien de personnes visitent votre profil chaque jour. Mesurez votre popularité !</div>
+        </div>
+        <div style="background:#f8f5ff;border-radius:12px;padding:24px;border-left:4px solid #ef4444">
+          <div style="font-size:2rem;margin-bottom:12px">🌍</div>
+          <div style="font-weight:700;color:var(--bl);margin-bottom:8px;font-size:0.95rem">Présent partout en CI</div>
+          <div style="font-size:0.82rem;color:var(--gy);line-height:1.6">Abengourou, Abidjan, Bouaké, Yamoussoukro... Votre entreprise visible dans toute la Côte d'Ivoire !</div>
+        </div>
+        <div style="background:#f8f5ff;border-radius:12px;padding:24px;border-left:4px solid var(--or)">
+          <div style="font-size:2rem;margin-bottom:12px">💰</div>
+          <div style="font-weight:700;color:var(--bl);margin-bottom:8px;font-size:0.95rem">Prix accessible</div>
+          <div style="font-size:0.82rem;color:var(--gy);line-height:1.6">À partir de 5 000 FCFA/mois. Formules 3 mois, 6 mois et 1 an disponibles. 1 mois d'essai gratuit !</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-inner">
+      <h2>🌸 Votre entreprise mérite d'être vue</h2>
+      <p>Rejoignez LOTUS BLANC INTERNATIONAL et touchez des milliers de clients à Abengourou et partout en Côte d'Ivoire.</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:700px;margin:0 auto 20px;flex-wrap:wrap">
+        <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(255,255,255,0.2)">
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.7);margin-bottom:4px">1 mois</div>
+          <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.3rem;color:white">5 000 F</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(255,255,255,0.2)">
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.7);margin-bottom:4px">3 mois</div>
+          <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.3rem;color:white">10 000 F</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(255,255,255,0.2)">
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.7);margin-bottom:4px">6 mois</div>
+          <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.3rem;color:white">25 000 F</div>
+        </div>
+        <div style="background:rgba(201,168,76,0.3);border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(201,168,76,0.6);position:relative">
+          <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--or);color:white;font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:10px;white-space:nowrap">MEILLEUR PRIX</div>
+          <div style="font-size:0.72rem;color:#fbbf24;margin-bottom:4px">1 an</div>
+          <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.3rem;color:white">50 000 F</div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:10px 20px;margin-bottom:16px;font-size:0.82rem;color:rgba(255,255,255,0.9)">✅ 1 mois d'essai gratuit • 5 photos par produit • Sans engagement</div>
+      <div class="cta-btns">
+        <button class="btn-cta-white" onclick="openModal('modalInscription')">📝 Inscrire mon entreprise</button>
+        <button class="btn-cta-outline" onclick="openModal('modalPaiement')">💳 Payer mon abonnement</button>
+        <button class="btn-cta-outline" onclick="window.open('https://wa.me/0758219671?text=Bonjour, je veux inscrire mon entreprise sur L.B.I')">💬 WhatsApp</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- PAGE PHARMACIE DE GARDE -->
+<div class="page" id="page-garde">
+  <div style="max-width:1280px;margin:0 auto;padding:20px">
+    <button onclick="goPage('accueil')" style="background:none;border:none;color:var(--gy);font-size:0.82rem;margin-bottom:16px;cursor:pointer">← Retour</button>
+    <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:#16a34a;margin-bottom:6px">💊 Pharmacies de Garde</div>
+    <div style="font-size:0.85rem;color:var(--gy);margin-bottom:24px">Abengourou, Côte d'Ivoire</div>
+    <div id="garde-list-full"></div>
+    <div style="background:#fff8f0;border-radius:12px;padding:20px;margin-top:24px;border-left:4px solid var(--or)">
+      <div style="font-weight:700;color:var(--bl);margin-bottom:8px">📋 Votre pharmacie est de garde ?</div>
+      <p style="font-size:0.82rem;color:var(--gy);margin-bottom:12px">Inscrivez votre pharmacie sur LBI et signalez vos gardes facilement !</p>
+      <button onclick="openModal('modalInscription')" class="btn-primary" style="width:auto;padding:10px 20px">+ Inscrire ma pharmacie</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE DETAIL -->
+<div class="page" id="page-detail">
+  <div style="max-width:1280px;margin:0 auto;padding:20px">
+    <button onclick="goPage('accueil')" style="background:none;border:none;color:var(--gy);font-size:0.82rem;margin-bottom:16px;cursor:pointer;display:flex;align-items:center;gap:6px">← Retour</button>
+    <div id="detail-content"></div>
+  </div>
+</div>
+
+<!-- PAGE ADMIN -->
+<div class="page" id="page-admin">
+  <div style="max-width:1280px;margin:0 auto;padding:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:1.2rem;color:var(--bl)">🔐 Panneau Administrateur</div>
+        <div style="font-size:0.82rem;color:var(--gy)">LOTUS BLANC INTERNATIONAL — Gestion des entreprises</div>
+      </div>
+      <button onclick="lockAdmin()" style="padding:8px 16px;background:#fee2e2;color:#991b1b;border-radius:6px;border:none;font-weight:600;font-size:0.78rem;cursor:pointer">🔒 Verrouiller</button>
+    </div>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('tab-db',this)">📊 Tableau de bord</div>
+      <div class="tab" onclick="switchTab('tab-ent',this)">🏢 Entreprises</div>
+      <div class="tab" onclick="switchTab('tab-rev',this)">💰 Revenus</div>
+      <div class="tab" onclick="switchTab('tab-cfg',this)">⚙️ Paramètres</div>
+      <div class="tab" onclick="switchTab('tab-garde',this)">💊 Gardes</div>
+    </div>
+    <div id="tab-db">
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card"><div class="val" id="a-total">0</div><div class="lab">Total entreprises</div></div>
+        <div class="admin-stat-card"><div class="val" id="a-actives">0</div><div class="lab">Actives</div></div>
+        <div class="admin-stat-card"><div class="val" id="a-essai">0</div><div class="lab">En essai</div></div>
+        <div class="admin-stat-card"><div class="val" id="a-pending">0</div><div class="lab">En attente</div></div>
+        <div class="admin-stat-card"><div class="val" id="a-revenus" style="font-size:1.1rem;filter:blur(5px)">••••</div><div class="lab">FCFA/mois</div></div>
+        <div class="admin-stat-card" style="background:#fff0f0"><div class="val" id="a-expire-soon" style="color:#dc2626">0</div><div class="lab">Expirent bientôt</div></div>
+        <div class="admin-stat-card" style="background:#f0fff4"><div class="val" id="a-cette-semaine" style="color:#16a34a">0</div><div class="lab">Cette semaine</div></div>
+        <div class="admin-stat-card" style="background:#eef2ff"><div class="val" id="a-conversion" style="color:#4f46e5">0%</div><div class="lab">Taux conversion</div></div>
+      </div>
+      
+      <!-- GRAPHIQUES -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div class="admin-wrap" style="padding:16px">
+          <div style="font-weight:600;color:var(--bl);margin-bottom:12px;font-size:0.85rem">📊 Répartition par catégorie</div>
+          <canvas id="chart-categories" height="200"></canvas>
+        </div>
+        <div class="admin-wrap" style="padding:16px">
+          <div style="font-weight:600;color:var(--bl);margin-bottom:12px;font-size:0.85rem">💰 Répartition abonnements</div>
+          <canvas id="chart-abonnements" height="200"></canvas>
+        </div>
+      </div>
+
+      <!-- RAPPORT EXPIRATIONS -->
+      <div class="admin-wrap" style="margin-bottom:16px">
+        <div style="font-weight:600;color:#dc2626;margin-bottom:12px;font-size:0.85rem">⚠️ Abonnements expirant dans 7 jours</div>
+        <div id="rapport-expirations"></div>
+      </div>
+
+      <!-- RAPPORT NON PAYÉS -->
+      <div class="admin-wrap" style="margin-bottom:16px">
+        <div style="font-weight:600;color:#d97706;margin-bottom:12px;font-size:0.85rem">💳 Entreprises en attente de paiement</div>
+        <div id="rapport-pending"></div>
+      </div>
+      <div id="alertes-exp" class="admin-wrap" style="display:none;margin-bottom:16px;border:1px solid #fed7aa">
+        <div style="font-weight:600;color:#f97316;margin-bottom:14px;font-size:0.9rem">⚠️ Abonnements qui expirent bientôt</div>
+      </div>
+      <div class="admin-wrap">
+        <div style="font-weight:600;color:var(--bl);margin-bottom:14px;font-size:0.9rem">📋 Dernières inscriptions</div>
+        <div id="recent-list"></div>
+      </div>
+      <div class="admin-wrap" style="margin-top:16px">
+        <div style="font-weight:600;color:var(--bl);margin-bottom:14px;font-size:0.9rem">📊 Top entreprises les plus vues</div>
+        <div id="stats-visites"><p style="color:var(--gy);font-size:0.82rem">Chargement...</p></div>
+      </div>
+    </div>
+    <div id="tab-ent" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <span style="font-size:0.82rem;color:var(--gy)" id="admin-count-label"></span>
+        <button onclick="openModal('modalAjout')" class="btn-primary" style="width:auto;padding:8px 16px;font-size:0.78rem">+ Ajouter entreprise</button>
+      </div>
+      <div class="admin-wrap" style="padding:0;overflow:auto">
+        <table class="admin-table">
+          <thead><tr><th>#</th><th>Entreprise</th><th>Catégorie</th><th>Téléphone</th><th>Statut</th><th>Abonnement</th><th>Action</th></tr></thead>
+          <tbody id="admin-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="tab-rev" style="display:none">
+      <div class="admin-wrap">
+        <div style="font-weight:600;color:var(--bl);margin-bottom:16px">💰 Revenus mensuels</div>
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card"><div class="val" id="rev-nb">0</div><div class="lab">Abonnés actifs</div></div>
+          <div class="admin-stat-card"><div class="val" id="rev-m" style="font-size:1rem">0 FCFA</div><div class="lab">Revenu mensuel</div></div>
+          <div class="admin-stat-card"><div class="val" id="rev-a" style="font-size:0.9rem">0 FCFA</div><div class="lab">Revenu annuel estimé</div></div>
+        </div>
+      </div>
+    </div>
+    <div id="tab-garde" style="display:none">
+      <div class="admin-wrap">
+        <div style="font-weight:600;color:#dc2626;margin-bottom:16px;font-size:0.9rem">💊 Gérer les pharmacies de garde</div>
+        <div class="form-grid" style="margin-bottom:16px">
+          <div class="form-group"><label>Nom de la pharmacie *</label><input type="text" id="g-nom" placeholder="Ex: Pharmacie centrale"></div>
+          <div class="form-group"><label>Téléphone *</label><input type="tel" id="g-tel" placeholder="+225 07 XX XX XX XX"></div>
+          <div class="form-group"><label>Adresse *</label><input type="text" id="g-adresse" placeholder="Ex: Centre-ville, Abengourou"></div>
+          <div class="form-group"><label>Horaire *</label><input type="text" id="g-horaire" placeholder="Ex: 08h-20h ou 24h/24"></div>
+          <div class="form-group"><label>Jour de garde</label>
+            <select id="g-jour">
+              <option value="Lundi">Lundi</option>
+              <option value="Mardi">Mardi</option>
+              <option value="Mercredi">Mercredi</option>
+              <option value="Jeudi">Jeudi</option>
+              <option value="Vendredi">Vendredi</option>
+              <option value="Samedi">Samedi</option>
+              <option value="Dimanche">Dimanche</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Tous les jours ?</label>
+            <select id="g-permanent">
+              <option value="non">Non — jour spécifique</option>
+              <option value="oui">Oui — tous les jours</option>
+            </select>
+          </div>
+        </div>
+        <button onclick="addGarde()" class="btn-primary" style="width:auto;padding:10px 20px;background:#dc2626">+ Ajouter pharmacie de garde</button>
+        <div style="margin-top:20px">
+          <div style="font-weight:600;color:var(--bl);margin-bottom:12px">Pharmacies configurées :</div>
+          <div id="garde-admin-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-cfg" style="display:none">
+      <div class="admin-wrap">
+        <div style="font-weight:600;color:var(--bl);margin-bottom:14px">⚙️ Changer le mot de passe Admin</div>
+        <div class="form-group"><label>Nouveau mot de passe</label><input type="password" id="new-pwd" placeholder="Nouveau mot de passe"></div>
+        <div class="form-group"><label>Confirmer</label><input type="password" id="confirm-pwd" placeholder="Confirmer"></div>
+        <button onclick="changePwd()" class="btn-primary" style="width:auto;padding:10px 20px">🔒 Mettre à jour</button>
+        <div id="pwd-msg" style="margin-top:10px;font-size:0.82rem"></div>
+      </div>
+      <div class="admin-wrap" style="margin-top:16px">
+        <div style="font-weight:600;color:#991b1b;margin-bottom:14px">⚠️ Zone dangereuse</div>
+        <button onclick="resetAll()" style="padding:10px 20px;background:#fee2e2;color:#991b1b;border-radius:6px;border:none;font-weight:600;font-size:0.82rem;cursor:pointer">🗑️ Effacer toutes les entreprises</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav">
+  <div class="mn-items">
+    <button class="mn-item active" onclick="goPage('accueil',this)"><span class="mn-ico">🏠</span>Accueil</button>
+    <button class="mn-item" onclick="openModal('modalInscription')"><span class="mn-ico">➕</span>Inscrire</button>
+    <button class="mn-item" onclick="openAdminLogin()"><span class="mn-ico">🔐</span>Admin</button>
+  </div>
+</nav>
+
+<!-- MODAL INSCRIPTION -->
+<div class="overlay" id="modalInscription">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>📝 Inscrire mon entreprise</h3>
+      <button class="modal-close" onclick="closeModal('modalInscription')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="background:#f0fdf4;border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:0.78rem;color:#065f46">🎁 <strong>1 mois gratuit</strong> — Ensuite <strong>3 000 FCFA/mois</strong> seulement</div>
+      <div class="form-grid">
+        <div class="form-group form-full"><label>Nom de l'entreprise *</label><input type="text" id="ins-nom" placeholder="Nom de votre entreprise"></div>
+        <div class="form-group"><label>Catégorie *</label>
+          <select id="ins-cat">
+            <option value="">Choisir...</option>
+            <option>Commerce & Boutique</option>
+            <option>Restaurant & Alimentation</option>
+            <option>Hôtels & Résidences</option>
+            <option>Services & Artisanat</option>
+            <option>Santé & Beauté</option>
+            <option>Pharmacie & Santé</option>
+            <option>Immobilier & BTP</option>
+            <option>Transport & Logistique</option>
+            <option>Éducation & Formation</option>
+            <option>Technologie</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Ville *</label>
+          <select id="ins-quartier">
+            <option value="">Choisir votre ville...</option>
+            <option>Abengourou</option>
+            <option>Abidjan</option>
+            <option>Bouaké</option>
+            <option>Yamoussoukro</option>
+            <option>San-Pédro</option>
+            <option>Daloa</option>
+            <option>Korhogo</option>
+            <option>Man</option>
+            <option>Gagnoa</option>
+            <option>Divo</option>
+            <option>Autre ville</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Téléphone / WhatsApp *</label><input type="tel" id="ins-tel" placeholder="+225 07 XX XX XX XX"></div>
+        <div class="form-group"><label>Email</label><input type="email" id="ins-email" placeholder="contact@entreprise.com"></div>
+        <div class="form-group"><label>Responsable *</label><input type="text" id="ins-resp" placeholder="Votre nom complet"></div>
+        <div class="form-group form-full"><label>Type d'abonnement</label>
+          <select id="ins-abonnement">
+            <option value="essai">🎁 Essai gratuit — 1 mois offert</option>
+            <option value="1mois">1 mois — 5 000 FCFA</option>
+            <option value="3mois">3 mois — 10 000 FCFA (3 333 F/mois)</option>
+            <option value="6mois">6 mois — 25 000 FCFA (4 167 F/mois)</option>
+            <option value="1an">1 an — 50 000 FCFA (MEILLEURE OFFRE)</option>
+          </select>
+        </div>
+        <div class="form-group form-full"><label>Description *</label><textarea id="ins-desc" placeholder="Décrivez votre entreprise, vos produits ou services..."></textarea></div>
+      </div>
+      <div class="form-group" style="margin-top:12px">
+        <label>📸 Photo de votre entreprise (logo ou devanture)</label>
+        <div style="margin:8px 0">
+          <label style="padding:10px 20px;background:var(--bl);color:white;border-radius:6px;cursor:pointer;font-size:0.82rem;font-weight:600;display:inline-block">
+            📷 Choisir une photo
+            <input type="file" accept="image/*" style="display:none" onchange="previewEntPhoto(this)">
+          </label>
+          <span style="font-size:0.72rem;color:var(--gy);margin-left:8px">JPG ou PNG — Max 2MB</span>
+        </div>
+        <div id="ent-photo-preview" style="margin-top:8px"></div>
+      </div>
+      <div id="ins-msg" style="font-size:0.78rem;margin-bottom:8px"></div>
+      <div class="form-actions">
+        <button class="btn-primary" onclick="saveInscription()">✔ Envoyer ma demande</button>
+        <button class="btn-outline" onclick="closeModal('modalInscription')">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ADMIN LOGIN -->
+<div class="overlay" id="modalAdminLogin">
+  <div class="modal" style="max-width:360px">
+    <div class="modal-head">
+      <h3>🔐 Accès Administrateur</h3>
+      <button class="modal-close" onclick="closeModal('modalAdminLogin')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label>Mot de passe</label><input type="password" id="admin-pwd-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')submitAdmin()"></div>
+      <div id="admin-err" style="color:#ef4444;font-size:0.78rem;margin-bottom:10px;display:none">❌ Mot de passe incorrect</div>
+      <div class="form-actions"><button class="btn-primary" onclick="submitAdmin()">🔓 Accéder</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL AJOUT ADMIN -->
+<div class="overlay" id="modalAjout">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>➕ Ajouter une entreprise</h3>
+      <button class="modal-close" onclick="closeModal('modalAjout')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group form-full"><label>Nom *</label><input type="text" id="adm-nom" placeholder="Nom de l'entreprise"></div>
+        <div class="form-group"><label>Catégorie *</label>
+          <select id="adm-cat">
+            <option value="">Choisir...</option>
+            <option>Commerce & Boutique</option>
+            <option>Restaurant & Alimentation</option>
+            <option>Hôtels & Résidences</option>
+            <option>Services & Artisanat</option>
+            <option>Santé & Beauté</option>
+            <option>Pharmacie & Santé</option>
+            <option>Immobilier & BTP</option>
+            <option>Transport & Logistique</option>
+            <option>Éducation & Formation</option>
+            <option>Technologie</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Quartier *</label><input type="text" id="adm-quartier" placeholder="Quartier"></div>
+        <div class="form-group"><label>Téléphone *</label><input type="tel" id="adm-tel" placeholder="+225 XX XX XX XX XX"></div>
+        <div class="form-group"><label>Email</label><input type="email" id="adm-email" placeholder="email@entreprise.com"></div>
+        <div class="form-group"><label>Responsable</label><input type="text" id="adm-resp" placeholder="Nom responsable"></div>
+        <div class="form-group form-full"><label>Description</label><textarea id="adm-desc" placeholder="Description..."></textarea></div>
+        <div class="form-group"><label>Statut</label>
+          <select id="adm-statut">
+            <option value="essai">Essai gratuit</option>
+            <option value="actif">Actif (payant)</option>
+            <option value="pending">En attente de validation</option>
+            <option value="expire">Expiré</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Mise en avant</label>
+          <select id="adm-featured">
+            <option value="non">Non</option>
+            <option value="premium">Premium ⭐</option>
+            <option value="new">Nouveau 🆕</option>
+            <option value="verified">Vérifié ✅</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-primary" onclick="saveEntreprise()">✔ Enregistrer</button>
+        <button class="btn-outline" onclick="closeModal('modalAjout')">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PRODUIT -->
+<div class="overlay" id="modalProduit">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>🛍️ Ajouter un produit</h3>
+      <button class="modal-close" onclick="closeModal('modalProduit');tempPhotos=[];renderPhotoPreview()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label>Nom du produit *</label><input type="text" id="prod-nom" placeholder="Ex: Robe en wax, Chambre double..."></div>
+      <div class="form-group"><label>Description</label><textarea id="prod-desc" placeholder="Décrivez le produit..." style="min-height:60px"></textarea></div>
+      <div class="form-group"><label>Prix (FCFA)</label><input type="text" id="prod-prix" placeholder="Ex: 5000"></div>
+      <div class="form-group">
+        <label>Photos du produit</label>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <label style="padding:8px 16px;background:#f3f4f6;border-radius:6px;cursor:pointer;font-size:0.78rem;font-weight:600;color:var(--bl)">
+            📷 Ajouter photos
+            <input type="file" accept="image/*" multiple style="display:none" onchange="addPhotosProduit(this)">
+          </label>
+          <span style="font-size:0.72rem;color:var(--gy)">Max 5 photos</span>
+        </div>
+        <div id="photo-preview" class="photo-preview"></div>
+      </div>
+      <div id="prod-msg" style="font-size:0.78rem;margin-bottom:8px"></div>
+      <div class="form-actions">
+        <button class="btn-primary" onclick="saveProduit()">✔ Enregistrer</button>
+        <button class="btn-outline" onclick="closeModal('modalProduit');tempPhotos=[];renderPhotoPreview()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PAIEMENT -->
+<div class="overlay" id="modalPaiement">
+  <div class="modal" style="max-width:440px">
+    <div class="modal-head">
+      <h3>💳 Payer mon abonnement</h3>
+      <button class="modal-close" onclick="closeModal('modalPaiement')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="background:#eef2ff;border-radius:10px;padding:16px;margin-bottom:20px">
+        <div style="font-weight:700;color:var(--bl);margin-bottom:12px">Choisissez votre formule :</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div id="plan-1mois" onclick="selectPlan('1mois')" style="padding:12px;border:2px solid var(--bl);border-radius:8px;cursor:pointer;text-align:center;background:var(--bl);color:white">
+            <div style="font-weight:700;font-size:0.82rem">1 mois</div>
+            <div style="font-size:1.1rem;font-weight:900;font-family:'Playfair Display',serif">5 000 F</div>
+          </div>
+          <div id="plan-3mois" onclick="selectPlan('3mois')" style="padding:12px;border:2px solid #e5e7eb;border-radius:8px;cursor:pointer;text-align:center">
+            <div style="font-weight:700;font-size:0.82rem;color:var(--bl)">3 mois</div>
+            <div style="font-size:1.1rem;font-weight:900;font-family:'Playfair Display',serif;color:var(--or)">10 000 F</div>
+            <div style="font-size:0.65rem;color:var(--gy)">3 333 F/mois</div>
+          </div>
+          <div id="plan-6mois" onclick="selectPlan('6mois')" style="padding:12px;border:2px solid #e5e7eb;border-radius:8px;cursor:pointer;text-align:center">
+            <div style="font-weight:700;font-size:0.82rem;color:var(--bl)">6 mois</div>
+            <div style="font-size:1.1rem;font-weight:900;font-family:'Playfair Display',serif;color:var(--or)">25 000 F</div>
+            <div style="font-size:0.65rem;color:var(--gy)">4 167 F/mois</div>
+          </div>
+          <div id="plan-1an" onclick="selectPlan('1an')" style="padding:12px;border:2px solid #e5e7eb;border-radius:8px;cursor:pointer;text-align:center;position:relative">
+            <div style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--or);color:white;font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:10px;white-space:nowrap">MEILLEURE OFFRE</div>
+            <div style="font-weight:700;font-size:0.82rem;color:var(--bl)">1 an</div>
+            <div style="font-size:1.1rem;font-weight:900;font-family:'Playfair Display',serif;color:var(--or)">50 000 F</div>
+            <div style="font-size:0.65rem;color:var(--gy)">4 167 F/mois</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group"><label>Nom de votre entreprise</label><input type="text" id="pay-nom" placeholder="Nom de l'entreprise"></div>
+      <div class="form-group"><label>Téléphone Mobile Money</label><input type="tel" id="pay-tel" placeholder="+225 07 XX XX XX XX"></div>
+      <div id="pay-msg" style="font-size:0.78rem;margin-bottom:8px"></div>
+      <div class="form-actions">
+        <button class="btn-primary" onclick="lancerPaiement()">💳 Payer maintenant</button>
+        <button class="btn-outline" onclick="closeModal('modalPaiement')">Annuler</button>
+      </div>
+      <div style="margin-top:12px;text-align:center;font-size:0.72rem;color:var(--gy)">
+        🔒 Paiement sécurisé via FedaPay<br>Orange Money • Wave • MTN • Moov
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand-name">🌸 LOTUS BLANC INTERNATIONAL</div>
+        <p>La marketplace des entreprises africaines. Connecter les entreprises d'Abengourou et de toute la Côte d'Ivoire avec leurs clients.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a onclick="goPage('accueil')">Accueil</a>
+        <a onclick="openModal('modalInscription')">Inscrire mon entreprise</a>
+        <a href="https://wa.me/0758219671" target="_blank">Nous contacter</a>
+      </div>
+      <div class="footer-col">
+        <h4>Catégories</h4>
+        <a onclick="setSidebarCat('Commerce & Boutique')">Commerce</a>
+        <a onclick="setSidebarCat('Restaurant & Alimentation')">Restaurant</a>
+        <a onclick="setSidebarCat('Hôtels & Résidences')">Hôtels</a>
+        <a onclick="setSidebarCat('Services & Artisanat')">Services</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="https://wa.me/0758219671" target="_blank">💬 WhatsApp</a>
+        <a href="tel:+0758219671">📞 +225 07 58 21 96 71</a>
+        <a>📍 Abengourou, CI</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 LOTUS BLANC INTERNATIONAL (L.B.I) — Côte d'Ivoire</div>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com" target="_blank">📘</a>
+        <a href="https://www.instagram.com" target="_blank">📸</a>
+        <a href="https://wa.me/0758219671" target="_blank">💬</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== CONFIG =====
+var SURL = 'https://zvqilnjmikagomiquqon.supabase.co';
+var SKEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp2cWlsbmptaWthZ29taXF1cW9uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwODY1NjksImV4cCI6MjA5ODY2MjU2OX0.pkPg40ewkL7zMaj75E2PUxBjt_GtWub8NtZWhv2e9ts';
+var isAdmin = false;
+var adminPwd = localStorage.getItem('lbi_admin_pwd') || 'kanji2026';
+var DB = {entreprises: []};
+var currentCat = '';
+var currentZone = '';
+
+// ===== INIT =====
+window.addEventListener('load', loadData);
+
+// ===== SUPABASE =====
+async function supaGet(table){
+  var res = await fetch(SURL+'/rest/v1/'+table+'?order=created_at.desc',{headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}});
+  return res.json();
+}
+async function supaPost(table,data){
+  var res = await fetch(SURL+'/rest/v1/'+table,{method:'POST',headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json','Prefer':'return=representation'},body:JSON.stringify(data)});
+  return res.json();
+}
+async function supaPatch(table,id,data){
+  await fetch(SURL+'/rest/v1/'+table+'?id=eq.'+id,{method:'PATCH',headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json'},body:JSON.stringify(data)});
+}
+async function supaDelete(table,id){
+  await fetch(SURL+'/rest/v1/'+table+'?id=eq.'+id,{method:'DELETE',headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}});
+}
+
+// ===== NOTIFICATIONS EMAIL =====
+var FORMSPREE_LBI = 'https://formspree.io/f/mkoleybv';
+
+async function sendNotification(sujet, message){
+  try{
+    await fetch(FORMSPREE_LBI, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        subject: sujet,
+        message: message,
+        _subject: sujet
+      })
+    });
+  } catch(e){ console.log('Notification error:', e); }
+}
+
+// ===== LOAD =====
+async function loadData(){
+  try{
+    var data = await supaGet('entreprises');
+    DB.entreprises = Array.isArray(data) ? data : [];
+    updateTotal();
+    renderMain();
+    updateAdminStats();
+    checkExpirations();
+    renderGardeAccueil();
+  }catch(e){DB.entreprises=[];}
+}
+
+function updateTotal(){
+  var total = DB.entreprises.filter(function(e){return e.statut!=='expire';}).length;
+  var el = document.getElementById('stat-total');
+  if(el) el.textContent = total;
+  var ct = document.getElementById('count-total');
+  if(ct) ct.textContent = total;
+}
+
+// ===== PAGES =====
+function goPage(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  var el = document.getElementById('page-'+id);
+  if(el) el.classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='admin') updateAdminStats();
+  if(id==='garde') renderGardeFull();
+}
+
+// ===== FILTERS =====
+function setNavCat(cat, btn){
+  currentCat = cat;
+  document.querySelectorAll('.nav-cat').forEach(function(b){b.classList.remove('active');});
+  if(btn) btn.classList.add('active');
+  renderMain();
+}
+function toggleMegaMenu(){
+  var menu = document.getElementById('megaMenu');
+  var overlay = document.getElementById('megaOverlay');
+  if(menu.classList.contains('open')){
+    menu.classList.remove('open');
+    overlay.classList.remove('open');
+  } else {
+    menu.classList.add('open');
+    overlay.classList.add('open');
+    showMegaSub('commerce', document.querySelector('.mega-left-item'));
+  }
+}
+
+function closeMegaMenu(){
+  var menu = document.getElementById('megaMenu');
+  var overlay = document.getElementById('megaOverlay');
+  if(menu) menu.classList.remove('open');
+  if(overlay) overlay.classList.remove('open');
+}
+
+function showMegaSub(id, item){
+  document.querySelectorAll('.mega-right').forEach(function(el){el.classList.remove('active');});
+  document.querySelectorAll('.mega-left-item').forEach(function(el){el.classList.remove('active');});
+  var sub = document.getElementById('sub-'+id);
+  if(sub) sub.classList.add('active');
+  if(item) item.classList.add('active');
+}
+
+function filterMega(cat, subcat){
+  closeMegaMenu();
+  currentCat = cat;
+  document.getElementById('main-search').value = subcat;
+  document.querySelectorAll('.nav-cat').forEach(function(b){b.classList.remove('active');});
+  renderMain();
+  window.scrollTo(0, document.querySelector('.main-layout') ? document.querySelector('.main-layout').offsetTop - 80 : 0);
+}
+
+function setSubCat(subcat){
+  // Filtrer par sous-catégorie dans la description
+  document.getElementById('main-search').value = subcat;
+  renderMain();
+  window.scrollTo(0, document.querySelector('.main-layout').offsetTop - 80);
+}
+
+function setSidebarCat(cat, btn){
+  currentCat = cat;
+  document.querySelectorAll('.sidebar-item').forEach(function(b){b.classList.remove('active');});
+  if(btn) btn.classList.add('active');
+  renderMain();
+}
+function setSidebarZone(zone, btn){
+  currentZone = zone;
+  // Mettre à jour les boutons villes mobile
+  document.querySelectorAll('.ville-btn').forEach(function(b){
+    b.classList.remove('active');
+    b.style.background = 'white';
+    b.style.color = '#374151';
+    b.style.borderColor = '#e0e7ff';
+  });
+  if(btn && btn.classList) {
+    btn.classList.add('active');
+    btn.style.background = '#3730a3';
+    btn.style.color = 'white';
+    btn.style.borderColor = '#3730a3';
+  }
+  renderMain();
+}
+function doSearch(){
+  var q = document.getElementById('h-q').value;
+  var cat = document.getElementById('h-cat').value;
+  currentCat = cat;
+  document.getElementById('main-search').value = q;
+  renderMain();
+}
+function doHeroSearch(){
+  var q = document.getElementById('hero-q').value;
+  var cat = document.getElementById('hero-cat').value;
+  currentCat = cat;
+  document.getElementById('main-search').value = q;
+  renderMain();
+  window.scrollTo(0, document.querySelector('.main-layout').offsetTop - 80);
+}
+
+// ===== RENDER MAIN =====
+function renderMain(){
+  var q = (document.getElementById('main-search')?document.getElementById('main-search').value:'').toLowerCase();
+  var sort = document.getElementById('main-sort')?document.getElementById('main-sort').value:'';
+  var list = DB.entreprises.filter(function(e){
+    if(e.statut==='expire') return false;
+    // Cacher les entreprises expirées automatiquement
+    if(e.date_expiration && new Date(e.date_expiration) < new Date() && e.statut !== 'actif') return false;
+    if(currentCat && e.categorie!==currentCat) return false;
+    if(currentZone && !(e.quartier||'').toLowerCase().includes(currentZone.toLowerCase())) return false;
+    if(q && !(e.nom+e.description+e.categorie+e.quartier).toLowerCase().includes(q)) return false;
+    return true;
+  });
+  if(sort==='nom') list.sort(function(a,b){return (a.nom||'').localeCompare(b.nom||'');});
+  var count = document.getElementById('main-count');
+  if(count) count.textContent = list.length+' entreprise(s)';
+  var grid = document.getElementById('main-grid');
+  if(!grid) return;
+  if(!list.length){
+    grid.innerHTML = '<div class="no-results" style="grid-column:1/-1"><div class="nr-icon">🔍</div><div class="nr-title">Aucune entreprise trouvée</div><p style="color:var(--gy);font-size:0.82rem">Essayez avec d\'autres mots ou une autre catégorie</p></div>';
+    return;
+  }
+  grid.innerHTML = list.map(function(e){return renderCard(e);}).join('');
+}
+
+// ===== RENDER CARD =====
+function renderCard(e){
+  var initials = (e.nom||'?').substring(0,2).toUpperCase();
+  var badge = '';
+  if(e.featured==='premium') badge='<div class="ent-badge badge-premium">⭐ Premium</div>';
+  else if(e.featured==='new') badge='<div class="ent-badge badge-new">✨ Nouveau</div>';
+  else if(e.featured==='verified') badge='<div class="ent-badge badge-verified">✅ Vérifié</div>';
+  // Badge abonnement annuel
+  if(e.abonnement==='1an' && !badge) badge='<div class="ent-badge badge-premium">👑 Annuel</div>';
+  var tel = (e.telephone||'').replace(/\s/g,'');
+  var imgHtml = e.photo
+    ? '<div style="position:relative"><img src="'+e.photo+'" style="width:100%;height:140px;object-fit:cover">'+badge+'</div>'
+    : '<div class="ent-initials">'+badge+initials+'</div>';
+  return '<div class="ent-card fade-in" onclick="voirDetail('+e.id+')">'
+    +imgHtml
+    +'<div class="ent-body">'
+    +'<div class="ent-cat">'+e.categorie+'</div>'
+    +'<div class="ent-name">'+e.nom+'</div>'
+    +'<div class="ent-desc">'+(e.description||'Cliquez pour voir plus d\'informations')+'</div>'
+    +'<div class="ent-loc">📍 '+(e.quartier||'Abengourou')+'</div>'
+    +'<div class="ent-footer">'
+    +'<a class="btn-wa" href="https://wa.me/'+tel+'?text=Bonjour '+encodeURIComponent(e.nom)+', je vous contacte via L.B.I" target="_blank" onclick="event.stopPropagation()">💬 WhatsApp</a>'
+    +'<div class="btn-voir">👁️ Voir</div>'
+    +'</div>'
+    +'</div>'
+    +'</div>';
+}
+
+// ===== DETAIL =====
+function voirDetail(id){
+  var e = DB.entreprises.find(function(x){return x.id===id;});
+  if(!e) return;
+  var initials=(e.nom||'?').substring(0,2).toUpperCase();
+  var tel=(e.telephone||'').replace(/\s/g,'');
+  var detailBanner = e.photo
+    ? '<img src="'+e.photo+'" style="width:100%;height:220px;object-fit:cover;border-radius:8px;margin-bottom:20px">'
+    : '<div class="detail-banner">'+initials+'</div>';
+  document.getElementById('detail-content').innerHTML =
+    '<div class="detail-wrap">'
+    +detailBanner
+    +'<div style="margin-bottom:6px"><span style="font-size:0.72rem;font-weight:700;color:var(--or);text-transform:uppercase">'+e.categorie+'</span></div>'
+    +'<div style="font-family:\'Playfair Display\',serif;font-weight:700;font-size:1.6rem;color:var(--bl);margin-bottom:8px">'+e.nom+'</div>'
+    +'<div style="font-size:0.88rem;color:var(--gy);line-height:1.7;margin-bottom:20px">'+(e.description||'')+'</div>'
+    +'<div style="background:#f8f9ff;border-radius:8px;padding:16px;margin-bottom:20px">'
+    +'<div style="font-weight:600;color:var(--bl);margin-bottom:12px;font-size:0.9rem">📋 Informations</div>'
+    +'<div class="info-row"><span class="info-label">📍 Adresse</span><span class="info-val">'+(e.quartier||'Abengourou')+', Côte d\'Ivoire</span></div>'
+    +'<div class="info-row"><span class="info-label">📞 Téléphone</span><span class="info-val" style="color:var(--or);font-weight:700">'+(e.telephone||'')+'</span></div>'
+    +(e.email?'<div class="info-row"><span class="info-label">✉️ Email</span><span class="info-val">'+e.email+'</span></div>':'')
+    +(e.responsable?'<div class="info-row"><span class="info-label">👤 Responsable</span><span class="info-val">'+e.responsable+'</span></div>':'')
+    +'</div>'
+    +'<div style="display:flex;gap:12px;flex-wrap:wrap">'
+    +'<a href="https://wa.me/'+tel+'?text=Bonjour '+encodeURIComponent(e.nom)+', je vous contacte depuis L.B.I" target="_blank" style="flex:1;padding:14px;background:#25D366;color:white;border-radius:8px;font-weight:700;text-align:center;font-size:0.9rem">💬 Contacter sur WhatsApp</a>'
+    +'<a href="tel:'+tel+'" style="flex:1;padding:14px;background:var(--bl);color:white;border-radius:8px;font-weight:700;text-align:center;font-size:0.9rem">📞 Appeler</a>'
+    +'</div>'
+    +'</div>';
+  // Enregistrer la visite
+  enregistrerVisite(e.id);
+  // Charger les produits
+  loadProduits(e.id);
+  goPage('detail');
+}
+
+// ===== INSCRIPTION =====
+async function saveInscription(){
+  var nom=document.getElementById('ins-nom').value.trim();
+  var cat=document.getElementById('ins-cat').value;
+  var quartier=document.getElementById('ins-quartier').value.trim();
+  var tel=document.getElementById('ins-tel').value.trim();
+  var desc=document.getElementById('ins-desc').value.trim();
+  var resp=document.getElementById('ins-resp').value.trim();
+  var msg=document.getElementById('ins-msg');
+  if(!nom||!cat||!quartier||!tel||!desc||!resp){msg.style.color='#ef4444';msg.textContent='❌ Veuillez remplir tous les champs obligatoires';return;}
+  msg.style.color='#6b7280';msg.textContent='⏳ Envoi en cours...';
+  var abonnement = document.getElementById('ins-abonnement') ? document.getElementById('ins-abonnement').value : 'essai';
+  var photo = window.entPhotoBase64 || null;
+  try{
+    var expDate = new Date();
+    expDate.setDate(expDate.getDate() + 30);
+    var expStr = expDate.toISOString().split('T')[0];
+    await supaPost('entreprises',{nom:nom,categorie:cat,quartier:quartier,telephone:tel,email:document.getElementById('ins-email').value.trim(),description:desc,responsable:resp,statut:'pending',featured:'non',abonnement:abonnement,photo:photo,date_expiration:expStr,date_inscription:new Date().toISOString().split('T')[0]});
+    await loadData();
+    sendNotification(
+      '🌸 LBI - Nouvelle inscription: ' + nom,
+      'Nouvelle entreprise inscrite sur LOTUS BLANC INTERNATIONAL:\n\nNom: ' + nom + '\nCategorie: ' + cat + '\nQuartier: ' + quartier + '\nTelephone: ' + tel + '\nAbonnement: ' + abonnement
+    );
+    msg.style.color='#065f46';msg.textContent='✅ Demande envoyée ! Nous vous contacterons sous 24h.';
+    toast('✅ Demande envoyée!','ok');
+    setTimeout(function(){closeModal('modalInscription');},2000);
+  }catch(e){msg.style.color='#ef4444';msg.textContent='❌ Erreur. Contactez-nous sur WhatsApp.';}
+}
+
+// ===== ADMIN =====
+function openAdminLogin(){
+  if(isAdmin){goPage('admin');return;}
+  var el=document.getElementById('admin-pwd-input');
+  if(el) el.value='';
+  document.getElementById('admin-err').style.display='none';
+  document.getElementById('modalAdminLogin').classList.add('show');
+}
+function submitAdmin(){
+  var val=document.getElementById('admin-pwd-input').value;
+  if(val===adminPwd){
+    isAdmin=true;
+    closeModal('modalAdminLogin');
+    goPage('admin');
+    var rv=document.getElementById('a-revenus');
+    if(rv) rv.style.filter='none';
+    toast('✅ Connecté en tant qu\'Admin','ok');
+  }else{
+    document.getElementById('admin-err').style.display='block';
+    setTimeout(function(){document.getElementById('admin-err').style.display='none';},2500);
+  }
+}
+function lockAdmin(){
+  isAdmin=false;
+  var rv=document.getElementById('a-revenus');
+  if(rv) rv.style.filter='blur(5px)';
+  goPage('accueil');
+  toast('🔒 Admin verrouillé','ok');
+}
+function changePwd(){
+  var nw=document.getElementById('new-pwd').value;
+  var cf=document.getElementById('confirm-pwd').value;
+  var msg=document.getElementById('pwd-msg');
+  if(!nw||nw.length<4){msg.style.color='#ef4444';msg.textContent='❌ Trop court';return;}
+  if(nw!==cf){msg.style.color='#ef4444';msg.textContent='❌ Mots de passe différents';return;}
+  adminPwd=nw;localStorage.setItem('lbi_admin_pwd',nw);
+  msg.style.color='#065f46';msg.textContent='✅ Mot de passe mis à jour!';
+}
+
+// ===== ADMIN STATS =====
+function updateAdminStats(){
+  var total=DB.entreprises.length;
+  var actives=DB.entreprises.filter(function(e){return e.statut==='actif';}).length;
+  var essai=DB.entreprises.filter(function(e){return e.statut==='essai';}).length;
+  var pending=DB.entreprises.filter(function(e){return e.statut==='pending';}).length;
+  var rev1mois=DB.entreprises.filter(function(e){return e.statut==='actif'&&(e.abonnement==='1mois'||e.abonnement==='mensuel'||!e.abonnement);}).length;
+  var rev3mois=DB.entreprises.filter(function(e){return e.statut==='actif'&&e.abonnement==='3mois';}).length;
+  var rev6mois=DB.entreprises.filter(function(e){return e.statut==='actif'&&e.abonnement==='6mois';}).length;
+  var rev1an=DB.entreprises.filter(function(e){return e.statut==='actif'&&(e.abonnement==='1an'||e.abonnement==='annuel');}).length;
+  var revenus=(rev1mois*5000)+(rev3mois*Math.round(10000/3))+(rev6mois*Math.round(25000/6))+(rev1an*Math.round(50000/12));
+  var set=function(id,v){var el=document.getElementById(id);if(el)el.textContent=v;};
+  set('a-total',total);set('a-actives',actives);set('a-essai',essai);set('a-pending',pending);
+  set('a-revenus',revenus.toLocaleString()+' FCFA');
+  set('rev-nb',actives);set('rev-m',revenus.toLocaleString()+' FCFA');set('rev-a',(revenus*12).toLocaleString()+' FCFA');
+  set('admin-count-label',total+' entreprise(s) au total');
+  renderAdminTable();
+  renderRecentList();
+  loadStatsVisites();
+  renderCharts();
+  renderRapports();
+}
+
+function renderAdminTable(){
+  var tbody=document.getElementById('admin-tbody');
+  if(!tbody) return;
+  if(!DB.entreprises.length){tbody.innerHTML='<tr><td colspan="7" style="text-align:center;color:var(--gy);padding:24px">Aucune entreprise</td></tr>';return;}
+  tbody.innerHTML=DB.entreprises.map(function(e,i){
+    var bc=e.statut==='actif'?'badge-active':e.statut==='essai'?'badge-trial':e.statut==='expire'?'badge-expired':'badge-pending';
+    var bl=e.statut==='actif'?'Actif':e.statut==='essai'?'Essai':e.statut==='expire'?'Expiré':'En attente';
+    return '<tr>'
+      +'<td>'+(i+1)+'</td>'
+      +'<td><strong>'+e.nom+'</strong><br><span style="font-size:0.7rem;color:var(--gy)">'+(e.responsable||'')+'</span></td>'
+      +'<td style="font-size:0.75rem">'+e.categorie+'</td>'
+      +'<td style="font-size:0.75rem">'+e.telephone+'</td>'
+      +'<td style="font-size:0.78rem;color:var(--bl);font-weight:600" id="vis-'+e.id+'">...</td>'
+      +'<td><span class="badge '+bc+'">'+bl+'</span></td>'
+      +'<td><select onchange="updateStatut('+e.id+',this.value)" style="font-size:0.72rem;padding:4px 8px;border:1px solid #e5e7eb;border-radius:4px">'
+      +'<option value="essai"'+(e.statut==='essai'?' selected':'')+'>Essai</option>'
+      +'<option value="actif"'+(e.statut==='actif'?' selected':'')+'>Actif</option>'
+      +'<option value="expire"'+(e.statut==='expire'?' selected':'')+'>Expiré</option>'
+      +'<option value="pending"'+(e.statut==='pending'?' selected':'')+'>En attente</option>'
+      +'</select></td>'
+      +'<td style="display:flex;gap:4px">'
+      +'<button data-id="'+e.id+'" data-plan="1mois" onclick="renouvelerBtn(this)" style="background:#16a34a;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="1 mois">+30j</button>'
+      +'<button data-id="'+e.id+'" data-plan="3mois" onclick="renouvelerBtn(this)" style="background:#0284c7;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="3 mois">+90j</button>'
+      +'<button data-id="'+e.id+'" data-plan="6mois" onclick="renouvelerBtn(this)" style="background:#d97706;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="6 mois">+180j</button>'
+      +'<button data-id="'+e.id+'" data-plan="1an" onclick="renouvelerBtn(this)" style="background:#4f46e5;color:white;border:none;border-radius:5px;padding:4px 8px;font-size:0.68rem;cursor:pointer;font-weight:600" title="1 an">+1an</button>'
+      +'<button onclick="delEnt('+e.id+')" style="background:#fee2e2;color:#991b1b;border:none;border-radius:5px;padding:4px 8px;font-size:0.65rem;cursor:pointer">🗑️</button>'
+      +'</td>'
+      +'</tr>';
+  }).join('');
+}
+
+function renderRecentList(){
+  var el=document.getElementById('recent-list');
+  if(!el) return;
+  var recent=DB.entreprises.slice(0,5);
+  if(!recent.length){el.innerHTML='<p style="color:var(--gy);font-size:0.82rem">Aucune inscription pour l\'instant.</p>';return;}
+  el.innerHTML=recent.map(function(e){
+    var bc=e.statut==='actif'?'badge-active':e.statut==='essai'?'badge-trial':e.statut==='expire'?'badge-expired':'badge-pending';
+    var bl=e.statut==='actif'?'Actif':e.statut==='essai'?'Essai':e.statut==='expire'?'Expiré':'En attente';
+    return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f3f4f6">'
+      +'<div><div style="font-weight:600;font-size:0.85rem">'+e.nom+'</div><div style="font-size:0.72rem;color:var(--gy)">'+e.categorie+' • '+(e.quartier||'Abengourou')+'</div></div>'
+      +'<span class="badge '+bc+'">'+bl+'</span>'
+      +'</div>';
+  }).join('');
+}
+
+// ===== ADMIN ACTIONS =====
+async function updateStatut(id,statut){
+  await supaPatch('entreprises',id,{statut});
+  await loadData();
+  toast('✅ Statut mis à jour','ok');
+}
+async function delEnt(id){
+  if(!confirm('Supprimer cette entreprise ?')) return;
+  await supaDelete('entreprises',id);
+  await loadData();
+  toast('✅ Entreprise supprimée','ok');
+}
+async function saveEntreprise(){
+  var data={
+    nom:document.getElementById('adm-nom').value.trim(),
+    categorie:document.getElementById('adm-cat').value,
+    quartier:document.getElementById('adm-quartier').value.trim(),
+    telephone:document.getElementById('adm-tel').value.trim(),
+    email:document.getElementById('adm-email').value.trim(),
+    responsable:document.getElementById('adm-resp').value.trim(),
+    description:document.getElementById('adm-desc').value.trim(),
+    statut:document.getElementById('adm-statut').value,
+    featured:document.getElementById('adm-featured').value
+  };
+  if(!data.nom||!data.categorie||!data.telephone){toast('❌ Remplir les champs obligatoires','err');return;}
+  await supaPost('entreprises',data);
+  await loadData();
+  sendNotification(
+    '🌸 LBI - Entreprise ajoutée: ' + data.nom,
+    'Entreprise ajoutee par Admin:\n\nNom: ' + data.nom + '\nCategorie: ' + data.categorie + '\nStatut: ' + data.statut
+  );
+  closeModal('modalAjout');
+  toast('✅ Entreprise ajoutée!','ok');
+}
+function renderCharts(){
+  // Graphique catégories
+  var cats = {};
+  DB.entreprises.forEach(function(e){
+    if(e.statut !== 'expire'){
+      cats[e.categorie] = (cats[e.categorie]||0) + 1;
+    }
+  });
+  
+  var catCtx = document.getElementById('chart-categories');
+  if(catCtx){
+    if(catCtx._chart) catCtx._chart.destroy();
+    catCtx._chart = new Chart(catCtx, {
+      type: 'doughnut',
+      data: {
+        labels: Object.keys(cats),
+        datasets: [{
+          data: Object.values(cats),
+          backgroundColor: ['#3730a3','#C9A84C','#16a34a','#0284c7','#dc2626','#4f46e5','#d97706','#0891b2','#be185d','#065f46'],
+          borderWidth: 2,
+          borderColor: '#fff'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {position: 'bottom', labels: {font: {size: 10}, boxWidth: 12}}
+        }
+      }
+    });
+  }
+
+  // Graphique abonnements
+  var abons = {'Essai':0, '1 mois':0, '3 mois':0, '6 mois':0, '1 an':0};
+  DB.entreprises.forEach(function(e){
+    if(e.statut !== 'expire'){
+      if(e.abonnement === 'essai' || !e.abonnement) abons['Essai']++;
+      else if(e.abonnement === '1mois' || e.abonnement === 'mensuel') abons['1 mois']++;
+      else if(e.abonnement === '3mois') abons['3 mois']++;
+      else if(e.abonnement === '6mois') abons['6 mois']++;
+      else if(e.abonnement === '1an' || e.abonnement === 'annuel') abons['1 an']++;
+    }
+  });
+
+  var abonCtx = document.getElementById('chart-abonnements');
+  if(abonCtx){
+    if(abonCtx._chart) abonCtx._chart.destroy();
+    abonCtx._chart = new Chart(abonCtx, {
+      type: 'bar',
+      data: {
+        labels: Object.keys(abons),
+        datasets: [{
+          label: 'Entreprises',
+          data: Object.values(abons),
+          backgroundColor: ['#c7d2fe','#16a34a','#0284c7','#d97706','#4f46e5'],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {legend: {display: false}},
+        scales: {y: {beginAtZero: true, ticks: {stepSize: 1}}}
+      }
+    });
+  }
+}
+
+function renderRapports(){
+  var now = new Date();
+  var in7days = new Date();
+  in7days.setDate(in7days.getDate() + 7);
+  var thisWeek = new Date();
+  thisWeek.setDate(thisWeek.getDate() - 7);
+
+  // Expirent dans 7 jours
+  var expireBientot = DB.entreprises.filter(function(e){
+    if(!e.date_expiration) return false;
+    var d = new Date(e.date_expiration);
+    return d >= now && d <= in7days;
+  });
+
+  // Inscrits cette semaine
+  var cetteSeamaine = DB.entreprises.filter(function(e){
+    if(!e.date_inscription && !e.created_at) return false;
+    var d = new Date(e.date_inscription || e.created_at);
+    return d >= thisWeek;
+  });
+
+  // En attente paiement
+  var pending = DB.entreprises.filter(function(e){
+    return e.statut === 'pending' || e.statut === 'essai';
+  });
+
+  // Taux conversion
+  var total = DB.entreprises.length;
+  var payants = DB.entreprises.filter(function(e){return e.statut === 'actif';}).length;
+  var taux = total > 0 ? Math.round((payants/total)*100) : 0;
+
+  // Mettre à jour stats
+  var set = function(id,v){var el=document.getElementById(id);if(el)el.textContent=v;};
+  set('a-expire-soon', expireBientot.length);
+  set('a-cette-semaine', cetteSeamaine.length);
+  set('a-conversion', taux+'%');
+
+  // Rapport expirations
+  var expEl = document.getElementById('rapport-expirations');
+  if(expEl){
+    if(!expireBientot.length){
+      expEl.innerHTML = '<p style="color:var(--gy);font-size:0.82rem">✅ Aucun abonnement n\'expire dans les 7 prochains jours.</p>';
+    } else {
+      expEl.innerHTML = expireBientot.map(function(e){
+        var diff = Math.ceil((new Date(e.date_expiration)-now)/(1000*60*60*24));
+        var tel = (e.telephone||'').replace(/[^0-9]/g,'');
+        var msg = 'Bonjour '+e.nom+' ! Votre abonnement LBI expire dans '+diff+' jour(s). Renouvelez maintenant pour continuer a etre visible !';
+        return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px;background:#fff5f5;border-radius:8px;margin-bottom:8px;border-left:3px solid #dc2626">'
+          +'<div><strong style="font-size:0.85rem">'+e.nom+'</strong><br>'
+          +'<span style="font-size:0.72rem;color:#dc2626">⏰ Expire dans '+diff+' jour(s) — '+new Date(e.date_expiration).toLocaleDateString('fr-FR')+'</span></div>'
+          +'<a href="https://wa.me/'+tel+'?text='+encodeURIComponent(msg)+'" target="_blank" style="padding:6px 12px;background:#25D366;color:white;border-radius:6px;font-size:0.75rem;font-weight:600;text-decoration:none;white-space:nowrap">💬 Alerter</a>'
+          +'</div>';
+      }).join('');
+    }
+  }
+
+  // Rapport pending
+  var pendEl = document.getElementById('rapport-pending');
+  if(pendEl){
+    if(!pending.length){
+      pendEl.innerHTML = '<p style="color:var(--gy);font-size:0.82rem">✅ Aucune entreprise en attente.</p>';
+    } else {
+      pendEl.innerHTML = pending.map(function(e){
+        var tel = (e.telephone||'').replace(/[^0-9]/g,'');
+        var msg = 'Bonjour '+e.nom+' ! Votre inscription sur LBI est en attente. Payez votre abonnement pour etre visible : 5 000 F/mois ou 50 000 F/an.';
+        return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px;background:#fffbeb;border-radius:8px;margin-bottom:8px;border-left:3px solid #d97706">'
+          +'<div><strong style="font-size:0.85rem">'+e.nom+'</strong><br>'
+          +'<span style="font-size:0.72rem;color:#d97706">💳 Statut: '+(e.statut==='essai'?'Essai gratuit':'En attente')+'</span></div>'
+          +'<a href="https://wa.me/'+tel+'?text='+encodeURIComponent(msg)+'" target="_blank" style="padding:6px 12px;background:#d97706;color:white;border-radius:6px;font-size:0.75rem;font-weight:600;text-decoration:none;white-space:nowrap">💬 Relancer</a>'
+          +'</div>';
+      }).join('');
+    }
+  }
+}
+
+async function loadStatsVisites(){
+  try{
+    var res = await fetch(SURL+'/rest/v1/visites?select=entreprise_id&order=created_at.desc',{
+      headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
+    });
+    var visites = await res.json();
+    if(!Array.isArray(visites)||!visites.length){
+      var el=document.getElementById('stats-visites');
+      if(el)el.innerHTML='<p style="color:var(--gy);font-size:0.82rem">Aucune visite enregistrée pour l\'instant.</p>';
+      return;
+    }
+    // Compter par entreprise
+    var counts = {};
+    var names = {};
+    visites.forEach(function(v){
+      var id = v.entreprise_id;
+      counts[id] = (counts[id]||0)+1;
+      var ent = DB.entreprises.find(function(e){return e.id===id;});
+      if(ent) names[id] = ent.nom;
+    });
+    // Trier
+    var sorted = Object.keys(counts).sort(function(a,b){return counts[b]-counts[a];}).slice(0,5);
+    var el = document.getElementById('stats-visites');
+    if(!el) return;
+    el.innerHTML = sorted.map(function(id,i){
+      return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f3f4f6">'
+        +'<div style="display:flex;align-items:center;gap:10px">'
+        +'<div style="width:28px;height:28px;background:var(--bl);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700">'+(i+1)+'</div>'
+        +'<span style="font-weight:600;font-size:0.85rem">'+(names[id]||'Entreprise '+id)+'</span>'
+        +'</div>'
+        +'<span style="background:#f0e6ff;color:var(--bl);padding:3px 12px;border-radius:20px;font-size:0.75rem;font-weight:700">'+counts[id]+' vue(s)</span>'
+        +'</div>';
+    }).join('');
+  }catch(e){
+    var el=document.getElementById('stats-visites');
+    if(el)el.innerHTML='<p style="color:var(--gy);font-size:0.82rem">Erreur de chargement.</p>';
+  }
+}
+
+async function resetAll(){
+  if(!confirm('Effacer TOUTES les entreprises ?')) return;
+  await fetch(SURL+'/rest/v1/entreprises?id=gt.0',{method:'DELETE',headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}});
+  await loadData();
+  toast('✅ Données effacées','ok');
+}
+
+// ===== TABS =====
+function addGarde(){
+  var nom = document.getElementById('g-nom').value.trim();
+  var tel = document.getElementById('g-tel').value.trim();
+  var adresse = document.getElementById('g-adresse').value.trim();
+  var horaire = document.getElementById('g-horaire').value.trim();
+  var jour = document.getElementById('g-jour').value;
+  var permanent = document.getElementById('g-permanent').value === 'oui';
+  if(!nom||!tel||!adresse||!horaire){toast('❌ Remplir tous les champs','err');return;}
+  var gardes = getGardes();
+  gardes.push({id:Date.now(),nom,telephone:tel,adresse,horaire,jour,permanent});
+  saveGardes(gardes);
+  renderGardeAdminList();
+  renderGardeAccueil();
+  ['g-nom','g-tel','g-adresse','g-horaire'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  toast('✅ Pharmacie de garde ajoutée!','ok');
+}
+
+function removeGarde(id){
+  var gardes = getGardes().filter(function(g){return g.id!==id;});
+  saveGardes(gardes);
+  renderGardeAdminList();
+  renderGardeAccueil();
+  toast('✅ Pharmacie supprimée','ok');
+}
+
+function renderGardeAdminList(){
+  var gardes = getGardes();
+  var el = document.getElementById('garde-admin-list');
+  if(!el) return;
+  if(!gardes.length){el.innerHTML='<p style="color:var(--gy);font-size:0.82rem">Aucune pharmacie configurée</p>';return;}
+  el.innerHTML = gardes.map(function(g){
+    return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px;background:#fff5f5;border-radius:8px;margin-bottom:8px;border-left:3px solid #dc2626">'
+      +'<div><strong style="font-size:0.85rem">'+g.nom+'</strong><br>'
+      +'<span style="font-size:0.72rem;color:var(--gy)">'+g.adresse+' • '+g.horaire+' • '+(g.permanent?'Tous les jours':g.jour)+'</span></div>'
+      +'<button onclick="removeGarde('+g.id+')" style="background:#dcfce7;color:#16a34a;border:none;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer">🗑️</button>'
+      +'</div>';
+  }).join('');
+}
+
+function switchTab(id,btn){
+  ['tab-db','tab-ent','tab-rev','tab-cfg','tab-garde'].forEach(function(t){
+    var el=document.getElementById(t);if(el)el.style.display='none';
+  });
+  var el=document.getElementById(id);if(el)el.style.display='block';
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+  if(btn)btn.classList.add('active');
+  if(id==='tab-garde') renderGardeAdminList();
+}
+
+// ===== MODAL =====
+function openModal(id){var el=document.getElementById(id);if(el)el.classList.add('show');}
+function closeModal(id){var el=document.getElementById(id);if(el)el.classList.remove('show');}
+
+// ===== PHOTO ENTREPRISE =====
+window.entPhotoBase64 = null;
+
+function previewEntPhoto(input){
+  var file = input.files[0];
+  if(!file) return;
+  var img = new Image();
+  var url = URL.createObjectURL(file);
+  img.onload = function(){
+    var canvas = document.createElement('canvas');
+    var w = img.width, h = img.height, maxW = 800;
+    if(w > maxW){h = Math.round(h*maxW/w);w = maxW;}
+    canvas.width = w; canvas.height = h;
+    canvas.getContext('2d').drawImage(img,0,0,w,h);
+    var dataUrl = canvas.toDataURL('image/jpeg', 0.75);
+    window.entPhotoBase64 = dataUrl;
+    var prev = document.getElementById('ent-photo-preview');
+    if(prev){
+      prev.innerHTML = '<div style="position:relative;display:inline-block">'
+        +'<img src="'+dataUrl+'" style="width:120px;height:80px;object-fit:cover;border-radius:8px;border:2px solid var(--or)">'
+        +'<button onclick="removeEntPhoto()" style="position:absolute;top:-4px;right:-4px;width:18px;height:18px;background:#ef4444;color:white;border:none;border-radius:50%;font-size:0.65rem;cursor:pointer">✕</button>'
+        +'</div>';
+    }
+    URL.revokeObjectURL(url);
+  };
+  img.src = url;
+}
+
+function removeEntPhoto(){
+  window.entPhotoBase64 = null;
+  var prev = document.getElementById('ent-photo-preview');
+  if(prev) prev.innerHTML = '';
+}
+
+// ===== PRODUITS =====
+var currentEntrepriseId = null;
+
+async function enregistrerVisite(entrepriseId){
+  try{
+    await supaPost('visites',{entreprise_id:entrepriseId});
+  }catch(e){ console.log('Visite error:',e); }
+}
+
+async function loadProduits(entrepriseId){
+  currentEntrepriseId = entrepriseId;
+  try {
+    var res = await fetch(SURL+'/rest/v1/produits?entreprise_id=eq.'+entrepriseId+'&statut=eq.actif&order=created_at.desc',{
+      headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
+    });
+    var produits = await res.json();
+    renderProduits(produits);
+  } catch(e){
+    var grid = document.getElementById('produits-grid');
+    if(grid) grid.innerHTML = '<p style="color:var(--gy);font-size:0.82rem">Aucun produit disponible</p>';
+  }
+}
+
+function renderProduits(produits){
+  var grid = document.getElementById('produits-grid');
+  if(!grid) return;
+  if(!produits || !produits.length){
+    grid.innerHTML = '<p style="color:var(--gy);font-size:0.82rem;padding:16px;background:#f8f9ff;border-radius:8px">Aucun produit ajouté pour l\'instant.</p>';
+    return;
+  }
+  grid.className = 'produits-grid';
+  var entCourante = DB.entreprises.find(function(e){return e.id===currentEntrepriseId;});
+  var telEnt = entCourante ? (entCourante.telephone||'').replace(/[^0-9]/g,'') : '';
+  grid.innerHTML = produits.map(function(p){
+    var imgHtml = (p.photos && p.photos.length)
+      ? '<div class="produit-img-wrap"><img src="'+p.photos[0]+'" alt="'+p.nom+'"></div>'
+      : '<div class="produit-img-placeholder">🛍️</div>';
+    var msgWa = 'Bonjour, je suis interesse par votre produit: '+p.nom+(p.prix?' ('+p.prix+' FCFA)':'')+'. Pouvez-vous me donner plus d\'informations ?';
+    return '<div class="produit-card">'
+      +imgHtml
+      +'<div class="produit-body">'
+      +(p.prix?'<div class="produit-prix">'+p.prix+' FCFA</div>':'')
+      +'<div class="produit-nom">'+p.nom+'</div>'
+      +(p.description?'<div class="produit-desc">'+p.description+'</div>':'')
+      +'<div class="produit-badge">✅ Disponible</div>'
+      +(telEnt?'<a class="produit-wa" href="https://wa.me/'+telEnt+'?text='+encodeURIComponent(msgWa)+'" target="_blank" onclick="event.stopPropagation()">💬 Commander sur WhatsApp</a>':'')
+      +'</div>'
+      +'</div>';
+  }).join('');
+}
+
+// Gestion photos produits (admin)
+var tempPhotos = [];
+
+function addPhotosProduit(input){
+  var files = Array.from(input.files);
+  files.forEach(function(f){
+    var img = new Image();
+    var url = URL.createObjectURL(f);
+    img.onload = function(){
+      var canvas = document.createElement('canvas');
+      var w = img.width, h = img.height, maxW = 600;
+      if(w > maxW){h = Math.round(h*maxW/w);w = maxW;}
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img,0,0,w,h);
+      var dataUrl = canvas.toDataURL('image/jpeg', 0.75);
+      tempPhotos.push(dataUrl);
+      renderPhotoPreview();
+      URL.revokeObjectURL(url);
+    };
+    img.src = url;
+  });
+  input.value = '';
+}
+
+function renderPhotoPreview(){
+  var prev = document.getElementById('photo-preview');
+  if(!prev) return;
+  prev.innerHTML = tempPhotos.map(function(p, i){
+    return '<div style="position:relative;display:inline-block">'
+      +'<img src="'+p+'" style="width:60px;height:60px;object-fit:cover;border-radius:6px;border:1px solid #e5e7eb">'
+      +'<button onclick="removePhoto('+i+')" style="position:absolute;top:-4px;right:-4px;width:16px;height:16px;background:#ef4444;color:white;border:none;border-radius:50%;font-size:0.6rem;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button>'
+      +'</div>';
+  }).join('');
+}
+
+function removePhoto(i){
+  tempPhotos.splice(i,1);
+  renderPhotoPreview();
+}
+
+async function saveProduit(){
+  var nom = document.getElementById('prod-nom').value.trim();
+  var desc = document.getElementById('prod-desc').value.trim();
+  var prix = document.getElementById('prod-prix').value.trim();
+  var msg = document.getElementById('prod-msg');
+  if(!nom){msg.style.color='#ef4444';msg.textContent='❌ Le nom est obligatoire';return;}
+  if(!currentEntrepriseId){msg.style.color='#ef4444';msg.textContent='❌ Aucune entreprise sélectionnée';return;}
+  msg.style.color='#6b7280';msg.textContent='⏳ Enregistrement...';
+  try {
+    await supaPost('produits',{entreprise_id:currentEntrepriseId,nom,description:desc,prix:prix||null,photos:tempPhotos,statut:'actif'});
+    msg.style.color='#065f46';msg.textContent='✅ Produit ajouté!';
+    tempPhotos = [];
+    renderPhotoPreview();
+    ['prod-nom','prod-desc','prod-prix'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+    await loadProduits(currentEntrepriseId);
+    setTimeout(function(){closeModal('modalProduit');},1000);
+    toast('✅ Produit ajouté!','ok');
+  } catch(e){
+    msg.style.color='#ef4444';msg.textContent='❌ Erreur lors de l\'enregistrement';
+  }
+}
+
+// ===== GESTION DATES =====
+function formatExp(date){
+  if(!date) return '—';
+  var d = new Date(date);
+  var now = new Date();
+  var diff = Math.ceil((d - now) / (1000*60*60*24));
+  if(diff < 0) return '❌ Expiré';
+  if(diff <= 3) return '⚠️ ' + diff + 'j restants';
+  if(diff <= 7) return '🟡 ' + diff + 'j restants';
+  return '✅ ' + d.toLocaleDateString('fr-FR');
+}
+
+function getExpColor(date){
+  if(!date) return '#6b7280';
+  var d = new Date(date);
+  var now = new Date();
+  var diff = Math.ceil((d - now) / (1000*60*60*24));
+  if(diff < 0) return '#ef4444';
+  if(diff <= 3) return '#f97316';
+  if(diff <= 7) return '#eab308';
+  return '#10b981';
+}
+
+function renouvelerBtn(btn){
+  var id = parseInt(btn.getAttribute('data-id'));
+  var plan = btn.getAttribute('data-plan');
+  renouveler(id, plan);
+}
+
+async function renouveler(id, plan){
+  var now = new Date();
+  // Trouver date expiration actuelle
+  var ent = DB.entreprises.find(function(e){return e.id===id;});
+  var baseDate = ent && ent.date_expiration && new Date(ent.date_expiration) > now 
+    ? new Date(ent.date_expiration) 
+    : now;
+  
+  var newDate = new Date(baseDate);
+  var joursMap = {'1mois':30,'3mois':90,'6mois':180,'1an':365,'mensuel':30,'annuel':365};
+  var jours = joursMap[plan] || 30;
+  newDate.setDate(newDate.getDate() + jours);
+  
+  var dateStr = newDate.toISOString().split('T')[0];
+  await supaPatch('entreprises', id, {
+    date_expiration: dateStr,
+    statut: 'actif',
+    abonnement: plan
+  });
+  await loadData();
+  updateAdminStats();
+  
+  var dateFormatee = newDate.toLocaleDateString('fr-FR');
+  var planInfos = {'1mois':{duree:'30 jours',montant:'5 000 F',jours:30},'3mois':{duree:'3 mois',montant:'10 000 F',jours:90},'6mois':{duree:'6 mois',montant:'25 000 F',jours:180},'1an':{duree:'1 an',montant:'50 000 F',jours:365},'mensuel':{duree:'30 jours',montant:'5 000 F',jours:30},'annuel':{duree:'1 an',montant:'50 000 F',jours:365}};
+  var info = planInfos[plan] || planInfos['1mois'];
+  var duree = info.duree;
+  var montant = info.montant;
+  
+  toast('✅ Abonnement renouvelé jusqu\'au ' + dateFormatee, 'ok');
+  
+  // Envoyer message WhatsApp à l'entreprise
+  if(ent && ent.telephone){
+    var tel = ent.telephone.replace(/[^0-9]/g, '');
+    var msg = 'Bonjour ' + ent.nom + ' ! 🌸\n\n'
+      + 'Votre abonnement LOTUS BLANC INTERNATIONAL a été renouvelé avec succès.\n\n'
+      + '✅ Durée : ' + duree + '\n'
+      + '📅 Valable jusqu\'au : ' + dateFormatee + '\n'
+      + '💰 Montant : ' + montant + '\n\n'
+      + 'Merci de votre confiance ! 😊\n'
+      + 'L.B.I - Les meilleures entreprises, au même endroit';
+    
+    setTimeout(function(){
+      if(confirm('Envoyer un message WhatsApp de confirmation à ' + ent.nom + ' ?')){
+        window.open('https://wa.me/' + tel + '?text=' + encodeURIComponent(msg), '_blank');
+      }
+    }, 500);
+  }
+}
+
+// Alertes expiration - vérifier au chargement
+function checkExpirations(){
+  var aujourd = new Date();
+  var alertes = DB.entreprises.filter(function(e){
+    if(!e.date_expiration) return false;
+    var exp = new Date(e.date_expiration);
+    var diff = Math.ceil((exp - aujourd) / (1000*60*60*24));
+    return diff >= 0 && diff <= 3;
+  });
+  if(alertes.length > 0){
+    alertes.forEach(function(e){
+      var diff = Math.ceil((new Date(e.date_expiration) - aujourd) / (1000*60*60*24));
+      sendNotification(
+        'LBI - Expiration imminente: ' + e.nom,
+        'L\'abonnement de ' + e.nom + ' expire dans ' + diff + ' jour(s).\nContactez: ' + e.telephone
+      );
+    });
+    // Afficher bouton alerte dans le dashboard
+    var alertDiv = document.getElementById('alertes-exp');
+    if(alertDiv && alertes.length > 0){
+      alertDiv.innerHTML = alertes.map(function(e){
+        var diff = Math.ceil((new Date(e.date_expiration) - aujourd) / (1000*60*60*24));
+        var tel = (e.telephone||'').replace(/[^0-9]/g,'');
+        var msg = 'Bonjour ' + e.nom + ' ! 🌸\n\nVotre abonnement LOTUS BLANC INTERNATIONAL expire dans ' + diff + ' jour(s).\n\nRenouvelez maintenant pour continuer à être visible sur LBI !\n\n💰 Mensuel : 3 000 FCFA\n⭐ Annuel : 30 000 FCFA\n\nContactez-nous pour renouveler.\nL.B.I';
+        return '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px;background:#fff8f0;border-radius:8px;margin-bottom:8px;border-left:3px solid #f97316">'
+          +'<div><strong style="font-size:0.85rem">'+e.nom+'</strong><br><span style="font-size:0.75rem;color:#f97316">⚠️ Expire dans '+diff+' jour(s)</span></div>'
+          +'<a href="https://wa.me/'+tel+'?text='+encodeURIComponent(msg)+'" target="_blank" style="padding:6px 12px;background:#25D366;color:white;border-radius:6px;font-size:0.75rem;font-weight:600;text-decoration:none">💬 Alerter</a>'
+          +'</div>';
+      }).join('');
+      alertDiv.style.display = 'block';
+    }
+  }
+}
+
+// ===== PHARMACIE DE GARDE =====
+// Stockage local des gardes (géré par Admin)
+function getGardes(){
+  try{
+    return JSON.parse(localStorage.getItem('lbi_gardes')||'[]');
+  }catch(e){return [];}
+}
+
+function saveGardes(gardes){
+  localStorage.setItem('lbi_gardes', JSON.stringify(gardes));
+}
+
+function getJourActuel(){
+  var jours = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+  var d = new Date();
+  return jours[d.getDay()];
+}
+
+function renderGardeAccueil(){
+  var gardes = getGardes();
+  var jour = getJourActuel();
+  var today = new Date().toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long'});
+  
+  var dateEl = document.getElementById('garde-date');
+  if(dateEl) dateEl.textContent = today.charAt(0).toUpperCase() + today.slice(1) + ' — Abengourou';
+  
+  var gardesAujourdhui = gardes.filter(function(g){
+    return g.jour === jour || g.permanent;
+  });
+  
+  var el = document.getElementById('garde-content');
+  if(!el) return;
+  
+  if(!gardesAujourdhui.length){
+    el.innerHTML = '<div class="garde-empty">💊 Aucune pharmacie de garde configurée pour aujourd\'hui.<br><small>Contactez l\'admin pour mettre à jour.</small></div>';
+    return;
+  }
+  
+  el.innerHTML = gardesAujourdhui.map(function(g){
+    var tel = (g.telephone||'').replace(/[^0-9]/g,'');
+    var msgWa = 'Bonjour '+g.nom+', vous etes la pharmacie de garde ? Je voulais confirmer vos horaires.';
+    return '<div class="garde-card">'
+      +'<div class="garde-info">'
+      +'<div class="garde-icon" style="background:white;padding:4px"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" width=\"40\" height=\"40\"><rect width=\"100\" height=\"100\" rx=\"12\" fill=\"#16a34a\"/><rect x=\"38\" y=\"15\" width=\"24\" height=\"70\" rx=\"6\" fill=\"white\"/><rect x=\"15\" y=\"38\" width=\"70\" height=\"24\" rx=\"6\" fill=\"white\"/></svg></div>'
+      +'<div>'
+      +'<div class="garde-nom">'+g.nom+'</div>'
+      +'<div class="garde-adresse">📍 '+g.adresse+'</div>'
+      +'<div class="garde-horaire">🕐 '+g.horaire+'</div>'
+      +'</div>'
+      +'</div>'
+      +'<div class="garde-btns">'
+      +(tel?'<a class="garde-btn-wa" href="https://wa.me/'+tel+'?text='+encodeURIComponent(msgWa)+'" target="_blank">💬 WhatsApp</a>':'')
+      +(tel?'<a class="garde-btn-tel" href="tel:'+tel+'">📞 Appeler</a>':'')
+      +'</div>'
+      +'</div>';
+  }).join('');
+}
+
+function renderGardeFull(){
+  var gardes = getGardes();
+  var el = document.getElementById('garde-list-full');
+  if(!el) return;
+  
+  if(!gardes.length){
+    el.innerHTML = '<div style="text-align:center;padding:40px;background:white;border-radius:12px"><div style="font-size:3rem;margin-bottom:12px">💊</div><div style="font-weight:700;color:var(--bl);margin-bottom:8px">Aucune pharmacie configurée</div><p style="color:var(--gy);font-size:0.85rem">L\'admin doit ajouter les pharmacies de garde</p></div>';
+    return;
+  }
+  
+  var jours = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+  var jourActuel = getJourActuel();
+  
+  el.innerHTML = gardes.map(function(g){
+    var tel = (g.telephone||'').replace(/[^0-9]/g,'');
+    var isToday = g.jour === jourActuel || g.permanent;
+    return '<div style="background:white;border-radius:12px;padding:16px;margin-bottom:12px;border:2px solid '+(isToday?'#16a34a':'#f0f0f0')+';box-shadow:var(--shadow)">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">'
+      +'<div style="display:flex;align-items:center;gap:12px">'
+      +'<div style="width:44px;height:44px;background:'+(isToday?'#dcfce7':'#eef2ff')+';border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem">💊</div>'
+      +'<div>'
+      +'<div style="font-weight:800;font-size:0.95rem;color:#222;font-family:Poppins,sans-serif">'+g.nom+'</div>'
+      +'<div style="font-size:0.75rem;color:var(--gy)">📍 '+g.adresse+'</div>'
+      +'<div style="font-size:0.75rem;color:#dc2626;font-weight:600">🕐 '+g.horaire+' • '+(g.permanent?'Tous les jours':g.jour)+'</div>'
+      +'</div>'
+      +'</div>'
+      +(isToday?'<span style="background:#16a34a;color:white;padding:4px 12px;border-radius:20px;font-size:0.7rem;font-weight:700">DE GARDE AUJOURD\'HUI</span>':'')
+      +'</div>'
+      +(tel?'<div style="display:flex;gap:8px;margin-top:12px">'
+        +'<a href="https://wa.me/'+tel+'" target="_blank" style="flex:1;padding:8px;background:#25D366;color:white;border-radius:6px;font-weight:700;font-size:0.78rem;text-align:center;text-decoration:none">💬 WhatsApp</a>'
+        +'<a href="tel:'+tel+'" style="flex:1;padding:8px;background:#dc2626;color:white;border-radius:6px;font-weight:700;font-size:0.78rem;text-align:center;text-decoration:none">📞 Appeler</a>'
+        +'</div>':'')
+      +'</div>';
+  }).join('');
+}
+
+// ===== FEDAPAY PAIEMENT =====
+var FEDAPAY_PK = 'pk_sandbox_XwZ2gSj8m7kuWtW_bsEtog-Q';
+var selectedPlan = 'mensuel';
+var planMontants = {'1mois': 500000, '3mois': 1000000, '6mois': 2500000, '1an': 5000000}; // en centimes FCFA
+
+function selectPlan(plan){
+  selectedPlan = plan;
+  ['1mois','3mois','6mois','1an'].forEach(function(p){
+    var el = document.getElementById('plan-'+p);
+    if(el){
+      el.style.background = p===plan ? 'var(--bl)' : 'white';
+      el.style.color = p===plan ? 'white' : '#222';
+      el.style.borderColor = p===plan ? 'var(--bl)' : '#e5e7eb';
+    }
+  });
+}
+
+function lancerPaiement(){
+  var nom = document.getElementById('pay-nom').value.trim();
+  var tel = document.getElementById('pay-tel').value.trim();
+  var msg = document.getElementById('pay-msg');
+  if(!nom){msg.style.color='#ef4444';msg.textContent='❌ Entrez le nom de votre entreprise';return;}
+  if(!tel){msg.style.color='#ef4444';msg.textContent='❌ Entrez votre numéro de téléphone';return;}
+  
+  var montant = planMontants[selectedPlan];
+  var planLabels = {'1mois':'1 mois', '3mois':'3 mois', '6mois':'6 mois', '1an':'1 an'};
+  var description = 'Abonnement LBI ' + (planLabels[selectedPlan]||selectedPlan) + ' - ' + nom;
+
+  msg.style.color='#6b7280';msg.textContent='⏳ Ouverture du paiement...';
+
+  try {
+    FedaPay.init({
+      public_key: FEDAPAY_PK,
+      transaction: {
+        amount: montant,
+        description: description
+      },
+      customer: {
+        phone_number: {
+          number: tel,
+          country: 'CI'
+        }
+      },
+      onComplete: function(resp){
+        if(resp.reason === FedaPay.CHECKOUT_COMPLETED){
+          closeModal('modalPaiement');
+          toast('✅ Paiement réussi ! Nous activons votre compte sous 24h.','ok');
+          // Notifier par email
+          sendNotification(
+            'LBI - Nouveau paiement: ' + nom,
+            'Paiement recu:\nEntreprise: ' + nom + '\nPlan: ' + selectedPlan + '\nTelephone: ' + tel
+          );
+        } else {
+          msg.style.color='#ef4444';msg.textContent='❌ Paiement annulé ou échoué. Réessayez.';
+        }
+      }
+    }).open();
+  } catch(e){
+    msg.style.color='#ef4444';msg.textContent='❌ Erreur. Contactez-nous sur WhatsApp.';
+    console.log('FedaPay error:', e);
+  }
+}
+
+// ===== TOAST =====
+function toast(msg,type){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast '+(type||'ok')+' show';
+  setTimeout(function(){t.classList.remove('show');},3000);
+}
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').then(function(reg){
+      console.log('SW LBI enregistré');
+    }).catch(function(err){
+      console.log('SW erreur:', err);
+    });
+  });
+}
+</script>
+</body>
+</html>
