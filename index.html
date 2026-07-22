@@ -16,10 +16,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bl:#3730a3;--or:#C9A84C;--gy:#6b7280;--wh:#fff;--bg:#f8f5ff;
-  --gr:#10b981;--rd:#ef4444;--gold:#C9A84C;--violet:#4338ca;--dark:#1e1b4b;
-  --shadow:0 2px 8px rgba(55,48,163,0.10);
-  --shadow-lg:0 8px 32px rgba(55,48,163,0.18);
+  --bl:#0f2a4a;--or:#C9A84C;--gy:#6b7280;--wh:#fff;--bg:#f8f5ff;
+  --gr:#10b981;--rd:#ef4444;--gold:#C9A84C;--violet:#163d66;--dark:#0a1929;
+  --shadow:0 2px 8px rgba(15,42,74,0.10);
+  --shadow-lg:0 8px 32px rgba(15,42,74,0.18);
   --radius:8px;
 }
 /* ANIMATIONS */
@@ -67,7 +67,7 @@ img{max-width:100%}
 .btn-admin:hover{background:rgba(255,255,255,0.2)}
 
 /* ===== NAV CATEGORIES ===== */
-.nav-cats{background:#ffffff;border-bottom:2px solid #e0e7ff;padding:0 20px;box-shadow:0 2px 8px rgba(55,48,163,0.06)}
+.nav-cats{background:#ffffff;border-bottom:2px solid #e0e7ff;padding:0 20px;box-shadow:0 2px 8px rgba(15,42,74,0.06)}
 .nav-cats-inner{max-width:1280px;margin:0 auto;display:flex;gap:0;overflow-x:auto}
 .nav-cat{padding:10px 16px;font-size:0.78rem;font-weight:500;color:#374151;white-space:nowrap;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s}
 .nav-cat:hover,.nav-cat.active{color:var(--gold);border-bottom-color:var(--gold)}
@@ -206,8 +206,8 @@ img{max-width:100%}
 
 /* ===== PRODUITS ===== */
 .produits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-top:16px}
-.produit-card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(55,48,163,0.08);border:1px solid #f0f0f0;transition:all 0.3s;cursor:pointer}
-.produit-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(55,48,163,0.15);border-color:var(--gold)}
+.produit-card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(15,42,74,0.08);border:1px solid #f0f0f0;transition:all 0.3s;cursor:pointer}
+.produit-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(15,42,74,0.15);border-color:var(--gold)}
 .produit-img-wrap{position:relative;width:100%;height:160px;overflow:hidden;background:linear-gradient(135deg,#eef2ff,#e0e7ff)}
 .produit-img-wrap img{width:100%;height:160px;object-fit:cover;transition:transform 0.3s}
 .produit-card:hover .produit-img-wrap img{transform:scale(1.05)}
@@ -581,7 +581,7 @@ img{max-width:100%}
   <div style="background:white;padding:16px 0;border-bottom:1px solid #f0f0f0">
     <div style="max-width:1280px;margin:0 auto;padding:0 20px">
       <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none" id="banner-slider">
-        <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#3730a3,#4f46e5);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="openModal('modalInscription')">
+        <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#0f2a4a,#4f46e5);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="openModal('modalInscription')">
           <div>
             <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Offre spéciale</div>
             <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:white;margin-bottom:6px">1 mois GRATUIT !</div>
@@ -592,7 +592,7 @@ img{max-width:100%}
         <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#C9A84C,#e8c96a);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="goPage('garde')">
           <div>
             <div style="font-size:0.65rem;color:rgba(0,0,0,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Service 24h/24</div>
-            <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:#1e1b4b;margin-bottom:6px">Pharmacie de garde</div>
+            <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:#0a1929;margin-bottom:6px">Pharmacie de garde</div>
             <div style="font-size:0.72rem;color:rgba(0,0,0,0.6)">Trouvez la pharmacie ouverte</div>
           </div>
           <div style="font-size:3rem;margin-left:auto">💊</div>
@@ -619,7 +619,7 @@ img{max-width:100%}
 
   <!-- FILTRE VILLES MOBILE -->
   <div style="background:white;padding:10px 16px;border-bottom:1px solid #e8e8f0;overflow-x:auto;display:flex;gap:8px;scrollbar-width:none" id="ville-filter-bar">
-    <button onclick="setSidebarZone('',this)" class="ville-btn active" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #3730a3;background:#3730a3;color:white;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🌍 Toutes</button>
+    <button onclick="setSidebarZone('',this)" class="ville-btn active" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #0f2a4a;background:#0f2a4a;color:white;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🌍 Toutes</button>
     <button onclick="setSidebarZone('Abengourou',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">📍 Abengourou</button>
     <button onclick="setSidebarZone('Abidjan',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🏙️ Abidjan</button>
     <button onclick="setSidebarZone('Bouaké',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🏘️ Bouaké</button>
@@ -631,7 +631,7 @@ img{max-width:100%}
     <button onclick="setSidebarZone('Gagnoa',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🌱 Gagnoa</button>
     <button onclick="setSidebarZone('Divo',this)" class="ville-btn" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1.5px solid #e0e7ff;background:white;color:#374151;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Poppins,sans-serif">🌳 Divo</button>
   </div>
-  <style>#ville-filter-bar::-webkit-scrollbar{display:none}.ville-btn.active{background:#3730a3!important;color:white!important;border-color:#3730a3!important}</style>
+  <style>#ville-filter-bar::-webkit-scrollbar{display:none}.ville-btn.active{background:#0f2a4a!important;color:white!important;border-color:#0f2a4a!important}</style>
 
   <!-- MAIN -->
   <div class="main-layout">
@@ -1338,9 +1338,9 @@ function setSidebarZone(zone, btn){
   });
   if(btn && btn.classList) {
     btn.classList.add('active');
-    btn.style.background = '#3730a3';
+    btn.style.background = '#0f2a4a';
     btn.style.color = 'white';
-    btn.style.borderColor = '#3730a3';
+    btn.style.borderColor = '#0f2a4a';
   }
   renderMain();
 }
@@ -1636,7 +1636,7 @@ function renderCharts(){
         labels: Object.keys(cats),
         datasets: [{
           data: Object.values(cats),
-          backgroundColor: ['#3730a3','#C9A84C','#16a34a','#0284c7','#dc2626','#4f46e5','#d97706','#0891b2','#be185d','#065f46'],
+          backgroundColor: ['#0f2a4a','#C9A84C','#16a34a','#0284c7','#dc2626','#4f46e5','#d97706','#0891b2','#be185d','#065f46'],
           borderWidth: 2,
           borderColor: '#fff'
         }]
