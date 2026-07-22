@@ -93,32 +93,9 @@ img{max-width:100%}
 .hero-stat .lab{font-size:0.72rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.5px}
 
 
-/* ===== CATEGORY ICONS ROW (style Jumia) ===== */
-.cat-icons-row{background:white;padding:14px 0;border-bottom:1px solid #f0f0f0;overflow-x:auto;scrollbar-width:none}
-@media(min-width:901px){.cat-icons-row{display:none}}
-.cat-icons-row::-webkit-scrollbar{display:none}
-.cat-icons-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;gap:18px}
-.cat-icon-item{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;width:76px}
-.cat-icon-circle{width:56px;height:56px;border-radius:50%;background:#f8f5ff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;transition:all 0.2s;border:1.5px solid #eee0}
-.cat-icon-item:hover .cat-icon-circle,.cat-icon-item.active .cat-icon-circle{background:var(--bl);transform:translateY(-3px)}
-.cat-icon-item:hover .cat-icon-label,.cat-icon-item.active .cat-icon-label{color:var(--bl);font-weight:700}
-.cat-icon-label{font-size:0.68rem;color:#374151;text-align:center;line-height:1.2}
-
-
-/* ===== HOME TOP GRID: vertical category menu (desktop) + banners ===== */
-.home-top-grid{max-width:1280px;margin:0 auto;padding:16px 20px;display:grid;grid-template-columns:230px 1fr;gap:16px;background:white}
-.home-cat-menu{background:#fff;border:1px solid #e8e8f0;border-radius:10px;overflow:hidden}
-.home-cat-menu-item{display:flex;align-items:center;gap:10px;padding:11px 16px;font-size:0.82rem;color:#374151;cursor:pointer;border-bottom:1px solid #f9fafb;transition:background 0.2s}
-.home-cat-menu-item:last-child{border-bottom:none}
-.home-cat-menu-item .ic{font-size:1rem;width:20px;text-align:center}
-.home-cat-menu-item:hover,.home-cat-menu-item.active{background:#eef2ff;color:var(--bl);font-weight:700}
-@media(max-width:900px){
-  .home-top-grid{grid-template-columns:1fr;padding:0}
-  .home-cat-menu{display:none}
-}
 
 /* ===== LAYOUT ===== */
-.main-layout{max-width:1280px;margin:0 auto;padding:24px 20px;display:grid;grid-template-columns:200px 1fr;gap:20px}
+.main-layout{max-width:1280px;margin:0 auto;padding:24px 20px}
 .sidebar{flex-shrink:0}
 .sidebar-card{background:#ffffff;border-radius:10px;padding:0;margin-bottom:16px;box-shadow:0 2px 12px rgba(30,27,75,0.08);overflow:hidden;border:1px solid #e8e8f0}
 .sidebar-title{padding:12px 16px;font-size:0.82rem;font-weight:700;color:var(--bl);border-bottom:1px solid #f3f4f6;background:#f8f9ff}
@@ -597,39 +574,9 @@ img{max-width:100%}
     </div>
   </div>
 
-  <!-- CATEGORY ICONS ROW (style Jumia) -->
-  <div class="cat-icons-row">
-    <div class="cat-icons-inner">
-      <div class="cat-icon-item active" onclick="setSidebarCat('',this)"><div class="cat-icon-circle">🏠</div><div class="cat-icon-label">Toutes</div></div>
-      <div class="cat-icon-item" onclick="setSidebarCat('Commerce & Boutique',this)"><div class="cat-icon-circle">🛒</div><div class="cat-icon-label">Commerce</div></div>
-      <div class="cat-icon-item" onclick="setSidebarCat('Restaurant & Alimentation',this)"><div class="cat-icon-circle">🍽️</div><div class="cat-icon-label">Restaurant</div></div>
-      <div class="cat-icon-item" onclick="setSidebarCat('Hôtels & Résidences',this)"><div class="cat-icon-circle">🏨</div><div class="cat-icon-label">Hôtels</div></div>
-      <div class="cat-icon-item" onclick="setSidebarCat('Services & Artisanat',this)"><div class="cat-icon-circle">🔧</div><div class="cat-icon-label">Services</div></div>
-      <div class="cat-icon-item" onclick="setSidebarCat('Santé & Beauté',this)"><div class="cat-icon-circle">💊</div><div class="cat-icon-label">Santé & Beauté</div></div>
-      <div class="cat-icon-item" onclick="setSidebarCat('Pharmacie & Santé',this)"><div class="cat-icon-circle">💉</div><div class="cat-icon-label">Pharmacie</div></div>
-      <div class="cat-icon-item" onclick="setSidebarCat('Immobilier & BTP',this)"><div class="cat-icon-circle">🏗️</div><div class="cat-icon-label">Immobilier</div></div>
-      <div class="cat-icon-item" onclick="setSidebarCat('Transport & Logistique',this)"><div class="cat-icon-circle">🚛</div><div class="cat-icon-label">Transport</div></div>
-      <div class="cat-icon-item" onclick="setSidebarCat('Éducation & Formation',this)"><div class="cat-icon-circle">📚</div><div class="cat-icon-label">Éducation</div></div>
-      <div class="cat-icon-item" onclick="setSidebarCat('Technologie',this)"><div class="cat-icon-circle">💻</div><div class="cat-icon-label">Technologie</div></div>
-    </div>
-  </div>
-
   <!-- SLIDER BANNIÈRES + MENU CATEGORIES VERTICAL (desktop, style Jumia) -->
-  <div style="background:white;border-bottom:1px solid #f0f0f0">
-    <div class="home-top-grid">
-      <nav class="home-cat-menu">
-        <div class="home-cat-menu-item active" onclick="setSidebarCat('',this)"><span class="ic">🏠</span>Toutes les entreprises</div>
-        <div class="home-cat-menu-item" onclick="setSidebarCat('Commerce & Boutique',this)"><span class="ic">🛒</span>Commerce & Boutique</div>
-        <div class="home-cat-menu-item" onclick="setSidebarCat('Restaurant & Alimentation',this)"><span class="ic">🍽️</span>Restaurant</div>
-        <div class="home-cat-menu-item" onclick="setSidebarCat('Hôtels & Résidences',this)"><span class="ic">🏨</span>Hôtels & Résidences</div>
-        <div class="home-cat-menu-item" onclick="setSidebarCat('Services & Artisanat',this)"><span class="ic">🔧</span>Services & Artisanat</div>
-        <div class="home-cat-menu-item" onclick="setSidebarCat('Santé & Beauté',this)"><span class="ic">💊</span>Santé & Beauté</div>
-        <div class="home-cat-menu-item" onclick="setSidebarCat('Pharmacie & Santé',this)"><span class="ic">💉</span>Pharmacie</div>
-        <div class="home-cat-menu-item" onclick="setSidebarCat('Immobilier & BTP',this)"><span class="ic">🏗️</span>Immobilier & BTP</div>
-        <div class="home-cat-menu-item" onclick="setSidebarCat('Transport & Logistique',this)"><span class="ic">🚛</span>Transport & Logistique</div>
-        <div class="home-cat-menu-item" onclick="setSidebarCat('Éducation & Formation',this)"><span class="ic">📚</span>Éducation & Formation</div>
-        <div class="home-cat-menu-item" onclick="setSidebarCat('Technologie',this)"><span class="ic">💻</span>Technologie</div>
-      </nav>
+  <div style="background:white;padding:16px 0;border-bottom:1px solid #f0f0f0">
+    <div style="max-width:1280px;margin:0 auto;padding:0 20px">
       <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none" id="banner-slider">
         <div style="flex-shrink:0;width:280px;height:120px;border-radius:12px;background:linear-gradient(135deg,#0f2a4a,#4f46e5);display:flex;align-items:center;padding:20px;cursor:pointer" onclick="openModal('modalInscription')">
           <div>
@@ -685,24 +632,6 @@ img{max-width:100%}
 
   <!-- MAIN -->
   <div class="main-layout">
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="sidebar-card">
-        <div class="sidebar-title">🌍 Villes</div>
-        <div class="sidebar-item active" onclick="setSidebarZone('',this)">Toutes les villes</div>
-        <div class="sidebar-item" onclick="setSidebarZone('Abengourou',this)">📍 Abengourou</div>
-        <div class="sidebar-item" onclick="setSidebarZone('Abidjan',this)">🏙️ Abidjan</div>
-        <div class="sidebar-item" onclick="setSidebarZone('Bouaké',this)">🏘️ Bouaké</div>
-        <div class="sidebar-item" onclick="setSidebarZone('Yamoussoukro',this)">🏛️ Yamoussoukro</div>
-        <div class="sidebar-item" onclick="setSidebarZone('San-Pédro',this)">⚓ San-Pédro</div>
-        <div class="sidebar-item" onclick="setSidebarZone('Daloa',this)">🌿 Daloa</div>
-        <div class="sidebar-item" onclick="setSidebarZone('Korhogo',this)">🌾 Korhogo</div>
-        <div class="sidebar-item" onclick="setSidebarZone('Man',this)">⛰️ Man</div>
-        <div class="sidebar-item" onclick="setSidebarZone('Gagnoa',this)">🌱 Gagnoa</div>
-        <div class="sidebar-item" onclick="setSidebarZone('Divo',this)">🌳 Divo</div>
-      </div>
-    </aside>
-
     <!-- CONTENT -->
     <div class="content">
       <div class="content-header">
